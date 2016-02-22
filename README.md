@@ -62,7 +62,7 @@ the API.
 
 ### Phase 3: Flux Architecture and Router (1.5 days)
 
-**Objective:** Notes can be created, read, edited and destroyed with the
+**Objective:** Reviews can be created, read, edited and destroyed with the
 user interface.
 
 - [ ] setup the flux loop with skeleton files
@@ -91,7 +91,7 @@ user interface.
   - [ ] `BusinessesIndex`
   - [ ] `BusinessIndexItem`
   - [ ] `BusinessForm`
-  - [ ] Notebook CRUD
+  - [ ] Business CRUD
   - [ ] adding reviews requires a business
   - [ ] viewing reviews by business
 - Use CSS to style new views

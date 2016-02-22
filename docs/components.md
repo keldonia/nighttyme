@@ -2,6 +2,7 @@
 
 * `App`
   * `SearchIndex`
+    * `SearchFilter`
   * `BussinessesIndex`
     * `BussinessIndexItem`
   * `BussinessForm`
