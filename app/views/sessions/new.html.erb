@@ -1,8 +1,8 @@
 <figure class="login-backer">
   <section class="mini-header group">
-    <h1>Welcome to Nighttyme</h1>
+    <h1> <a href="/">Welcome to Nighttyme</a> </h1>
     <p>
-      Are you ready to experience the night?
+      Are you ready for the night?
     </p>
   </section>
 
@@ -21,13 +21,15 @@
               id="Username"
               value="<%= @user.username %>"
               required
+              title="Username must not be blank"
               placeholder="Please enter a valid user name"><br>
       <label for="Password">Password:</label>
       <input  type="password"
               name="user[password]"
               id="Password"
               value=""
-              required
+              title="Password must contain at least 6 characters, including UPPER/lowercase and numbers."
+              required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
               placeholder="Please enter a valid password"><br>
       <input type="submit" class="submit" value="Sign In">
     </form>

@@ -12,8 +12,8 @@ and React.js. Nighttyme allows users to review the nightlife in their area.
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
 
-- [ ] Create an account
-- [ ] Log in / Log out
+- [x] Create an account
+- [x] Log in / Log out
 - [ ] Create, and read businesses
 - [ ] Create, read, edit, and delete reviews
 - [ ] Allow users to search reviews, based on several criteria and geographic range, moving map
@@ -39,11 +39,11 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 **Objective:** Functioning rails project with Authentication
 
-- [ ] create new project
-- [ ] create `User` model
-- [ ] authentication
-- [ ] user signup/signin pages
-- [ ] blank landing page after signin
+- [x] create new project
+- [x] create `User` model
+- [x] authentication
+- [x] user signup/signin pages
+- [x] blank landing page after signin
 
 ### Phase 2: Businesses Model, Reviews Model, API, and basic APIUtil (1.5 days)
 

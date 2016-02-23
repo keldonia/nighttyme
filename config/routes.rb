@@ -6,6 +6,7 @@
 #     session POST   /session(.:format)     sessions#create
 # new_session GET    /session/new(.:format) sessions#new
 #             DELETE /session(.:format)     sessions#destroy
+#        root GET    /                      static_pages#root
 #
 
 Rails.application.routes.draw do

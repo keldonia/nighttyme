@@ -18,12 +18,16 @@ id          | integer   | not null, primary key
 owner_id    | integer   | not null, foreign key (references users), indexed
 name        | string    | not null
 description | string    |
-location    | string    |
+location    | string    | not null
 price       | integer   |
-photo       | url       |
 email       | url       |
 website     | url       |
-telphone    | string    |
+
+##Atributtes
+column name | data type | details
+------------|-----------|-----------------------
+business_id | integer   | not null, foreign key (references businesses)
+telephone   | string    |
 reservations| boolean   |
 credit_cards| boolean   |
 parking     | string    |
@@ -47,13 +51,20 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 business_id | integer   | not null, foreign key (references businesses), indexed
-monday      | time      |
-tuesday     | time      |
-wednesday   | time      |
-thursday    | time      |
-friday      | time      |
-saturday    | time      |
-sunday      | time      |
+monday_st   | time      |
+monday_ed   | time      |
+tuesday_st  | time      |
+tuesday_ed  | time      |
+wednesday_st| time      |
+wednesday_ed| time      |
+thursday_st | time      |
+thursday_ed | time      |
+friday_st   | time      |
+friday_ed   | time      |
+saturday_st | time      |
+saturday_ed | time      |
+sunday_st   | time      |
+sunday_ed   | time      |
 
 
 ## tags

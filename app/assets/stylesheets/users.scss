@@ -3,23 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .mini-header {
-  color: whitesmoke;
+  color: rgba(245,245,245,1.0);
   margin-left: 40px;
 }
 
 .mini-header h1 {
   font-size: 32px;
+  text-shadow: 2px 2px 2px rgba(245,245,245,0.4);
+}
+
+.mini-header a {
+  text-decoration: none;
+  color: rgba(245,245,245,1.0);
 }
 
 .mini-header p {
   margin-top: -20px;
   margin-left: 20px;
   font-size: 16px;
+  text-shadow: 2px 2px 2px rgba(245,245,245,0.3);
 }
 
 .login-backer {
   background-image: url(https://images.unsplash.com/photo-1415889455891-23bbf19ee5c7?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1375);
-  background-size: auto 100%;
+  background-size: cover;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -27,16 +34,17 @@
 
 
 .login {
-  background-color: whitesmoke;
+  background-color: rgba(245,245,245,0.7);
   margin: auto;
-  border-color: black;
+  font-weight: 700;
+  border-color: rgba(0,0,0,0.7);
   border-width: 1px;
+  border-style: solid;
   width: 400px;
   top: 100px;
   min-height: 200px;
   position: relative;
-  border-style: solid;
-  box-shadow: 2px 2px 2px 1px darkslategray;
+  box-shadow: 2px 2px 2px 1px rgba(77,77,77,0.7);
   border-radius: 37px;
 }
 
@@ -46,6 +54,7 @@
 
 .login h2 {
   text-align: center;
+  text-shadow: 2px 2px 2px rgba(77,77,77,0.7);
 }
 
 .login form {
@@ -59,6 +68,24 @@
   width: 250px;
   margin-left: auto;
   float: right;
+  border-radius: 5px;
+}
+
+.login input:invalid:not([type=submit]) {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAeVJREFUeNqkU01oE1EQ/mazSTdRmqSxLVSJVKU9RYoHD8WfHr16kh5EFA8eSy6hXrwUPBSKZ6E9V1CU4tGf0DZWDEQrGkhprRDbCvlpavan3ezu+LLSUnADLZnHwHvzmJlvvpkhZkY7IqFNaTuAfPhhP/8Uo87SGSaDsP27hgYM/lUpy6lHdqsAtM+BPfvqKp3ufYKwcgmWCug6oKmrrG3PoaqngWjdd/922hOBs5C/jJA6x7AiUt8VYVUAVQXXShfIqCYRMZO8/N1N+B8H1sOUwivpSUSVCJ2MAjtVwBAIdv+AQkHQqbOgc+fBvorjyQENDcch16/BtkQdAlC4E6jrYHGgGU18Io3gmhzJuwub6/fQJYNi/YBpCifhbDaAPXFvCBVxXbvfbNGFeN8DkjogWAd8DljV3KRutcEAeHMN/HXZ4p9bhncJHCyhNx52R0Kv/XNuQvYBnM+CP7xddXL5KaJw0TMAF8qjnMvegeK/SLHubhpKDKIrJDlvXoMX3y9xcSMZyBQ+tpyk5hzsa2Ns7LGdfWdbL6fZvHn92d7dgROH/730YBLtiZmEdGPkFnhX4kxmjVe2xgPfCtrRd6GHRtEh9zsL8xVe+pwSzj+OtwvletZZ/wLeKD71L+ZeHHWZ/gowABkp7AwwnEjFAAAAAElFTkSuQmCC);
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+.login input:valid:not([type=submit]) {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAepJREFUeNrEk79PFEEUx9/uDDd7v/AAQQnEQokmJCRGwc7/QeM/YGVxsZJQYI/EhCChICYmUJigNBSGzobQaI5SaYRw6imne0d2D/bYmZ3dGd+YQKEHYiyc5GUyb3Y+77vfeWNpreFfhvXfAWAAJtbKi7dff1rWK9vPHx3mThP2Iaipk5EzTg8Qmru38H7izmkFHAF4WH1R52654PR0Oamzj2dKxYt/Bbg1OPZuY3d9aU82VGem/5LtnJscLxWzfzRxaWNqWJP0XUadIbSzu5DuvUJpzq7sfYBKsP1GJeLB+PWpt8cCXm4+2+zLXx4guKiLXWA2Nc5ChOuacMEPv20FkT+dIawyenVi5VcAbcigWzXLeNiDRCdwId0LFm5IUMBIBgrp8wOEsFlfeCGm23/zoBZWn9a4C314A1nCoM1OAVccuGyCkPs/P+pIdVIOkG9pIh6YlyqCrwhRKD3GygK9PUBImIQQxRi4b2O+JcCLg8+e8NZiLVEygwCrWpYF0jQJziYU/ho2TUuCPTn8hHcQNuZy1/94sAMOzQHDeqaij7Cd8Dt8CatGhX3iWxgtFW/m29pnUjR7TSQcRCIAVW1FSr6KAVYdi+5Pj8yunviYHq7f72po3Y9dbi7CxzDO1+duzCXH9cEPAQYAhJELY/AqBtwAAAAASUVORK5CYII=);
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+.login input[type=submit] {
+  font-weight: 700;
+  background-color: rgba(245,245,245,1.0);
 }
 
 .login label {
