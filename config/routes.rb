@@ -1,3 +1,13 @@
+# == Route Map
+#
+#      Prefix Verb   URI Pattern            Controller#Action
+#       users POST   /users(.:format)       users#create
+#    new_user GET    /users/new(.:format)   users#new
+#     session POST   /session(.:format)     sessions#create
+# new_session GET    /session/new(.:format) sessions#new
+#             DELETE /session(.:format)     sessions#destroy
+#
+
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -53,4 +63,9 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  resources :users, only: [:new, :create]
+  resource :session, only: [:new, :create, :destroy]
+
+  root 'static_pages#root'
 end

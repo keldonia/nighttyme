@@ -1,0 +1,45 @@
+<figure class="login-backer">
+  <section class="mini-header group">
+    <h1>Welcome to Nighttyme</h1>
+    <p>
+      Are you ready to experience the night?
+    </p>
+  </section>
+
+  <section class="login group">
+    <h2 class="sign-up">Sign Up</h2>
+
+    <form class="sign-up group" action="<%= users_url %>" method="post">
+      <%= auth_token %>
+      <label for="Username">Username:</label>
+      <input  type="text"
+              name="user[username]"
+              id="Username"
+              value="<%= @user.username %>"
+              required
+              placeholder="Please enter a valid user name"><br>
+      <label for="Email">Email:</label>
+      <input  type="email"
+              name="user[email]"
+              id="Email"
+              value="<%= @user.email %>"
+              required
+              placeholder="Please enter a valid email"><br>
+      <label for="Location">Location:</label>
+      <input  type="text"
+              name="user[location]"
+              id="Location"
+              value="<%= @user.location %>"
+              required
+              placeholder="Please enter a valid location"><br>
+      <label for="Password">Password:</label>
+      <input  type="password"
+              name="user[password]"
+              id="Password"
+              value=""
+              required
+              placeholder="Please enter a valid password"><br>
+      <input type="submit" class="submit" value="Sign Up">
+    </form>
+  </section>
+</figure>

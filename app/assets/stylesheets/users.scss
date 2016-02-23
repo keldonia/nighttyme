@@ -1,3 +1,75 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.mini-header {
+  color: whitesmoke;
+  margin-left: 40px;
+  font-family: helvetica;
+}
+
+.mini-header h1 {
+  font-size: 32px;
+}
+
+.mini-header p {
+  margin-top: -20px;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.login-backer {
+  background-image: url(https://images.unsplash.com/photo-1415889455891-23bbf19ee5c7?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1375);
+  background-size: auto 100%;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.login {
+  background-color: whitesmoke;
+  margin: auto;
+  border-color: black;
+  border-width: 1px;
+  width: 400px;
+  top: 100px;
+  height: 200px;
+  position: relative;
+  border-style: solid;
+  box-shadow: 2px 2px 2px 1px darkslategray;
+  border-radius: 37px;
+}
+
+.login h2 {
+  text-align: center;
+}
+
+.login form {
+  position: relative;
+  margin: auto;
+  width: 350px;
+}
+
+.login input {
+  position: relative;
+  width: 250px;
+  margin-left: auto;
+  float: right;
+}
+
+.login label {
+  width: 50px;
+  position: relative;
+  margin: auto;
+  float: left;
+}
+
+.login .submit {
+  translateX: -30px;
+}
+
+.group {
+  content: "";
+  display: block;
+  clear: both;
+}
