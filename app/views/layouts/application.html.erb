@@ -4,10 +4,13 @@
   <title>Nighttyme</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <header>
-  <%= @user = current_user %>
+  <% if current_user %>
+    <%= button_to "Sign Out", session_url, method: :delete %>
+  <% end %>
 </header>
 <body>
 

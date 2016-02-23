@@ -5,7 +5,6 @@
 .mini-header {
   color: whitesmoke;
   margin-left: 40px;
-  font-family: helvetica;
 }
 
 .mini-header h1 {
@@ -26,6 +25,7 @@
   position: fixed;
 }
 
+
 .login {
   background-color: whitesmoke;
   margin: auto;
@@ -33,11 +33,15 @@
   border-width: 1px;
   width: 400px;
   top: 100px;
-  height: 200px;
+  min-height: 200px;
   position: relative;
   border-style: solid;
   box-shadow: 2px 2px 2px 1px darkslategray;
   border-radius: 37px;
+}
+
+.login-box {
+  min-height: 150px;
 }
 
 .login h2 {
@@ -65,7 +69,17 @@
 }
 
 .login .submit {
-  translateX: -30px;
+  translateX: -50px;
+  float: right;
+  margin: auto;
+}
+
+.login p {
+  font-size: 12px;
+  text-align: center;
+  top: 8px;
+  position: relative;
+  clear: both;
 }
 
 .group {

@@ -1,18 +1,22 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   def new
     @user ||= User.new
     render :new
   end
 
   def create
-    if @user.find_by_credentials(params[:user][:username], params[:user][:password])
-      login! @user
+    if @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+      login!(@user)
       redirect_to root_url
     else
       flash.now[:errors] = ["Invalid credentials"]
       @user = User.new(user_params)
       render :new
     end
+  end
+
+  def destroy
+    logout!
   end
 
   private
