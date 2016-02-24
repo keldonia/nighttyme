@@ -12,6 +12,7 @@ var geolocate = require('./util/geolocate');
 var ApiUtil = require('./util/api_util');
 var App = require('./components/app');
 var Reviews = require('./components/reviews');
+var ReviewDetail = require('./components/review_detail');
 var Businesses = require('./components/businesses');
 
 var BusinessStore = require('./stores/business');
@@ -27,6 +28,7 @@ var routes = (
     <Route path="businesses" component={Businesses}>
     </Route>
     <Route path="reviews" component={Reviews}>
+      <Route path=":id" component={ReviewDetail}/>
     </Route>
     <IndexRoute component={App} />
   </Route>

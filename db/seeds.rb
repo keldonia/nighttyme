@@ -8,10 +8,10 @@
 
 
 usersgen = 20.times.map { |i|
-  {username: Faker::Name.name,
-  email: Faker::Internet.email,
-  location: Faker::Address.city,
-  password: Faker::Internet.password}
+  {username: Faker::Name.name.to_s,
+  email: Faker::Internet.email.to_s,
+  location: Faker::Address.city.to_s,
+  password: Faker::Internet.password.to_s}
 }
 
 User.create(usersgen)
@@ -25,8 +25,8 @@ Business.create!(
   latitude: 37.79865,
   longitude: -122.42441,
   price: 2,
-  email: Faker::Internet.email,
-  telephone_number: Faker::PhoneNumber.phone_number,
+  email: Faker::Internet.email.to_s,
+  telephone_number: Faker::PhoneNumber.phone_number.to_s,
   website: "http://www.yelp.com/biz/the-black-horse-london-pub-san-francisco?utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=ZCuFUmyfgOasecjUGcNeIQ",
   hour_attributes: {
     monday: "5:00 pm - 12:00 am",
@@ -69,8 +69,8 @@ Business.create(
   latitude: 37.7843447,
   longitude: -122.4325223,
   price: 3,
-  email: Faker::Internet.email,
-  telephone_number: Faker::PhoneNumber.phone_number,
+  email: Faker::Internet.email.to_s,
+  telephone_number: Faker::PhoneNumber.phone_number.to_s,
   website: "http://www.yelp.com/biz/the-social-study-san-francisco?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=ZCuFUmyfgOasecjUGcNeIQ",
   hour_attributes: {
     monday: "5:00 pm - 12:00 am",
@@ -111,8 +111,8 @@ Business.create(
   latitude: 37.7794494628906,
   longitude: -122.423278808594,
   price: 2,
-  email: Faker::Internet.email,
-  telephone_number: Faker::PhoneNumber.phone_number,
+  email: Faker::Internet.email.to_s,
+  telephone_number: Faker::PhoneNumber.phone_number.to_s,
   website: "http://www.yelp.com/biz/smugglers-cove-san-francisco?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=ZCuFUmyfgOasecjUGcNeIQ",
   hour_attributes: {
     monday: "5:00 pm - 12:00 am",
@@ -153,8 +153,8 @@ Business.create(
   latitude: 37.7873489077678,
   longitude: -122.409739555912,
   price: 2,
-  email: Faker::Internet.email,
-  telephone_number: Faker::PhoneNumber.phone_number,
+  email: Faker::Internet.email.to_s,
+  telephone_number: Faker::PhoneNumber.phone_number.to_s,
   website: "http://www.yelp.com/biz/smugglers-cove-san-francisco?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=ZCuFUmyfgOasecjUGcNeIQ",
   hour_attributes: {
     monday: "5:00 pm - 12:00 am",
@@ -195,8 +195,8 @@ Business.create(
   latitude: 37.7606207,
   longitude: -122.3881324,
   price: 2,
-  email: Faker::Internet.email,
-  telephone_number: Faker::PhoneNumber.phone_number,
+  email: Faker::Internet.email.to_s,
+  telephone_number: Faker::PhoneNumber.phone_number.to_s,
   website: "http://www.yelp.com/biz/smugglers-cove-san-francisco?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=ZCuFUmyfgOasecjUGcNeIQ",
   hour_attributes: {
     monday: "5:00 pm - 12:00 am",
@@ -227,3 +227,15 @@ Business.create(
     pool_table: 1
   }
 )
+
+reviewsgen = 60.times.map { |i| {
+  author_id: rand(1..21).to_i,
+  business_id: rand(1..6).to_i,
+  title: Faker::Hipster.sentence(4, false, 6).to_s,
+  stars: rand(0..5),
+  body: Faker::Hipster.paragraphs(rand(1..4).to_i).join(" "),
+  archieved: 1
+}
+}
+
+Review.create(reviewsgen)

@@ -8,8 +8,12 @@ var ReviewsStore = new Store(AppDispatcher);
 
 ReviewsStore.all = function () {
   return Object.keys(_reviews).map( function(key) {
-    return _reviews(key);
+    return _reviews[key];
   });
+};
+
+ReviewsStore.find = function (id) {
+  return _reviews[id];
 };
 
 ReviewsStore.__onDispatch = function (payload) {
@@ -18,8 +22,12 @@ ReviewsStore.__onDispatch = function (payload) {
       ReviewsStore.resetReviews(payload.reviews);
       ReviewsStore.__emitChange();
       break;
-    default:
+    case ApiConstants.SINGLE_REVIEW:
+      ReviewsStore.resetReview(payload.review);
+      ReviewsStore.__emitChange();
+      break;
 
+    default:
   }
 };
 
@@ -28,6 +36,10 @@ ReviewsStore.resetReviews = function (reviews) {
   reviews.forEach(function(review) {
     _reviews[review.id] = review;
   });
+};
+
+ReviewsStore.resetReview = function (review) {
+  _reviews[review.id] = review;
 };
 
 module.exports = ReviewsStore;

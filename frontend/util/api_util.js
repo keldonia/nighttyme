@@ -3,12 +3,11 @@ var ApiConstants = require('../constants/api_constants');
 var ApiActions = require('../actions/api_actions');
 
 var ApiUtil = {
-  fetchBusinesses: function() {
+  fetchAllBusinesses: function() {
     $.ajax ({
       method: "GET",
       url: 'api/businesses',
       dataType: 'json',
-    
       success: function (responseText) {
         ApiActions.recieveAllBusinesses(responseText);
       },
@@ -17,15 +16,26 @@ var ApiUtil = {
       }
     });
   },
-
-  fetchReviews: function() {
+  fetchAllReviews: function() {
     $.ajax ({
       method: "GET",
-      url: 'api/businesses',
+      url: 'api/reviews',
       dataType: 'json',
-
       success: function (responseText) {
         ApiActions.recieveAllReviews(responseText);
+      },
+      error: function (errorThrown) {
+        ApiActions.recieveAllReviewErrors(errorThrown);
+      }
+    });
+  },
+  fetchSingleReview: function(id) {
+    $.ajax ({
+      method: "GET",
+      url: 'api/reviews/' + id,
+      dataType: 'json',
+      success: function (responseText) {
+        ApiActions.recieveSingleReview(responseText);
       },
       error: function (errorThrown) {
         ApiActions.recieveAllReviewErrors(errorThrown);
