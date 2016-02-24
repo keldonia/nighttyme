@@ -57,7 +57,7 @@ the API.
 - [x] CRUD API for Reviews (`ReviewsController`)
 - [x] jBuilder views for Businesses & Reviews
 - [ ] setup Webpack & Flux scaffold
-- [ ] setup `APIUtil` to interact with the API
+- [x] setup `APIUtil` to interact with the API
 - [ ] test out API interaction in the console.
 
 ### Phase 3: Flux Architecture and Router (1.5 days)
