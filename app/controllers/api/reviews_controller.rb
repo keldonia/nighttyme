@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class Api::ReviewsController < ApplicationController
 
 
   def create
@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
       render :show
     else
       @review = Review.new(review_params)
-      render :json => { :errors => @review.errors.as_json }, :status => 420
+      render json: { :errors => @review.errors.as_json }, :status => 420
     end
   end
 
@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
       render :show
     else
       @review = Review.new(review_params)
-      render :json => { :errors => @review.errors.as_json }, :status => 420
+      render json: { :errors => @review.errors.as_json }, :status => 420
     end
   end
 

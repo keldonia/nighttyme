@@ -1,3 +1,34 @@
+@days = [
+  :monday,
+  :tuesday,
+  :wednesday,
+  :thursday,
+  :friday,
+  :saturday,
+  :sunday
+]
+
+@attributes = [
+  :reservations,
+  :credit_cards,
+  :parking,
+  :bike_parking,
+  :good_for_groups,
+  :ambience,
+  :noise_level,
+  :dancing,
+  :live_music,
+  :alcohol,
+  :best_nights,
+  :coat_check,
+  :happy_hour,
+  :smoking,
+  :outdoor_seating,
+  :tv,
+  :pool_table
+]
+
+json.id                 business.id
 json.name               business.name
 json.description        business.description
 json.location           business.location
@@ -9,16 +40,17 @@ json.email              business.email
 json.telephone_number   business.telephone_number
 json.website            business.website
 
-if (defined? params[:business_id])
-  business.hour_attributes.each do |day|
-    json.set! day do
-      json.(day, business.hour_attributes.day) unless day.to_s.includes("time")
+if params[:business_id] || params[:id]
+  json.hour_attributes do
+    @days.each do |day|
+      json.set! day.to_s, business.hour.send(day)
     end
   end
 
-  business.bussinessattributes_attributes.each do |attribute|
-    json.set! attribute do
-      json.(attribute, business.bussinessattributes_attributes.attribute) unless attribute.to_s.includes("time")
+
+  json.bussinessattribute_attributes do
+    @attributes.each do |attribute|
+      json.set! attribute.to_s, business.bussinessattribute.send(attribute)
     end
   end
 end

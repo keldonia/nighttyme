@@ -1,3 +1,4 @@
+json.id           review.id
 json.author_id    review.author_id
 json.business_id  review.business_id
 json.title        review.title

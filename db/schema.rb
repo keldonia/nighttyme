@@ -83,13 +83,13 @@ ActiveRecord::Schema.define(version: 20160223200417) do
 
   create_table "hours", force: :cascade do |t|
     t.integer  "business_id", null: false
-    t.time     "monday",      null: false
-    t.time     "tuesday",     null: false
-    t.time     "wednesday",   null: false
-    t.time     "thursday",    null: false
-    t.time     "friday",      null: false
-    t.time     "saturday",    null: false
-    t.time     "sunday",      null: false
+    t.string   "monday",      null: false
+    t.string   "tuesday",     null: false
+    t.string   "wednesday",   null: false
+    t.string   "thursday",    null: false
+    t.string   "friday",      null: false
+    t.string   "saturday",    null: false
+    t.string   "sunday",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

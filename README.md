@@ -56,23 +56,22 @@ the API.
 - [x] CRUD API for Businesses (`BusinesssController`)
 - [x] CRUD API for Reviews (`ReviewsController`)
 - [x] jBuilder views for Businesses & Reviews
-- [ ] setup Webpack & Flux scaffold
+- [x] setup Webpack & Flux scaffold
 - [x] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console.
+- [x] test out API interaction in the console.
 
 ### Phase 3: Flux Architecture and Router (1.5 days)
 
 **Objective:** Reviews can be created, read, edited and destroyed with the
 user interface.
 
-- [ ] setup the flux loop with skeleton files
-- [ ] setup React Router
+- [x] setup the flux loop with skeleton files
+- [x] setup React Router
 - implement each review component, building out the flux loop as needed.
   - [ ] `ReviewIndex`
   - [ ] `ReviewItem`
   - [ ] `ReviewForm`
-- [ ] save Business or review to the DB when the form loses focus or is left idle
-  after editing.
+
 
 ### Phase 4: Start Styling (0.5 days)
 

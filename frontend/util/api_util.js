@@ -3,12 +3,12 @@ var ApiConstants = require('../constants/api_constants');
 var ApiActions = require('../actions/api_actions');
 
 var ApiUtil = {
-  fetchBusinesses: function(query) {
+  fetchBusinesses: function() {
     $.ajax ({
       method: "GET",
       url: 'api/businesses',
       dataType: 'json',
-      data: query,
+    
       success: function (responseText) {
         ApiActions.recieveAllBusinesses(responseText);
       },
@@ -18,12 +18,12 @@ var ApiUtil = {
     });
   },
 
-  fetchReviews: function(query) {
+  fetchReviews: function() {
     $.ajax ({
       method: "GET",
       url: 'api/businesses',
       dataType: 'json',
-      data: query,
+
       success: function (responseText) {
         ApiActions.recieveAllReviews(responseText);
       },

@@ -3,25 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .mini-header {
-  color: rgba(245,245,245,1.0);
+  color: rgba(230,230,230,0.6);
   margin-left: 40px;
 }
 
 .mini-header h1 {
   font-size: 32px;
-  text-shadow: 2px 2px 2px rgba(245,245,245,0.4);
+  text-shadow: 2px 2px 2px rgba(230,230,230,0.4);
+}
+
+.mini-header a:hover {
+  text-shadow: 3px 3px 3px rgba(255,255,255,0.5);
+  color: rgba(255,255,255,1.0);
 }
 
 .mini-header a {
   text-decoration: none;
-  color: rgba(245,245,245,1.0);
+  color: rgba(230,230,230,0.95);
+  transition: text-shadow 1s, color 1s;
 }
 
 .mini-header p {
-  margin-top: -20px;
+  margin-top: -25px;
   margin-left: 20px;
   font-size: 16px;
-  text-shadow: 2px 2px 2px rgba(245,245,245,0.3);
+  text-shadow: 2px 2px 2px rgba(230,230,230,0.3);
 }
 
 .login-backer {
@@ -34,7 +40,7 @@
 
 
 .login {
-  background-color: rgba(245,245,245,0.7);
+  background-color: rgba(230,230,230,0.7);
   margin: auto;
   font-weight: 700;
   border-color: rgba(0,0,0,0.7);
@@ -46,6 +52,29 @@
   position: relative;
   box-shadow: 2px 2px 2px 1px rgba(77,77,77,0.7);
   border-radius: 37px;
+  transition: background-color 2s, box-shadow 2s;
+}
+
+.login:hover {
+  background-color: rgba(245,245,245,0.9);
+  box-shadow: 3px 3px 3px 2px rgba(99,99,99,0.8);
+}
+
+.login:hover input {
+  background-color: rgba(177,177,177,0.5);
+}
+
+.login:hover input::-webkit-input-placeholder {
+  color: rgba(35,35,35,1.0);
+}
+.login:hover input::-moz-placeholder {
+  color: rgba(35,35,35,1.0);
+}
+.login:hover input:-moz-placeholder {
+  color: rgba(35,35,35,1.0);
+}
+.login:hover input:-ms-input-placeholder {
+  color: rgba(35,35,35,1.0);
 }
 
 .login-box {
@@ -69,6 +98,21 @@
   margin-left: auto;
   float: right;
   border-radius: 5px;
+  background-color: rgba(255,255,255,0.7);
+  transition: background-color 2s;
+}
+
+.login input::-webkit-input-placeholder {
+  transition: color 2s;
+}
+.login input:-moz-placeholder {
+  transition: color 2s;
+}
+.login input::-moz-placeholder {
+  transition: color 2s;
+}
+  .login input:-ms-input-placeholder {
+  transition: color 2s;
 }
 
 .login input:invalid:not([type=submit]) {
@@ -85,7 +129,7 @@
 
 .login input[type=submit] {
   font-weight: 700;
-  background-color: rgba(245,245,245,1.0);
+  background-color: rgba(230,230,230,1.0);
 }
 
 .login label {

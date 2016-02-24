@@ -1,4 +1,4 @@
-class BusinessesController < ApplicationController
+class Api::BusinessesController < ApplicationController
 
 
   def create
@@ -6,7 +6,7 @@ class BusinessesController < ApplicationController
       render :show
     else
       @business = Business.new(business_params)
-      render :json => { :errors => @bussiness.errors.as_json }, :status => 420
+      render json: { :errors => @bussiness.errors.as_json }, :status => 420
     end
   end
 
@@ -25,7 +25,7 @@ class BusinessesController < ApplicationController
       render :show
     else
       @business ||= @business
-      render :json => { :errors => @bussiness.errors.as_json }, :status => 420
+      render json: { :errors => @bussiness.errors.as_json }, :status => 420
     end
   end
 
