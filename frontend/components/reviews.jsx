@@ -24,12 +24,16 @@ var Reviews = React.createClass({
   },
   render: function() {
     var reviews = this.state.reviews.map( function(review) {
+      if (review.id !== parseInt(this.props.params.id)) {
         return <ReviewIndexItem key={review.id} review={review} />;
-    });
+      } else {
+        return <ReviewDetail key={review.id} review={review} />;
+      }
+    }, this);
 
     return (
       <section className="reviews">
-        {this.props.children}
+
         <ul>
           {reviews}
         </ul>

@@ -6,17 +6,17 @@ var ReviewDetail = React.createClass({
     return this.getStateFromStore();
   },
   getStateFromStore: function () {
-    return { review: ReviewsStore.find(parseInt(this.props.params.id))}
+    return { review: ReviewsStore.find(parseInt(this.props.review.id))}
   },
   _onChange: function () {
     this.setState(this.getStateFromStore);
   },
   componentWillReceiveProps: function (newProps) {
-    ApiUtil.fetchSingleReview(parseInt(newProps.params.id));
+    ApiUtil.fetchSingleReview(parseInt(newProps.review.id));
   },
   componentDidMount: function () {
     this.reviewsListener = ReviewsStore.addListener(this._onChange);
-    ApiUtil.fetchSingleReview(parseInt(this.props.params.id));
+    ApiUtil.fetchSingleReview(parseInt(this.props.review.id));
   },
   componentWillUnmount: function () {
     this.reviewsListener.remove();

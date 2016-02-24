@@ -30,7 +30,7 @@ var routes = (
     <Route path="reviews" component={Reviews}>
       <Route path=":id" component={ReviewDetail}/>
     </Route>
-    <IndexRoute component={App} />
+    <IndexRoute component={Reviews} />
   </Route>
 );
 

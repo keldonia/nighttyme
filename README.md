@@ -71,6 +71,7 @@ user interface.
 - implement each review component, building out the flux loop as needed.
   - [x] `ReviewIndex`
   - [x] `ReviewItem`
+  - [x] `ReviewDetail`
   - [ ] `ReviewForm`
 
 

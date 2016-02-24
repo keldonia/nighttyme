@@ -7,7 +7,13 @@ var App = React.createClass({
   render: function() {
     return (
       <section className="App">
-        App
+
+        <section className="mini-logo group">
+          <a href="/#"><h1> Welcome to Nighttyme </h1>
+          <p>
+            Are you ready for the night?
+          </p></a>
+        </section>
         {this.props.children}
       </section>
     );
