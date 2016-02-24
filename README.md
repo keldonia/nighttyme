@@ -52,10 +52,10 @@ the API.
 
 - [x] create 'Buiness' model
 - [x] create `Review` model
-- [ ] seed the database with a small amount of test data -
-- [ ] CRUD API for Businesses (`BusinesssController`)
-- [ ] CRUD API for Reviewes (`ReviewsController`)
-- [ ] jBuilder views for Businesses
+- [x] seed the database with a small amount of test data -
+- [x] CRUD API for Businesses (`BusinesssController`)
+- [x] CRUD API for Reviews (`ReviewsController`)
+- [x] jBuilder views for Businesses & Reviews
 - [ ] setup Webpack & Flux scaffold
 - [ ] setup `APIUtil` to interact with the API
 - [ ] test out API interaction in the console.
