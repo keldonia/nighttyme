@@ -7,6 +7,9 @@
 #  name             :string           not null
 #  description      :text
 #  location         :string           not null
+#  neighborhoods    :string
+#  latitude         :float            not null
+#  longitude        :float            not null
 #  price            :integer
 #  email            :string
 #  telephone_number :string
@@ -16,4 +19,12 @@
 #
 
 class Business < ActiveRecord::Base
+  validates :owner_id, presence: true
+  validates :name, presence: true
+  validates :location, presence: true
+
+  has_one :hour, inverse_of: :business
+  has_one :bussinessattribute, inverse_of: :business
+
+  accepts_nested_attributes_for :hour, :bussinessattribute
 end

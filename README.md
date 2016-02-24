@@ -50,8 +50,8 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 **Objectives:**  Reviews can be created, read, edited and destroyed through
 the API.
 
-- [ ] create 'Buiness' model
-- [ ] create `Review` model
+- [x] create 'Buiness' model
+- [x] create `Review` model
 - [ ] seed the database with a small amount of test data -
 - [ ] CRUD API for Businesses (`BusinesssController`)
 - [ ] CRUD API for Reviewes (`ReviewsController`)

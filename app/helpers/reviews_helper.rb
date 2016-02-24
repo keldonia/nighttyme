@@ -13,15 +13,5 @@
 #  updated_at  :datetime         not null
 #
 
-class Review < ActiveRecord::Base
-  validates :author_id, presence: true
-  validates :business_id, presence: true
-  validates :title, presence: true
-  validates :stars, presence: true
-  validates :body, presence: true
-  validates :archieved, presence: true
-
-  belongs_to :user
-  belongs_to :business
-
+module ReviewsHelper
 end

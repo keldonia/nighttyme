@@ -17,6 +17,8 @@ column name | data type | details
 id          | integer   | not null, primary key
 owner_id    | integer   | not null, foreign key (references users), indexed
 name        | string    | not null
+latitude    | float     |
+longitude   | float     |
 description | string    |
 location    | string    | not null
 price       | integer   |

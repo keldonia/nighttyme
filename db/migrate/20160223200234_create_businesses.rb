@@ -5,6 +5,9 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string  :name, null: false
       t.text    :description
       t.string  :location, null: false
+      t.string  :neighborhoods
+      t.float   :latitude, null: false
+      t.float   :longitude, null: false
       t.integer :price
       t.string  :email
       t.string  :telephone_number
@@ -16,5 +19,7 @@ class CreateBusinesses < ActiveRecord::Migration
     add_index :businesses, :location
     add_index :businesses, :name
     add_index :businesses, :price
+    add_index :businesses, [:latitude, :longitude]
+    add_index :businesses, :neighborhoods
   end
 end

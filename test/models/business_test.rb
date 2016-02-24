@@ -7,6 +7,9 @@
 #  name             :string           not null
 #  description      :text
 #  location         :string           not null
+#  neighborhoods    :string
+#  latitude         :float            not null
+#  longitude        :float            not null
 #  price            :integer
 #  email            :string
 #  telephone_number :string

@@ -26,4 +26,10 @@
 #
 
 class Bussinessattribute < ActiveRecord::Base
+  
+  belongs_to :business, inverse_of: :bussinessattribute
+  has_many :reviews
+
+  validates_presence_of :business
+
 end

@@ -16,4 +16,15 @@
 #
 
 class Hour < ActiveRecord::Base
+  validates :monday, presence: true
+  validates :tuesday, presence: true
+  validates :wednesday, presence: true
+  validates :thursday, presence: true
+  validates :friday, presence: true
+  validates :saturday, presence: true
+  validates :sunday, presence: true
+
+  belongs_to :business, inverse_of: :hour
+
+  validates_presence_of :business
 end

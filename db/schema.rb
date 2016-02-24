@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 20160223200417) do
     t.string   "name",             null: false
     t.text     "description"
     t.string   "location",         null: false
+    t.string   "neighborhoods"
+    t.float    "latitude",         null: false
+    t.float    "longitude",        null: false
     t.integer  "price"
     t.string   "email"
     t.string   "telephone_number"
@@ -29,8 +32,10 @@ ActiveRecord::Schema.define(version: 20160223200417) do
     t.datetime "updated_at",       null: false
   end
 
+  add_index "businesses", ["latitude", "longitude"], name: "index_businesses_on_latitude_and_longitude", using: :btree
   add_index "businesses", ["location"], name: "index_businesses_on_location", using: :btree
   add_index "businesses", ["name"], name: "index_businesses_on_name", using: :btree
+  add_index "businesses", ["neighborhoods"], name: "index_businesses_on_neighborhoods", using: :btree
   add_index "businesses", ["owner_id"], name: "index_businesses_on_owner_id", using: :btree
   add_index "businesses", ["price"], name: "index_businesses_on_price", using: :btree
 

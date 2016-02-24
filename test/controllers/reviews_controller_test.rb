@@ -13,15 +13,10 @@
 #  updated_at  :datetime         not null
 #
 
-class Review < ActiveRecord::Base
-  validates :author_id, presence: true
-  validates :business_id, presence: true
-  validates :title, presence: true
-  validates :stars, presence: true
-  validates :body, presence: true
-  validates :archieved, presence: true
+require 'test_helper'
 
-  belongs_to :user
-  belongs_to :business
-
+class ReviewsControllerTest < ActionController::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
