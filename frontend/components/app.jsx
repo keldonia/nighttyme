@@ -1,6 +1,7 @@
 var ApiActions = require('../actions/api_actions');
 var NavConstants = require('../constants/nav_constants');
 var ApiUtil = require('../util/api_util');
+var SearchBar = require('./search_bar');
 var Link = require('react-router').Link;
 var React = require('react');
 
@@ -18,7 +19,7 @@ var App = React.createClass({
     if (window.user) {
       var userStuff = (
         <ul className="userbuttons-collection">
-          <a className="userbutton" href="/session/new">Sign In</a>
+          <a className="userbutton" href="/session/new">Sign Out</a>
         </ul>
       )
     } else {
@@ -39,13 +40,7 @@ var App = React.createClass({
           <ul className="navbuttons-collection">
             {navbuttons}
           </ul>
-          <input  type="text"
-                  className="nav-search"
-                  placeholder="What will it be?"
-                  title="Search Nighttyme"
-                  >
-
-          </input>
+          <SearchBar />
           {userStuff}
         </navigation>
         <section className="app-body">

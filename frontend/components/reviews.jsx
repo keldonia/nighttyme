@@ -23,7 +23,7 @@ var Reviews = React.createClass({
     this.setState({ reviews: ReviewsStore.all() });
   },
   render: function() {
-    var reviews = this.state.reviews.map( function(review) {
+    var reviews = this.state.reviews.reverse().map( function(review) {
       if (review.id !== parseInt(this.props.params.id)) {
         return <ReviewIndexItem key={review.id} review={review} />;
       } else {
