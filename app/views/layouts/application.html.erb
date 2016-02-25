@@ -8,9 +8,13 @@
   <%= csrf_meta_tags %>
 </head>
 <header>
-  <% if current_user %>
+  <% if logged_in? %>
     <%= button_to "Sign Out", session_url, method: :delete %>
+    <%= javascript_tag do %>
+      window.user = '<%= current_user.to_json %>';
+    <% end %>
   <% end %>
+
 </header>
 <body>
 

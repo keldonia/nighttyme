@@ -1,3 +1,40 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar {
+  background: linear-gradient(rgba(102, 102, 102, 0.98), rgba(52, 52, 52, 0.98));
+  width: 100%;
+  position: fixed;
+  top: -8px;
+  width: 100%;
+  z-index: 1;
+  box-shadow: 3px 0 3px 2px rgba(102,102,102, 0.95);
+}
+
+.navbar .mini-logo {
+  margin: 0 15px;
+  float: left;
+}
+.navbar h1 {
+  margin: 15px 0px;
+  clear: none;
+}
+
+.navbuttons-collection {
+  float: right;
+  position: relative;
+  width: 40%;
+}
+
+.navbutton {
+  float: left;
+  position: relative;
+  width: auto;
+}
+
+
+.app-body {
+  position: relative;
+  top: 90px;
+}

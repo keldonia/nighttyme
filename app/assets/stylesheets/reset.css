@@ -6,3 +6,7 @@ blockquote, figure, pre {
 	font: inherit;
   font-family: 'Oxygen', sans-serif;
 }
+
+li {
+	/*list-style: none;*/
+}

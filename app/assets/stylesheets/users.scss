@@ -9,7 +9,6 @@
 
 .mini-logo h1 {
   font-size: 32px;
-
 }
 
 .mini-logo a:hover {
@@ -19,6 +18,7 @@
 
 .mini-logo a {
   text-decoration: none;
+  text-shadow: 2px 2px 2px rgba(230,230,230,0.3);
   color: rgba(230,230,230,0.95);
   transition: text-shadow 1s, color 1s;
 }
@@ -27,7 +27,6 @@
   margin-top: -25px;
   margin-left: 20px;
   font-size: 16px;
-  text-shadow: 2px 2px 2px rgba(230,230,230,0.3);
 }
 
 .login-backer {
