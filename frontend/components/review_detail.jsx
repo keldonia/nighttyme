@@ -11,9 +11,6 @@ var ReviewDetail = React.createClass({
   _onChange: function () {
     this.setState(this.getStateFromStore);
   },
-  componentWillReceiveProps: function (newProps) {
-    ApiUtil.fetchSingleReview(parseInt(newProps.review.id));
-  },
   componentDidMount: function () {
     this.reviewsListener = ReviewsStore.addListener(this._onChange);
     ApiUtil.fetchSingleReview(parseInt(this.props.review.id));

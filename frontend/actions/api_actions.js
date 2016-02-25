@@ -8,6 +8,12 @@ var ApiActions = {
       businesses: businesses
     });
   },
+  recieveAbridgedBusinesses: function(businesses) {
+    AppDispatcher.dispatch({
+      actionType: ApiConstants.ABRIDGED_BUSINESSES,
+      businesses: businesses
+    });
+  },
   recieveAllBusinessErrors: function(errors) {
     AppDispatcher.dispatch({
       actionType: ApiConstants.ALL_BUSINESS_ERRORS,

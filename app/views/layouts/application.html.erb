@@ -9,10 +9,10 @@
 </head>
 <header>
   <% if logged_in? %>
-    <%= button_to "Sign Out", session_url, method: :delete %>
-    <%= javascript_tag do %>
-      window.user = '<%= current_user.to_json %>';
-    <% end %>
+    <script>
+      window.user = '<%= current_user.username %>';
+      window.userId = <%= current_user.id %>
+    </script>
   <% end %>
 </header>
 <body>

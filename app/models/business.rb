@@ -23,6 +23,9 @@ class Business < ActiveRecord::Base
   validates :name, presence: true
   validates :location, presence: true
 
+  belongs_to :owner,
+    foreign_key: :owner_id,
+    class_name: 'User'
   has_one :hour, inverse_of: :business
   has_one :bussinessattribute, inverse_of: :business
 

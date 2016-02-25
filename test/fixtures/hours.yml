@@ -4,13 +4,13 @@
 #
 #  id          :integer          not null, primary key
 #  business_id :integer          not null
-#  monday      :time             not null
-#  tuesday     :time             not null
-#  wednesday   :time             not null
-#  thursday    :time             not null
-#  friday      :time             not null
-#  saturday    :time             not null
-#  sunday      :time             not null
+#  monday      :string           not null
+#  tuesday     :string           not null
+#  wednesday   :string           not null
+#  thursday    :string           not null
+#  friday      :string           not null
+#  saturday    :string           not null
+#  sunday      :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

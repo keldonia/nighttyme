@@ -16,6 +16,20 @@ var ApiUtil = {
       }
     });
   },
+  fetchAbrigedBusinesses: function() {
+    $.ajax ({
+      methid: "GET",
+      url: "api/businesses?abridged=true",
+      dataType: 'json',
+      success: function (responseText) {
+        ApiActions.recieveAbridgedBusinesses(responseText);
+      },
+      error: function (errorThrown) {
+        ApiActions.recieveAllBusinessErrors(errorThrown);
+      }
+
+    });
+  },
   fetchAllReviews: function() {
     $.ajax ({
       method: "GET",

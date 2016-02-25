@@ -7,6 +7,7 @@ var React = require('react');
 
 var ReviewIndexItem = require('./review_index_item');
 var ReviewDetail = require('./review_detail');
+var ReviewForm = require('./review_form');
 
 var Reviews = React.createClass({
   getInitialState: function () {
@@ -33,7 +34,7 @@ var Reviews = React.createClass({
 
     return (
       <section className="reviews">
-
+        <ReviewForm />
         <ul>
           {reviews}
         </ul>

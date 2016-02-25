@@ -1,6 +1,5 @@
 class Api::BusinessesController < ApplicationController
 
-
   def create
     if @business = Business.create(business_params)
       render :show
@@ -11,13 +10,18 @@ class Api::BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.find_by_id(params[:id])
+    @business = Business.find_by_id(params[:id]).includes(:reviews)
     render :show
   end
 
   def index
-    @businesses = Business.all #to change with search
-    render :index
+    if params[:abridged]
+      @businesses = Business.all.select(:id, :name)
+      render :abridged
+    else
+      @businesses = Business.all #to change with search
+      render :index
+    end
   end
 
   def update

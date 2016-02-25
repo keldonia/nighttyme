@@ -8,8 +8,9 @@
   position: fixed;
   top: -8px;
   width: 100%;
+  min-height: 78px;
   z-index: 1;
-  box-shadow: 3px 0 3px 2px rgba(102,102,102, 0.95);
+  box-shadow: 3px 0 10px 2px rgba(102,102,102, 0.95);
 }
 
 .navbar .mini-logo {
@@ -17,7 +18,7 @@
   float: left;
 }
 .navbar h1 {
-  margin: 15px 0px;
+  margin: 15px 0 0 0;
   clear: none;
 }
 
@@ -29,9 +30,9 @@
 }
 
 .userbuttons-collection {
-  float: left;
+  float: right;
   position: relative;
-  left: 0%;
+  right: 5%;
   top: 20px;
 }
 
@@ -39,11 +40,43 @@
   float: left;
   position: relative;
   top: 32px;
-  left: 2%;
+  left: 3%;
+  border-radius: 8px;
+  transition: box-shadow 2s;
 }
 
 .search-bar input {
-  border-radius: 2px;
+  border-radius: 8px 0 0 8px;
+  padding-left: 5px;
+  top: -3px;
+  width: 240px;
+  position:relative;
+  height: 22px;
+  transition: box-shadow 2s;
+}
+
+.search-bar:hover {
+  box-shadow: -2px 2px 2px 1px rgba(102,102,102, 0.6)
+}
+
+.search-bar button {
+  background: url(http://www.google.com/images/nav_logo242.png) no-repeat -107px -55px;
+  border-top-style: inset;
+  border-right-style: outset;
+  border-left-style: inset;
+  border-bottom-style: outset;
+  border-radius: 0 8px 8px 0;
+  height: 28px;
+  width: 28px;
+  float: right;
+  top: -3px;
+  position: relative;
+  font-family: 'Oxygen', sans-serif;
+  transition: background-color 2s;
+}
+
+.search-bar button:hover {
+  background-color: rgba(128, 128, 128, 0.8);
 }
 
 .navbar a:hover {
@@ -60,12 +93,6 @@
   transition: text-shadow 1s, color 1s;
 }
 
-.navbar button {
-  border-width: 0px;
-  border-radius: 2px;
-  font-family: 'Oxygen', sans-serif;
-  background-color: rgba(255, 255, 255, 0.95);
-}
 
 .navbutton {
   float: left;

@@ -72,7 +72,7 @@ user interface.
   - [x] `ReviewIndex`
   - [x] `ReviewItem`
   - [x] `ReviewDetail`
-  - [ ] `ReviewForm`
+  - [x] `ReviewForm`
 
 
 ### Phase 4: Start Styling (0.5 days)

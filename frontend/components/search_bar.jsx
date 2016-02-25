@@ -20,10 +20,10 @@ var SearchBar = React.createClass({
         <input
           type="text"
           id='main-search'
-          placeholder="What are looking for?"
+          placeholder="What are you looking for?"
           valueLink={this.linkState("search")}
         />
-      <button>Search</button>
+      <button className="group"></button>
       </form>
     );
   }
