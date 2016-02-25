@@ -16,12 +16,16 @@ var App = React.createClass({
     });
 
     if (window.user) {
-      var userStuff = "boop"
+      var userStuff = (
+        <ul className="userbuttons-collection">
+          <a className="userbutton" href="/session/new">Sign In</a>
+        </ul>
+      )
     } else {
       var userStuff = (
-        <ul >
-          <a href="/session/new">Sign In</a>
-          <a href="/users/new">Sign Up</a>
+        <ul className="userbuttons-collection">
+          <a className="userbutton" href="/session/new">Sign In</a>
+          <a className="userbutton" href="/users/new">Sign Up</a>
         </ul>
       )
     };
@@ -35,6 +39,13 @@ var App = React.createClass({
           <ul className="navbuttons-collection">
             {navbuttons}
           </ul>
+          <input  type="text"
+                  className="nav-search"
+                  placeholder="What will it be?"
+                  title="Search Nighttyme"
+                  >
+
+          </input>
           {userStuff}
         </navigation>
         <section className="app-body">

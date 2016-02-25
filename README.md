@@ -67,7 +67,7 @@ user interface.
 
 - [x] setup the flux loop with skeleton files
 - [x] setup React Router
-- [ ] App (navbar) component created
+- [] App (navbar) component created
 - implement each review component, building out the flux loop as needed.
   - [x] `ReviewIndex`
   - [x] `ReviewItem`

@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rails_12factor'
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -40,7 +41,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'faker'
 end
 
 group :development do
