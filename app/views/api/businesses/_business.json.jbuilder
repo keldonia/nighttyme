@@ -30,8 +30,8 @@
 
 json.id                 business.id
 json.name               business.name
-json.description        business.description
 json.owner              business.owner.username
+json.description        business.description
 json.location           business.location
 json.neighborhoods      business.neighborhoods
 json.latitude           business.latitude

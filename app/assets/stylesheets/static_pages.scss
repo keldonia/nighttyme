@@ -1,6 +1,10 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#root {
+  background: #f2f2f2;
+  // background: #e2dedb;
+}
 
 .navbar {
   background: linear-gradient(rgba(102, 102, 102, 0.98), rgba(52, 52, 52, 0.98));
@@ -108,14 +112,500 @@
   padding: 0 15px;
 }
 
-
 a.userbutton {
   font-size: 0.9em;
 }
 
-
-
 .app-body {
   position: relative;
   top: 90px;
+}
+
+.reviews {
+  width: 60%;
+}
+
+.review-form-wrapper {
+  margin-left: 20px;
+  color: #b3aca7;
+  font-family: 'Lato', sans-serif;
+  // Slider
+  .stars-holder {
+    border: solid 1px #b3aca7;
+    border-bottom: 0px;
+    min-height: 50px;
+    padding: 0px 15px;
+    width: 94%;
+    color: #b3aca7;
+  }
+
+  .stars-holder:hover {
+    background: #b3aca7;
+    color: #e2dedb;
+  }
+
+  p {
+    display: inline;
+    padding: 0 2%;
+    position: relative;
+    font-size: 0.875em;
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  .right {
+    float: right;
+  }
+
+
+  #stars {
+    width: 90%;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: 20px;
+    margin: 0 5% 10px 5%;
+    position: relative;
+    border: none;
+    clear: both;
+    padding: 0px 0px;
+    border-radius: 14px;
+    background: #cccccc;
+    box-shadow: inset 0 1px 0 0 #0d0e0f, inset 0 -1px 0 0 #3a3d42;
+    -webkit-box-shadow: inset 0 1px 0 0 #0d0e0f, inset 0 -1px 0 0 #3a3d42;
+    outline: none; /* no focus outline */
+  }
+
+  input[type="range"]::-moz-range-track {
+    border: inherit;
+    background: transparent;
+  }
+
+  input[type="range"]::-ms-track {
+    border: inherit;
+    color: transparent; /* don't drawn vertical reference line */
+    background: transparent;
+  }
+
+  input[type="range"]::-ms-fill-lower,
+  input[type="range"]::-ms-fill-upper {
+    background: transparent;
+  }
+
+  input[type="range"]::-ms-tooltip {
+    display: none;
+  }
+
+  /* thumb */
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 40px;
+    height: 18px;
+    border: none;
+    border-radius: 12px;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b3b3b3), color-stop(100%, #808080)); /* android <= 2.2 */
+    background-image: -webkit-linear-gradient(top , #b3b3b3 0, #808080 100%); /* older mobile safari and android > 2.2 */;
+    background-image: linear-gradient(to bottom, #b3b3b3 50, #808080 100%); /* W3C */
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 40px;
+    height: 18px;
+    border: none;
+    border-radius: 12px;
+    background-image: linear-gradient(to bottom, #b3b3b3 0, #808080 100%); /* W3C */
+  }
+
+  input[type="range"]::-ms-thumb {
+    width: 40px;
+    height: 18px;
+    border-radius: 12px;
+    border: 0;
+    background-image: linear-gradient(to bottom, #b3b3b3 0, #808080 100%); /* W3C */
+  }
+
+
+  // Inputs
+
+  input::-webkit-input-placeholder,
+  textarea::-webkit-input-placeholder {
+    color: #aca49c;
+    font-size: 0.875em;
+  }
+
+  input:focus::-webkit-input-placeholder,
+  textarea:focus::-webkit-input-placeholder {
+    color: #bbb5af;
+  }
+
+  input::-moz-placeholder,
+  textarea::-moz-placeholder {
+    color: #aca49c;
+    font-size: 0.875em;
+  }
+
+  input:focus::-moz-placeholder,
+  textarea:focus::-moz-placeholder {
+    color: #bbb5af;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #aca49c;
+    font-size: 0.875em;
+  }
+
+  input:focus::placeholder,
+  textarea::focus:placeholder {
+    color: #bbb5af;
+  }
+
+  input::-ms-placeholder,
+  textarea::-ms-placeholder {
+    color: #aca49c;
+    font-size: 0.875em;
+  }
+
+  input:focus::-ms-placeholder,
+  textarea:focus::-ms-placeholder {
+    color: #bbb5af;
+  }
+
+
+  /* on hover placeholder */
+
+  input:hover::-webkit-input-placeholder,
+  textarea:hover::-webkit-input-placeholder {
+    color: #e2dedb;
+    font-size: 0.875em;
+  }
+
+  input:hover:focus::-webkit-input-placeholder,
+  textarea:hover:focus::-webkit-input-placeholder {
+    color: #cbc6c1;
+  }
+
+  input:hover::-moz-placeholder,
+  textarea:hover::-moz-placeholder {
+    color: #e2dedb;
+    font-size: 0.875em;
+  }
+
+  input:hover:focus::-moz-placeholder,
+  textarea:hover:focus::-moz-placeholder {
+    color: #cbc6c1;
+  }
+
+  input:hover::placeholder,
+  textarea:hover::placeholder {
+    color: #e2dedb;
+    font-size: 0.875em;
+  }
+
+  input:hover:focus::placeholder,
+  textarea:hover:focus::placeholder {
+    color: #cbc6c1;
+  }
+
+  input:hover::placeholder,
+  textarea:hover::placeholder {
+    color: #e2dedb;
+    font-size: 0.875em;
+  }
+
+  input:hover:focus::-ms-placeholder,
+  textarea:hover::focus:-ms-placeholder {
+    color: #cbc6c1;
+  }
+
+  h2 {
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    margin: 60px 0 25px 0;
+    font-size: 1.8em;
+    text-align: center;
+    letter-spacing: 3px;
+  }
+
+  #form {
+    position: relative;
+    width: 90%;
+    margin: 50px auto 100px auto;
+  }
+
+  input {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.875em;
+    width: 94%;
+    height: 50px;
+    padding: 0px 15px 0px 15px;
+    background: transparent;
+    outline: none;
+    color: #726659;
+    border: solid 1px #b3aca7;
+    border-bottom: none;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+  }
+
+  .minimal-selector {
+    width: 94%;
+    padding: 0 15px;
+    border: solid 1px #b3aca7;
+    border-bottom: none;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+  }
+
+  .minimal-selector:hover {
+    background: #b3aca7;
+    color: #e2dedb;
+  }
+
+  select {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.875em;
+    width: 100%;
+    height: 50px;
+    padding: 0px 15px 0px 15px;
+    background: transparent;
+    outline: none;
+    color: #726659;
+    border: 0;
+    border-color: rgb(180,173,167);
+    border-radius: 0;
+    // -webkit-appearance: none;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+  }
+
+  select option {
+    border-radius: 0;
+  }
+
+  select:hover {
+    background: #b3aca7;
+    color: #e2dedb;
+  }
+
+  input:hover {
+    background: #b3aca7;
+    color: #e2dedb;
+  }
+
+  textarea {
+    width: 94%;
+    max-width: 94%;
+    height: 110px;
+    max-height: 110px;
+    padding: 15px;
+    background: transparent;
+    outline: none;
+    color: #726659;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.875em;
+    border: solid 1px #b3aca7;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+  }
+
+  textarea:hover {
+    background: #b3aca7;
+    color: #e2dedb
+  }
+
+  #submit input {
+    border: none;
+    text-decoration: none;
+    margin: auto;
+    padding: 0;
+    width: 100%
+  }
+
+  #submit {
+    width: 94%;
+    padding: 0 15px 0 15px;
+    margin: -5px 0px 0px 0px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.875em;
+    color: #b3aca7;
+    outline: none;
+    display: block;
+    cursor: pointer;
+    border: solid 1px #b3aca7;
+    border-top: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+  }
+
+  #submit:hover {
+    color: #e2dedb;
+    background: #b3aca7;
+  }
+}
+
+.reviews-index {
+  font-family: 'Lato', sans-serif;
+
+  .reviews-collection {
+    margin-left: 20px;
+    letter-spacing: 3px;
+    font-size: 1.5em;
+    width: 100%;
+    border: 0;
+    border-bottom: 3px;
+    border-color: #b3aca7;
+    border-style: groove;
+  }
+
+  .rating {
+    margin: 10px 0;
+    clear: both;
+  }
+
+  .rating i {
+    margin: 10px;
+    display: inline-block;
+    width: 0;
+    height: 1.5em;
+    border-width: 0 0.75em;
+    border-style: solid;
+    border-color: #eee;
+    border-radius: .22em;
+    color: white;
+    background: #eee;
+    font-style: normal;
+    line-height: 1.6em;
+    text-indent: -0.5em;
+    text-shadow: 1px 0 1px #b3b3b3;
+  }
+
+  /** Colors */
+  [data-rating^='1'] .star-1 {
+    border-color: #cc8b1f;
+    background: #cc8b1f;
+  }
+
+  [data-rating^='1.5'] .star-2 {
+    border-left-color: #cc8b1f;
+  }
+
+  [data-rating^='2'] .star-1 {
+    border-color: #dcb228;
+    background: #dcb228;
+  }
+
+  [data-rating^='2'] .star-2 {
+    border-color: #dcb228;
+    background: #dcb228;
+  }
+
+  [data-rating^='2.5'] .star-3 {
+    border-left-color: #dcb228;
+  }
+
+  [data-rating^='3'] .star-1 {
+    border-color: #f0991e;
+    background: #f0991e;
+  }
+
+  [data-rating^='3'] .star-2 {
+    border-color: #f0991e;
+    background: #f0991e;
+  }
+
+  [data-rating^='3'] .star-3 {
+    border-color: #f0991e;
+    background: #f0991e;
+  }
+
+  [data-rating^='3.5'] .star-4 {
+    border-left-color: #f0991e;
+  }
+
+  [data-rating^='4'] .star-1 {
+    border-color: #f26a2c;
+    background: #f26a2c;
+  }
+
+  [data-rating^='4'] .star-2 {
+    border-color: #f26a2c;
+    background: #f26a2c;
+  }
+
+  [data-rating^='4'] .star-3 {
+    border-color: #f26a2c;
+    background: #f26a2c;
+  }
+
+  [data-rating^='4'] .star-4 {
+    border-color: #f26a2c;
+    background: #f26a2c;
+  }
+
+  [data-rating^='4.5'] .star-5 {
+    border-left-color: #f26a2c;
+  }
+
+  [data-rating="5"] i {
+    background: #dd050b;
+    border-color: #dd050b;
+  }
+
+  /** Print */
+  @media print {
+    .rating {
+      -webkit-print-color-adjust: exact;
+    }
+    .rating i {
+      text-shadow: none;
+    }
+  }
+
+  .review-detail {
+    border: 0;
+    border-bottom: 1px;
+    border-style: groove;
+
+    .review-body {
+      padding: 0 3% 2% 0;
+      clear: both;
+      font-size: 1em;
+    }
+  }
+
+  .review-index-item:not(:last-child) {
+    border: 0;
+    border-bottom: 1px;
+    border-style: groove;
+
+    .review-index-body {
+      padding: 0 3% 2% 0;
+      clear: both;
+      font-size: .8em;
+    }
+
+  }
+  .review-index-business {
+    float: right;
+    position: relative;
+  }
+
+  .review-index-author {
+    float: left;
+    position: relative;
+  }
+
 }

@@ -5,6 +5,7 @@ var BusinessActions = require('../actions/business_api_action_creators');
 var ReviewActions = require('../actions/reviews_api_action_creators');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
+
 var ReviewForm = React.createClass({
   mixins: [LinkedStateMixin],
 
@@ -41,36 +42,46 @@ var ReviewForm = React.createClass({
     var businessOptions = this.businessOptions(businessFocusId);
 
     return (
-      <section className="">
-      <form className='review-form' onSubmit={this.postReview}>
-        <label htmlFor='business'></label>
-      <select id="business" valueLink={this.linkState("business")}>
-        {businessOptions}
-      </select>
-        <label htmlFor='title'></label>
-        <input
-          type="text"
-          id='title'
-          required
-          placeholder="Enter your title here"
-          valueLink={this.linkState("title")}
-        />
-        <label htmlFor='stars'></label>
-        <input
-          type="range"
-          id='stars'
-          placeholder="2.5"
-          valueLink={this.linkState("stars")}
-        />
-        <label htmlFor='body'></label>
-        <textarea
-          id='body'
-          required
-          placeholder="What would you like to say?"
-          valueLink={this.linkState("body")}
-        />
-        <button>Submit Review</button>
-      </form>
+      <section className="review-form-wrapper group">
+        <h2 className="Add a review">What's your hot take?</h2>
+        <form className='review-form' onSubmit={this.postReview}>
+          <label htmlFor='business'></label>
+          <div className="minimal-selector">
+            <select id="business" valueLink={this.linkState("business")}>
+              {businessOptions}
+            </select>
+          </div>
+          <label htmlFor='title'></label>
+          <input
+            type="text"
+            id='title'
+            required
+            placeholder="Enter your title here"
+            valueLink={this.linkState("title")}
+          />
+          <label htmlFor='stars'></label>
+          <div className="stars-holder">
+            <p>Hate It!</p>
+            <p className="right">Love It!</p>
+            <input
+              type="range"
+              id='stars'
+              className="stars"
+              placeholder="2.5"
+              valueLink={this.linkState("stars")}
+            />
+          </div>
+          <label htmlFor='body'></label>
+          <textarea
+            id='body'
+            required
+            placeholder="What would you like to say?"
+            valueLink={this.linkState("body")}
+          />
+        <div id="submit" className="group">
+          <input type="submit" value="Submit Review"></input>
+        </div>
+        </form>
       </section>
     );
   },

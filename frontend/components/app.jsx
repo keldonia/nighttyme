@@ -13,7 +13,6 @@ var App = React.createClass({
 
   render: function() {
 
-
     return (
       <section className="App">
         <navigation className="navbar group">

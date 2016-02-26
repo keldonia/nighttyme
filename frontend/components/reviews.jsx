@@ -29,9 +29,12 @@ var Reviews = React.createClass({
     return (
       <section className="reviews">
         {reviewForm}
-        <ul>
-          {reviews}
-        </ul>
+        <section className="reviews-index">
+          <h2 className="reviews-collection">Fresh Reviews</h2>
+          <ul>
+            {reviews}
+          </ul>
+        </section>
       </section>
     );
   },

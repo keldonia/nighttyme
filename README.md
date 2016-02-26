@@ -79,21 +79,21 @@ user interface.
 
 **Objective:** Existing pages (including singup/signin) will look good.
 
-- [ ] create a basic style guide
-- [ ] position elements on the page
-- [ ] add basic colors & styles
+- [x] create a basic style guide
+- [x] position elements on the page
+- [x] add basic colors & styles
 
 ### Phase 5: Business (1 day)
 
 **Objective:** Reviews belong to Business, and can be viewed by business.
 
-- [ ] create `Business` model
+- [x] create `Business` model
 - build out API, Flux loop, and components for:
   - [ ] `BusinessesIndex`
   - [ ] `BusinessIndexItem`
   - [ ] `BusinessForm`
   - [ ] Business CRUD
-  - [ ] adding reviews requires a business
+  - [x] adding reviews requires a business
   - [ ] viewing reviews by business
 - Use CSS to style new views
 

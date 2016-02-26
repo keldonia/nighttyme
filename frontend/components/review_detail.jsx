@@ -27,11 +27,17 @@ var ReviewDetail = React.createClass({
     var review = this.state.review;
 
     return (
-      <article className="ReviewDetail">
+      <article className="review-detail">
         <h3 className="review-title"> {review.title} </h3>
-        <div className="review-stars">Stars: {review.stars}</div>
+          <div className="rating" data-rating={review.stars}>
+            <i className="star-1">★</i>
+            <i className="star-2">★</i>
+            <i className="star-3">★</i>
+            <i className="star-4">★</i>
+            <i className="star-5">★</i>
+          </div>
+        <h4 className="review-index-author"> {review.author} wrote about:</h4>
         <h4 className="review-index-business"> {review.business} </h4>
-        <h4 className="review-index-author"> {review.author} </h4>
         <article className="review-body">{review.body}</article>
       </article>
     );

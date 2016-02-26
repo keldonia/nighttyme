@@ -26,7 +26,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all.order(created_at: :desc) #temp
+    @reviews = Review.all.order(created_at: :desc).includes(:user).includes(:business) #temp
     render :index
   end
 
