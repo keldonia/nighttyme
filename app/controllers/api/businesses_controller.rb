@@ -19,7 +19,7 @@ class Api::BusinessesController < ApplicationController
       @businesses = Business.all.select(:id, :name)
       render :abridged
     else
-      @businesses = Business.all.includes(:owners) #to change with search
+      @businesses = Business.all.includes(:owner) #to change with search
       render :index
     end
   end

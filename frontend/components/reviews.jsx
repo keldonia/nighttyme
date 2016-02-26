@@ -27,7 +27,7 @@ var Reviews = React.createClass({
     var reviewForm = this.reviewForm();
 
     return (
-      <section className="reviews">
+      <section className="reviews group">
         {reviewForm}
         <section className="reviews-index">
           <h2 className="reviews-collection">Fresh Reviews</h2>

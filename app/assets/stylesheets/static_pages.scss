@@ -46,7 +46,7 @@
   top: 32px;
   left: 3%;
   border-radius: 8px;
-  transition: box-shadow 2s;
+  transition: box-shadow 1s;
 }
 
 .search-bar input {
@@ -56,7 +56,7 @@
   width: 240px;
   position:relative;
   height: 22px;
-  transition: box-shadow 2s;
+  transition: box-shadow 1s;
 }
 
 .search-bar:hover {
@@ -76,7 +76,7 @@
   top: -3px;
   position: relative;
   font-family: 'Oxygen', sans-serif;
-  transition: background-color 2s;
+  transition: background-color 1s;
 }
 
 .search-bar button:hover {
@@ -94,7 +94,7 @@
   font-size: 1.2em;
   margin-bottom: 8px;
   text-shadow: 1px 1px 1px rgba(210,210,210, 0.6);
-  transition: text-shadow 1s, color 1s;
+  transition: text-shadow .7s, color .5s;
 }
 
 
@@ -123,24 +123,27 @@ a.userbutton {
 
 .reviews {
   width: 60%;
+  margin-left: 20px;
 }
 
 .review-form-wrapper {
-  margin-left: 20px;
-  color: #b3aca7;
+  margin: 0 5% 3% 7%;
+  max-width: 600px;
+
+  color: #4d4d4d;
   font-family: 'Lato', sans-serif;
   // Slider
   .stars-holder {
-    border: solid 1px #b3aca7;
+    border: solid 1px #4d4d4d;
     border-bottom: 0px;
     min-height: 50px;
     padding: 0px 15px;
     width: 94%;
-    color: #b3aca7;
+    color: #4d4d4d;
   }
 
   .stars-holder:hover {
-    background: #b3aca7;
+    background: #4d4d4d;
     color: #e2dedb;
   }
 
@@ -345,7 +348,7 @@ a.userbutton {
     background: transparent;
     outline: none;
     color: #726659;
-    border: solid 1px #b3aca7;
+    border: solid 1px #4d4d4d;
     border-bottom: none;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
@@ -356,7 +359,7 @@ a.userbutton {
   .minimal-selector {
     width: 94%;
     padding: 0 15px;
-    border: solid 1px #b3aca7;
+    border: solid 1px #4d4d4d;
     border-bottom: none;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
@@ -365,7 +368,7 @@ a.userbutton {
   }
 
   .minimal-selector:hover {
-    background: #b3aca7;
+    background: #4d4d4d;
     color: #e2dedb;
   }
 
@@ -393,12 +396,12 @@ a.userbutton {
   }
 
   select:hover {
-    background: #b3aca7;
+    background: #4d4d4d;
     color: #e2dedb;
   }
 
   input:hover {
-    background: #b3aca7;
+    background: #4d4d4d;
     color: #e2dedb;
   }
 
@@ -413,7 +416,7 @@ a.userbutton {
     color: #726659;
     font-family: 'Lato', sans-serif;
     font-size: 0.875em;
-    border: solid 1px #b3aca7;
+    border: solid 1px #4d4d4d;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -421,7 +424,7 @@ a.userbutton {
   }
 
   textarea:hover {
-    background: #b3aca7;
+    background: #4d4d4d;
     color: #e2dedb
   }
 
@@ -439,11 +442,11 @@ a.userbutton {
     margin: -5px 0px 0px 0px;
     font-family: 'Lato', sans-serif;
     font-size: 0.875em;
-    color: #b3aca7;
+    color: #4d4d4d;
     outline: none;
     display: block;
     cursor: pointer;
-    border: solid 1px #b3aca7;
+    border: solid 1px #4d4d4d;
     border-top: none;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
@@ -452,7 +455,7 @@ a.userbutton {
 
   #submit:hover {
     color: #e2dedb;
-    background: #b3aca7;
+    background: #4d4d4d;
   }
 }
 
@@ -466,7 +469,8 @@ a.userbutton {
     width: 100%;
     border: 0;
     border-bottom: 3px;
-    border-color: #b3aca7;
+    color: #4d4d4d;
+    border-color: #4d4d4d;
     border-style: groove;
   }
 
@@ -476,7 +480,7 @@ a.userbutton {
   }
 
   .rating i {
-    margin: 10px;
+    margin: 6px;
     display: inline-block;
     width: 0;
     height: 1.5em;
@@ -578,6 +582,7 @@ a.userbutton {
     border: 0;
     border-bottom: 1px;
     border-style: groove;
+    color: #4d4d4d;
 
     .review-body {
       padding: 0 3% 2% 0;
@@ -586,26 +591,30 @@ a.userbutton {
     }
   }
 
-  .review-index-item:not(:last-child) {
-    border: 0;
-    border-bottom: 1px;
-    border-style: groove;
+  .review-index-item {
+    color: #4d4d4d;
+
+    .review-index-business {
+      float: right;
+      position: relative;
+    }
+
+    .review-index-author {
+      float: left;
+      position: relative;
+    }
 
     .review-index-body {
       padding: 0 3% 2% 0;
       clear: both;
       font-size: .8em;
     }
-
-  }
-  .review-index-business {
-    float: right;
-    position: relative;
   }
 
-  .review-index-author {
-    float: left;
-    position: relative;
+  .review-index-item:not(:last-child) {
+    border: 0;
+    border-bottom: 1px;
+    border-style: groove;
   }
 
 }
