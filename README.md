@@ -14,11 +14,11 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 - [x] Create an account
 - [x] Log in / Log out
-- [ ] Create, and read businesses
-- [ ] Create, read, edit, and delete reviews
-- [ ] Allow users to search reviews, based on several criteria and geographic range, moving map
+- [x] Create, and read businesses
+- [x] Create, read, edit, and delete reviews
 - [ ] A feed of recent activity based upon location
 - [ ] Tag reviews with useful, cool, funny, compliment
+- [ ] Allow users to search reviews, based on several criteria and geographic range, moving map
 
 ## Design Docs
 * [View Wireframes][views]

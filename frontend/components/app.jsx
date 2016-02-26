@@ -1,35 +1,18 @@
 var ApiActions = require('../actions/api_actions');
-var NavConstants = require('../constants/nav_constants');
-var ApiUtil = require('../util/api_util');
 var SearchBar = require('./search_bar');
+var NavButtons = require('./navbuttons');
+var UserButtons = require('./user_buttons');
 var Link = require('react-router').Link;
 var React = require('react');
 
 var App = React.createClass({
 
-  render: function() {
-    var navbuttons = Object.keys(NavConstants).map( function(key, idx) {
-      return (
-        <li className="navbutton" key={idx}>
-          <Link to={NavConstants[key][1]}>{NavConstants[key][0]}</Link>
-        </li>
-      );
-    });
+  signOut: function () {
+    ApiActions.signOut();
+  },
 
-    if (window.user) {
-      var userStuff = (
-        <ul className="userbuttons-collection">
-          <a className="userbutton" href="/session/new">Sign Out</a>
-        </ul>
-      )
-    } else {
-      var userStuff = (
-        <ul className="userbuttons-collection">
-          <a className="userbutton" href="/session/new">Sign In</a>
-          <a className="userbutton" href="/users/new">Sign Up</a>
-        </ul>
-      )
-    };
+  render: function() {
+
 
     return (
       <section className="App">
@@ -37,11 +20,9 @@ var App = React.createClass({
           <section className="mini-logo">
             <a href="/#"><h1>Nighttyme</h1></a>
           </section>
-          <ul className="navbuttons-collection">
-            {navbuttons}
-          </ul>
+          <NavButtons />
           <SearchBar />
-          {userStuff}
+          <UserButtons />
         </navigation>
         <section className="app-body">
           {this.props.children}

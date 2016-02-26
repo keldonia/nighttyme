@@ -7,9 +7,10 @@ var _reviews = {};
 var ReviewsStore = new Store(AppDispatcher);
 
 ReviewsStore.all = function () {
-  return Object.keys(_reviews).map( function(key) {
+  var reviews = Object.keys(_reviews).map( function(key) {
     return _reviews[key];
   });
+  return reviews.reverse();
 };
 
 ReviewsStore.find = function (id) {

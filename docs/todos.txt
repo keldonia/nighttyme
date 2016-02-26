@@ -1,0 +1,10 @@
+Todo List:
+
+Action Creator file for apicalls listens? X
+different action creators for resources X
+
+Userstuff and navbuttons to own components X
+
+Global serach for Reveiw X
+
+move logic into helpers X

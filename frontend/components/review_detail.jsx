@@ -1,5 +1,6 @@
 var React = require('react');
 var ReviewsStore = require('../stores/reviews');
+var ReviewActions = require('../actions/reviews_api_action_creators');
 
 var ReviewDetail = React.createClass({
   getInitialState: function () {
@@ -13,7 +14,7 @@ var ReviewDetail = React.createClass({
   },
   componentDidMount: function () {
     this.reviewsListener = ReviewsStore.addListener(this._onChange);
-    ApiUtil.fetchSingleReview(parseInt(this.props.review.id));
+    ReviewActions.fetchSingleReview(parseInt(this.props.review.id));
   },
   componentWillUnmount: function () {
     this.reviewsListener.remove();

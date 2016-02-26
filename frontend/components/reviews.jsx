@@ -1,8 +1,7 @@
 var BusinessStore = require('../stores/business');
 var ReviewsStore = require('../stores/reviews');
 var ErrorStore = require('../stores/errors');
-var ApiActions = require('../actions/api_actions');
-var ApiUtil = require('../util/api_util');
+var ReviewActions = require('../actions/reviews_api_action_creators');
 var React = require('react');
 
 var ReviewIndexItem = require('./review_index_item');
@@ -15,7 +14,7 @@ var Reviews = React.createClass({
   },
   componentDidMount: function() {
     this.reviewListener = ReviewsStore.addListener(this._onChange);
-    ApiUtil.fetchAllReviews();
+    ReviewActions.fetchAllReviews();
   },
   componentWillUnmount: function () {
     this.reviewListener.remove();
@@ -24,24 +23,37 @@ var Reviews = React.createClass({
     this.setState({ reviews: ReviewsStore.all() });
   },
   render: function() {
-    var reviews = this.state.reviews.reverse().map( function(review) {
+    var reviews = this.orderReviews();
+    var reviewForm = this.reviewForm();
+
+    return (
+      <section className="reviews">
+        {reviewForm}
+        <ul>
+          {reviews}
+        </ul>
+      </section>
+    );
+  },
+
+  reviewForm: function () {
+    var reviewForm;
+    if (window.user) {
+      reviewForm = <ReviewForm />;
+    }
+    return reviewForm;
+  },
+
+  orderReviews: function() {
+    return this.state.reviews.map( function(review) {
       if (review.id !== parseInt(this.props.params.id)) {
         return <ReviewIndexItem key={review.id} review={review} />;
       } else {
         return <ReviewDetail key={review.id} review={review} />;
       }
     }, this);
-
-    return (
-      <section className="reviews">
-        <ReviewForm />
-        <ul>
-          {reviews}
-        </ul>
-      </section>
-    );
   }
-
 });
+
 
 module.exports = Reviews;

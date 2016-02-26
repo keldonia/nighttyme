@@ -1,6 +1,8 @@
 var AppDispatcher = require('../dispatcher');
 var ApiConstants = require('../constants/api_constants');
 var ApiActions = require('../actions/api_actions');
+var ReviewApiDispatchs = require('../actions/reviews_api_dispatchs');
+var BusinessApiDispatchs = require('../actions/business_api_dispatchs');
 
 var ApiUtil = {
   fetchAllBusinesses: function() {
@@ -9,7 +11,7 @@ var ApiUtil = {
       url: 'api/businesses',
       dataType: 'json',
       success: function (responseText) {
-        ApiActions.recieveAllBusinesses(responseText);
+        BusinessApiDispatchs.recieveAllBusinesses(responseText);
       },
       error: function (errorThrown) {
         ApiActions.recieveAllBusinessErrors(errorThrown);
@@ -22,7 +24,7 @@ var ApiUtil = {
       url: "api/businesses?abridged=true",
       dataType: 'json',
       success: function (responseText) {
-        ApiActions.recieveAbridgedBusinesses(responseText);
+        BusinessApiDispatchs.recieveAbridgedBusinesses(responseText);
       },
       error: function (errorThrown) {
         ApiActions.recieveAllBusinessErrors(errorThrown);
@@ -36,7 +38,7 @@ var ApiUtil = {
       url: 'api/reviews',
       dataType: 'json',
       success: function (responseText) {
-        ApiActions.recieveAllReviews(responseText);
+        ReviewApiDispatchs.recieveAllReviews(responseText);
       },
       error: function (errorThrown) {
         ApiActions.recieveAllReviewErrors(errorThrown);
@@ -49,10 +51,34 @@ var ApiUtil = {
       url: 'api/reviews/' + id,
       dataType: 'json',
       success: function (responseText) {
-        ApiActions.recieveSingleReview(responseText);
+        ReviewApiDispatchs.recieveSingleReview(responseText);
       },
       error: function (errorThrown) {
         ApiActions.recieveAllReviewErrors(errorThrown);
+      }
+    });
+  },
+  createSingleReview: function(data) {
+    $.ajax ({
+      method: "POST",
+      url: 'api/reviews/',
+      dataType: 'json',
+      data: 'data',
+      success: function (responseText) {
+        ReviewApiDispatchs.recieveSingleReview(responseText);
+      },
+      error: function (errorThrown) {
+        ApiActions.recieveAllReviewErrors(errorThrown);
+      }
+    });
+  },
+  signOut: function () {
+    $.ajax ({
+      method: "DELETE",
+      url: 'session',
+      dataType: 'json',
+      success: function () {
+        window.location.href = "/";
       }
     });
   }

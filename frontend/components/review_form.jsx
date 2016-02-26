@@ -1,6 +1,8 @@
 var React = require('react');
 var BusinessStore = require('../stores/business');
 var ApiUtil = require('../util/api_util');
+var BusinessActions = require('../actions/business_api_action_creators');
+var ReviewActions = require('../actions/reviews_api_action_creators');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
 var ReviewForm = React.createClass({
@@ -18,7 +20,7 @@ var ReviewForm = React.createClass({
 
   componentDidMount: function() {
     this.businessListener = BusinessStore.addListener(this._onChange);
-    ApiUtil.fetchAbrigedBusinesses();
+    BusinessActions.fetchAbrigedBusinesses();
   },
 
   _onChange: function() {
@@ -29,31 +31,18 @@ var ReviewForm = React.createClass({
     this.businessListener.remove();
   },
 
-  search: function (e) {
+  postReview: function (e) {
     e.preventDefault();
-    console.log(e);
+    ReviewActions.createSingleReview();
   },
 
   render: function() {
-    var businessfocus;
-    if (window.location.pathname.includes('businesses')) {
-      businessfocus = this.props.id;
-    } else {
-      businessfocus = 1;
-    }
-
-    var businessOptions = this.state.businesses.map( function(business) {
-      if (business.id === businessfocus) {
-        return (<option key={business.id} value={business.id} defaultValue>{business.name}</option>)
-      } else {
-        return (<option key={business.id} value={business.id}>{business.name}</option>);
-      }
-    });
-    // debugger
+    var businessFocusId = this.businessFocusId();
+    var businessOptions = this.businessOptions(businessFocusId);
 
     return (
       <section className="">
-      <form className='review-form' onSubmit={this.search}>
+      <form className='review-form' onSubmit={this.postReview}>
         <label htmlFor='business'></label>
       <select id="business" valueLink={this.linkState("business")}>
         {businessOptions}
@@ -62,6 +51,7 @@ var ReviewForm = React.createClass({
         <input
           type="text"
           id='title'
+          required
           placeholder="Enter your title here"
           valueLink={this.linkState("title")}
         />
@@ -75,6 +65,7 @@ var ReviewForm = React.createClass({
         <label htmlFor='body'></label>
         <textarea
           id='body'
+          required
           placeholder="What would you like to say?"
           valueLink={this.linkState("body")}
         />
@@ -82,6 +73,26 @@ var ReviewForm = React.createClass({
       </form>
       </section>
     );
+  },
+
+  businessFocusId: function () {
+    var businessFocusId;
+    if (window.location.pathname.includes('businesses')) {
+      businessFocusId = this.props.id;
+    } else {
+      businessFocusId = 1;
+    }
+    return businessFocusId;
+  },
+
+  businessOptions: function (businessFocusId) {
+    return this.state.businesses.map( function(business) {
+      if (business.id === businessFocusId) {
+        return (<option key={business.id} value={business.id} defaultValue>{business.name}</option>)
+      } else {
+        return (<option key={business.id} value={business.id}>{business.name}</option>);
+      }
+    });
   }
 
 });

@@ -2,11 +2,12 @@ class Api::ReviewsController < ApplicationController
 
 
   def create
-    if @review = Review.create(review_params)
+    @review = current_user.reviews.new(review_params)
+    if @review.save
       render :show
     else
       @review = Review.new(review_params)
-      render json: { :errors => @review.errors.as_json }, :status => 420
+      render json: { :errors => @review.errors.as_json }, status: 422
     end
   end
 
@@ -20,12 +21,12 @@ class Api::ReviewsController < ApplicationController
       render :show
     else
       @review = Review.new(review_params)
-      render json: { :errors => @review.errors.as_json }, :status => 420
+      render json: { :errors => @review.errors.as_json }, status: 422
     end
   end
 
   def index
-    @reviews = Review.all #temp
+    @reviews = Review.all.order(created_at: :desc) #temp
     render :index
   end
 

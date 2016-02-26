@@ -1,7 +1,7 @@
 var React = require('react');
 var History = require('react-router').History;
 
-var ReveiwIndexItem = React.createClass({
+var ReviewIndexItem = React.createClass({
   mixins: [History],
 
   showDetail: function() {
@@ -10,7 +10,7 @@ var ReveiwIndexItem = React.createClass({
 
   render: function() {
     var review = this.props.review;
-    // debugger
+    
     return (
       <li onClick={this.showDetail} className="review_index_item">
         <article className="review">
@@ -26,4 +26,4 @@ var ReveiwIndexItem = React.createClass({
 
 });
 
-module.exports = ReveiwIndexItem;
+module.exports = ReviewIndexItem;
