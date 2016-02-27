@@ -14,7 +14,7 @@ usersgen = 20.times.map { |i|
   password: Faker::Internet.password.to_s}
 }
 
-User.create(usersgen)
+User.create!(usersgen)
 
 Business.create!(
   owner_id: 1,
@@ -238,4 +238,4 @@ reviewsgen = 60.times.map { |i| {
 }
 }
 
-Review.create(reviewsgen)
+Review.create!(reviewsgen)

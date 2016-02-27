@@ -6,6 +6,9 @@ var BusinessActions = {
   },
   fetchAbrigedBusinesses: function () {
     ApiUtil.fetchAbrigedBusinesses();
+  },
+  fetchSingleBusiness: function (id) {
+    ApiUtil.fetchSingleBusiness(id);
   }
 
 };

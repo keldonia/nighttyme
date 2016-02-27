@@ -7,9 +7,6 @@ var React = require('react');
 
 var App = React.createClass({
 
-  signOut: function () {
-    ApiActions.signOut();
-  },
 
   render: function() {
 

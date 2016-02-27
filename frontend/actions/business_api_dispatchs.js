@@ -14,6 +14,13 @@ var BusinessApiDispatches = {
       businesses: businesses
     });
   },
+  recieveSingleBusinesses: function(business) {
+    AppDispatcher.dispatch({
+      actionType: ApiConstants.SINGLE_BUINESS,
+      business: business
+    });
+  },
+
 };
 
 module.exports = BusinessApiDispatches;

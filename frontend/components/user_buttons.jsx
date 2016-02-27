@@ -1,7 +1,13 @@
 var React = require('react');
 var Link = require('react-router').Link;
+var ApiCreateActions = require('../actions/api_create_actions');
 
 var UserButtons = React.createClass({
+
+  signOut: function () {
+    ApiCreateActions.signOut();
+  },
+
 
   userButtons: function () {
     if (window.user) {

@@ -4,14 +4,12 @@ var ReviewActions = {
   fetchAllReviews: function () {
     ApiUtil.fetchAllReviews();
   },
-  createUtil: function () {
-    ApiUtil.createSingleReview();
+  createSingleReview: function (review) {
+    ApiUtil.createSingleReview(review);
   },
   fetchSingleReview: function(id) {
     ApiUtil.fetchSingleReview(id);
   },
-
-
 };
 
 module.exports = ReviewActions;

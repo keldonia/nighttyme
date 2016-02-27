@@ -2,7 +2,10 @@ class Api::ReviewsController < ApplicationController
 
 
   def create
-    @review = current_user.reviews.new(review_params)
+    @review = Review.new(review_params)
+    @review.author_id = current_user.id
+    debugger
+    @review.archieved = true
     if @review.save
       render :show
     else
@@ -26,7 +29,12 @@ class Api::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all.order(created_at: :desc).includes(:user).includes(:business) #temp
+    if params[:business_id]
+      @reviews = Review.where(business_id: params[:business_id])
+        .order(created_at: :desc).includes(:user).includes(:business)
+    else
+      @reviews = Review.all.order(created_at: :desc).includes(:user).includes(:business) #temp
+    end
     render :index
   end
 
@@ -40,7 +48,6 @@ class Api::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(
-      :author_id,
       :business_id,
       :title,
       :stars,

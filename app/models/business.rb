@@ -28,6 +28,7 @@ class Business < ActiveRecord::Base
     class_name: 'User'
   has_one :hour, inverse_of: :business
   has_one :bussinessattribute, inverse_of: :business
+  has_many :reviews
 
   accepts_nested_attributes_for :hour, :bussinessattribute
 end

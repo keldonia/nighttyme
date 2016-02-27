@@ -11,9 +11,11 @@ var signupcheck = require('./util/signupcheck');
 var geolocate = require('./util/geolocate');
 var ApiUtil = require('./util/api_util');
 var App = require('./components/app');
+var ReviewsIndex = require('./components/reviews_index');
 var Reviews = require('./components/reviews');
 var ReviewDetail = require('./components/review_detail');
 var Businesses = require('./components/businesses');
+var BusinessDetail = require('./components/business_detail');
 
 var BusinessStore = require('./stores/business');
 var ReviewsStore = require('./stores/reviews');
@@ -27,10 +29,13 @@ var routes = (
   <Route path="/" component={App}>
     <Route path="businesses" component={Businesses}>
     </Route>
-    <Route path="reviews" component={Reviews}>
+    <Route path="businesses/:id" component={BusinessDetail}>
+      <Route path="reviews" component={Reviews} />
+    </Route>
+    <Route path="reviews" component={ReviewsIndex}>
       <Route path=":id" component={ReviewDetail}/>
     </Route>
-    <IndexRoute component={Reviews} />
+    <IndexRoute component={ReviewsIndex} />
   </Route>
 );
 

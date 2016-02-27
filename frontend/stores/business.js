@@ -4,6 +4,7 @@ var AppDispatcher = require('../dispatcher');
 
 var _businesses = {};
 var _businessesShort = {};
+var _business = {};
 
 var BusinessStore = new Store(AppDispatcher);
 
@@ -19,14 +20,22 @@ BusinessStore.allAbridged = function () {
   });
 };
 
+BusinessStore.singleBusiness = function () {
+  return _business;
+};
+
 BusinessStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case ApiConstants.ALL_BUSINESSES:
-      BusinessStore.resetBusiness(payload.businesses);
+      BusinessStore.resetBusinesses(payload.businesses);
       BusinessStore.__emitChange();
       break;
     case ApiConstants.ABRIDGED_BUSINESSES:
-      BusinessStore.resetAbridgedBusiness(payload.businesses);
+      BusinessStore.resetAbridgedBusinesses(payload.businesses);
+      BusinessStore.__emitChange();
+      break;
+    case ApiConstants.SINGLE_BUSINESS:
+      BusinessStore.resetBusiness(payload.business);
       BusinessStore.__emitChange();
       break;
     default:
@@ -34,14 +43,18 @@ BusinessStore.__onDispatch = function (payload) {
   }
 };
 
-BusinessStore.resetBusiness = function (businesses) {
+BusinessStore.resetBusinesses = function (businesses) {
   _businesses = {};
   businesses.forEach( function(business) {
     _businesses[business.id] = business;
   });
 };
+BusinessStore.resetBusiness = function (business) {
+  _business = {};
+  _business = business;
+};
 
-BusinessStore.resetAbridgedBusiness = function (businesses) {
+BusinessStore.resetAbridgedBusinesses = function (businesses) {
   _businessesShort = {};
   businesses.forEach( function(business) {
     _businessesShort[business.id] = business;

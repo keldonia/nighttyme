@@ -30,18 +30,24 @@
 
 json.id                 business.id
 json.name               business.name
-json.owner              business.owner.username
 json.description        business.description
 json.location           business.location
 json.neighborhoods      business.neighborhoods
 json.latitude           business.latitude
 json.longitude          business.longitude
 json.price              business.price
-json.email              business.email
 json.telephone_number   business.telephone_number
-json.website            business.website
 
 if params[:business_id] || params[:id]
+  json.email              business.email
+  json.website            business.website
+
+  json.reviews do
+    business.reviews.each do |review|
+      json.set! review.id, review
+    end
+  end
+
   json.hour_attributes do
     @days.each do |day|
       json.set! day.to_s, business.hour.send(day)

@@ -1,4 +1,3 @@
-var AppDispatcher = require('../dispatcher');
 var ApiConstants = require('../constants/api_constants');
 var ApiActions = require('../actions/api_actions');
 var ReviewApiDispatchs = require('../actions/reviews_api_dispatchs');
@@ -32,6 +31,19 @@ var ApiUtil = {
 
     });
   },
+  fetchSingleBusiness: function(id) {
+    $.ajax ({
+      method: "GET",
+      url: 'api/businesses/' + id,
+      dataType: 'json',
+      success: function (responseText) {
+        BusinessApiDispatchs.recieveSingleBusiness(responseText);
+      },
+      error: function (errorThrown) {
+        ApiActions.recieveAllBusinessErrors(errorThrown);
+      }
+    });
+  },
   fetchAllReviews: function() {
     $.ajax ({
       method: "GET",
@@ -58,12 +70,12 @@ var ApiUtil = {
       }
     });
   },
-  createSingleReview: function(data) {
+  createSingleReview: function(review) {
     $.ajax ({
       method: "POST",
       url: 'api/reviews/',
       dataType: 'json',
-      data: 'data',
+      data: review,
       success: function (responseText) {
         ReviewApiDispatchs.recieveSingleReview(responseText);
       },

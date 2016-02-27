@@ -13,9 +13,9 @@ var ReviewForm = React.createClass({
     return ({
       businesses: BusinessStore.allAbridged(),
       "title": "",
-      "stars": "",
+      "stars": "2.5",
       "body":  "",
-      "business": "",
+      "business_id": this.businessFocusId(),
     });
   },
 
@@ -34,7 +34,29 @@ var ReviewForm = React.createClass({
 
   postReview: function (e) {
     e.preventDefault();
-    ReviewActions.createSingleReview();
+    var review = {};
+    var keys = Object.keys(this.state).slice(1);
+    keys.forEach(function (key) {
+      if (key === 'stars') {
+        review[key] = parseInt(this.state[key]);
+      } else {
+        review[key] = this.state[key];
+      }
+    }, this)
+    var passedReview = {review: review}
+    debugger
+    ReviewActions.createSingleReview(passedReview);
+    this.blankattrs();
+  },
+
+  blankattrs: function () {
+    this.setState({
+      businesses: BusinessStore.allAbridged(),
+      "title": "",
+      "stars": "2.5",
+      "body":  "",
+      "business_id": this.businessFocusId(),
+    });
   },
 
   render: function() {
@@ -47,7 +69,7 @@ var ReviewForm = React.createClass({
         <form className='review-form' onSubmit={this.postReview}>
           <label htmlFor='business'></label>
           <div className="minimal-selector">
-            <select id="business" valueLink={this.linkState("business")}>
+            <select id="business" valueLink={this.linkState("business_id")}>
               {businessOptions}
             </select>
           </div>
@@ -66,6 +88,9 @@ var ReviewForm = React.createClass({
             <input
               type="range"
               id='stars'
+              max='5'
+              min='0'
+              step="0.5"
               className="stars"
               placeholder="2.5"
               valueLink={this.linkState("stars")}

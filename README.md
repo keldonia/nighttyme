@@ -89,8 +89,9 @@ user interface.
 
 - [x] create `Business` model
 - build out API, Flux loop, and components for:
-  - [ ] `BusinessesIndex`
-  - [ ] `BusinessIndexItem`
+  - [x] `BusinessesIndex`
+  - [x] `BusinessIndexItem`
+  - [ ] `BusinessDetail`
   - [ ] `BusinessForm`
   - [ ] Business CRUD
   - [x] adding reviews requires a business

@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #root {
   background: #f2f2f2;
+  padding-bottom: 100px;
   // background: #e2dedb;
 }
 
@@ -53,7 +54,8 @@
   border-radius: 8px 0 0 8px;
   padding-left: 5px;
   top: -3px;
-  width: 240px;
+  min-width: 240px;
+  width: 30%;
   position:relative;
   height: 22px;
   transition: box-shadow 1s;
@@ -134,7 +136,7 @@ a.userbutton {
   font-family: 'Lato', sans-serif;
   // Slider
   .stars-holder {
-    border: solid 1px #4d4d4d;
+    border: solid 1px #666666;
     border-bottom: 0px;
     min-height: 50px;
     padding: 0px 15px;
@@ -143,7 +145,7 @@ a.userbutton {
   }
 
   .stars-holder:hover {
-    background: #4d4d4d;
+    background: #666666;
     color: #e2dedb;
   }
 
@@ -348,7 +350,7 @@ a.userbutton {
     background: transparent;
     outline: none;
     color: #726659;
-    border: solid 1px #4d4d4d;
+    border: solid 1px #666666;
     border-bottom: none;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
@@ -359,7 +361,7 @@ a.userbutton {
   .minimal-selector {
     width: 94%;
     padding: 0 15px;
-    border: solid 1px #4d4d4d;
+    border: solid 1px #666666;
     border-bottom: none;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
@@ -368,7 +370,7 @@ a.userbutton {
   }
 
   .minimal-selector:hover {
-    background: #4d4d4d;
+    background: #666666;
     color: #e2dedb;
   }
 
@@ -382,7 +384,7 @@ a.userbutton {
     outline: none;
     color: #726659;
     border: 0;
-    border-color: rgb(180,173,167);
+    border-color: #666666;
     border-radius: 0;
     // -webkit-appearance: none;
     transition: all 0.3s ease-in-out;
@@ -396,12 +398,14 @@ a.userbutton {
   }
 
   select:hover {
-    background: #4d4d4d;
     color: #e2dedb;
   }
 
+  input:hover:not([type=submit]) {
+    background: #666666;
+  }
+
   input:hover {
-    background: #4d4d4d;
     color: #e2dedb;
   }
 
@@ -416,7 +420,7 @@ a.userbutton {
     color: #726659;
     font-family: 'Lato', sans-serif;
     font-size: 0.875em;
-    border: solid 1px #4d4d4d;
+    border: solid 1px #666666;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -424,7 +428,7 @@ a.userbutton {
   }
 
   textarea:hover {
-    background: #4d4d4d;
+    background: #666666;
     color: #e2dedb
   }
 
@@ -446,7 +450,7 @@ a.userbutton {
     outline: none;
     display: block;
     cursor: pointer;
-    border: solid 1px #4d4d4d;
+    border: solid 1px #666666;
     border-top: none;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
@@ -455,11 +459,11 @@ a.userbutton {
 
   #submit:hover {
     color: #e2dedb;
-    background: #4d4d4d;
+    background: #666666;
   }
 }
 
-.reviews-index {
+.reviews-index, .left .businesses-index {
   font-family: 'Lato', sans-serif;
 
   .reviews-collection {
@@ -474,109 +478,6 @@ a.userbutton {
     border-style: groove;
   }
 
-  .rating {
-    margin: 10px 0;
-    clear: both;
-  }
-
-  .rating i {
-    margin: 6px;
-    display: inline-block;
-    width: 0;
-    height: 1.5em;
-    border-width: 0 0.75em;
-    border-style: solid;
-    border-color: #eee;
-    border-radius: .22em;
-    color: white;
-    background: #eee;
-    font-style: normal;
-    line-height: 1.6em;
-    text-indent: -0.5em;
-    text-shadow: 1px 0 1px #b3b3b3;
-  }
-
-  /** Colors */
-  [data-rating^='1'] .star-1 {
-    border-color: #cc8b1f;
-    background: #cc8b1f;
-  }
-
-  [data-rating^='1.5'] .star-2 {
-    border-left-color: #cc8b1f;
-  }
-
-  [data-rating^='2'] .star-1 {
-    border-color: #dcb228;
-    background: #dcb228;
-  }
-
-  [data-rating^='2'] .star-2 {
-    border-color: #dcb228;
-    background: #dcb228;
-  }
-
-  [data-rating^='2.5'] .star-3 {
-    border-left-color: #dcb228;
-  }
-
-  [data-rating^='3'] .star-1 {
-    border-color: #f0991e;
-    background: #f0991e;
-  }
-
-  [data-rating^='3'] .star-2 {
-    border-color: #f0991e;
-    background: #f0991e;
-  }
-
-  [data-rating^='3'] .star-3 {
-    border-color: #f0991e;
-    background: #f0991e;
-  }
-
-  [data-rating^='3.5'] .star-4 {
-    border-left-color: #f0991e;
-  }
-
-  [data-rating^='4'] .star-1 {
-    border-color: #f26a2c;
-    background: #f26a2c;
-  }
-
-  [data-rating^='4'] .star-2 {
-    border-color: #f26a2c;
-    background: #f26a2c;
-  }
-
-  [data-rating^='4'] .star-3 {
-    border-color: #f26a2c;
-    background: #f26a2c;
-  }
-
-  [data-rating^='4'] .star-4 {
-    border-color: #f26a2c;
-    background: #f26a2c;
-  }
-
-  [data-rating^='4.5'] .star-5 {
-    border-left-color: #f26a2c;
-  }
-
-  [data-rating="5"] i {
-    background: #dd050b;
-    border-color: #dd050b;
-  }
-
-  /** Print */
-  @media print {
-    .rating {
-      -webkit-print-color-adjust: exact;
-    }
-    .rating i {
-      text-shadow: none;
-    }
-  }
 
   .review-detail {
     border: 0;
@@ -594,15 +495,6 @@ a.userbutton {
   .review-index-item {
     color: #4d4d4d;
 
-    .review-index-business {
-      float: right;
-      position: relative;
-    }
-
-    .review-index-author {
-      float: left;
-      position: relative;
-    }
 
     .review-index-body {
       padding: 0 3% 2% 0;
@@ -617,4 +509,117 @@ a.userbutton {
     border-style: groove;
   }
 
+  .review-index-business {
+    float: right;
+    position: relative;
+  }
+
+  .review-index-author {
+    float: left;
+    position: relative;
+  }
+}
+
+.rating {
+  margin: 10px 0;
+  clear: both;
+}
+
+.rating i {
+  margin: 6px;
+  display: inline-block;
+  width: 0;
+  height: 1.5em;
+  border-width: 0 0.75em;
+  border-style: solid;
+  border-color: #eee;
+  border-radius: .22em;
+  color: white;
+  background: #eee;
+  font-style: normal;
+  line-height: 1.6em;
+  text-indent: -0.5em;
+  text-shadow: 1px 0 1px #b3b3b3;
+}
+
+/** Colors */
+[data-rating^='1'] .star-1 {
+  border-color: #cc8b1f;
+  background: #cc8b1f;
+}
+
+[data-rating^='1.5'] .star-2 {
+  border-left-color: #cc8b1f;
+}
+
+[data-rating^='2'] .star-1 {
+  border-color: #dcb228;
+  background: #dcb228;
+}
+
+[data-rating^='2'] .star-2 {
+  border-color: #dcb228;
+  background: #dcb228;
+}
+
+[data-rating^='2.5'] .star-3 {
+  border-left-color: #dcb228;
+}
+
+[data-rating^='3'] .star-1 {
+  border-color: #f0991e;
+  background: #f0991e;
+}
+
+[data-rating^='3'] .star-2 {
+  border-color: #f0991e;
+  background: #f0991e;
+}
+
+[data-rating^='3'] .star-3 {
+  border-color: #f0991e;
+  background: #f0991e;
+}
+
+[data-rating^='3.5'] .star-4 {
+  border-left-color: #f0991e;
+}
+
+[data-rating^='4'] .star-1 {
+  border-color: #f26a2c;
+  background: #f26a2c;
+}
+
+[data-rating^='4'] .star-2 {
+  border-color: #f26a2c;
+  background: #f26a2c;
+}
+
+[data-rating^='4'] .star-3 {
+  border-color: #f26a2c;
+  background: #f26a2c;
+}
+
+[data-rating^='4'] .star-4 {
+  border-color: #f26a2c;
+  background: #f26a2c;
+}
+
+[data-rating^='4.5'] .star-5 {
+  border-left-color: #f26a2c;
+}
+
+[data-rating="5"] i {
+  background: #dd050b;
+  border-color: #dd050b;
+}
+
+/** Print */
+@media print {
+  .rating {
+    -webkit-print-color-adjust: exact;
+  }
+  .rating i {
+    text-shadow: none;
+  }
 }

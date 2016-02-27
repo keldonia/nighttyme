@@ -15,6 +15,7 @@
 #                      PUT    /api/businesses/:id(.:format)                  api/businesses#update {:format=>:json}
 #                      DELETE /api/businesses/:id(.:format)                  api/businesses#destroy {:format=>:json}
 #          api_reviews GET    /api/reviews(.:format)                         api/reviews#index {:format=>:json}
+#                      POST   /api/reviews(.:format)                         api/reviews#create {:format=>:json}
 #           api_review GET    /api/reviews/:id(.:format)                     api/reviews#show {:format=>:json}
 #                      PATCH  /api/reviews/:id(.:format)                     api/reviews#update {:format=>:json}
 #                      PUT    /api/reviews/:id(.:format)                     api/reviews#update {:format=>:json}
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
     resources :businesses, only: [:create, :destroy, :update, :index, :show] do
       resources :reviews, only: [:create, :index]
     end
-    resources :reviews, only: [:destroy, :update, :show, :index]
+    resources :reviews, only: [:destroy, :create, :update, :show, :index]
   end
 
   root 'static_pages#root'

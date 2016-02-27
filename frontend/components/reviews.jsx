@@ -9,34 +9,32 @@ var ReviewDetail = require('./review_detail');
 var ReviewForm = require('./review_form');
 
 var Reviews = React.createClass({
-  getInitialState: function () {
-    return({ reviews: ReviewsStore.all() });
-  },
-  componentDidMount: function() {
-    this.reviewListener = ReviewsStore.addListener(this._onChange);
-    ReviewActions.fetchAllReviews();
-  },
-  componentWillUnmount: function () {
-    this.reviewListener.remove();
-  },
-  _onChange: function () {
-    this.setState({ reviews: ReviewsStore.all() });
-  },
+
+
+
   render: function() {
-    var reviews = this.orderReviews();
+    var reviewItems = this.reviews();
     var reviewForm = this.reviewForm();
 
     return (
       <section className="reviews group">
         {reviewForm}
-        <section className="reviews-index">
-          <h2 className="reviews-collection">Fresh Reviews</h2>
+        <h2 className="reviews-collection">Fresh Reviews</h2>
+        <section className="reviews-collection-index">
           <ul>
-            {reviews}
+            {reviewItems}
           </ul>
         </section>
       </section>
     );
+  },
+
+  reviews: function () {
+    if (this.props.reviews === undefined) {
+      return <li></li>
+    } else {
+      return this.orderReviews(this.props.reviews);
+    }
   },
 
   reviewForm: function () {
@@ -48,11 +46,13 @@ var Reviews = React.createClass({
   },
 
   orderReviews: function() {
-    return this.state.reviews.map( function(review) {
-      if (review.id !== parseInt(this.props.params.id)) {
-        return <ReviewIndexItem key={review.id} review={review} />;
+    debugger
+    var reviews = this.props.reviews;
+    return reviews.map( function(currentReview) {
+      if (currentReview.id !== parseInt(this.props.reviewId)) {
+        return <ReviewIndexItem key={currentReview.id} review={currentReview} />;
       } else {
-        return <ReviewDetail key={review.id} review={review} />;
+        return <ReviewDetail key={currentReview.id} review={currentReview} />;
       }
     }, this);
   }
