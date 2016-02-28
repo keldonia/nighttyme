@@ -57,8 +57,8 @@ var BusinessDetail = React.createClass({
 
         return (
           <li key={idx} className="infoItem">
-            <p className="type">{kind}:</p>
-            <p className="quality">{detail}</p>
+            <div className="type">{kind}:</div>
+            <div className="quality">{detail}</div>
           </li>
         )
       });
@@ -130,17 +130,22 @@ var BusinessDetail = React.createClass({
         </section>
         <section className="other-business-info">
           <section className="hours">
-            <h4>Hours</h4>
+            <h4 className="hours-overall-title">Hours</h4>
             <ul>
               {hours}
             </ul>
+            <div className="group"></div>
           </section>
           <section className="additional-business-info">
-            <h4>More Business Info</h4>
-            {additionalBusinessInfo}
+            <h4 className="additional-business-info-title">More Business Info</h4>
+            <ul>
+              {additionalBusinessInfo}
+            </ul>
+            <div className="group"></div>
           </section>
-          <section className="description">
-            <p>{business.description}</p>
+          <section className="descriptions">
+            <h4 className="description-title">From the business</h4>
+            <p className="description-item">{business.description}</p>
           </section>
         </section>
         <div className="group"></div>

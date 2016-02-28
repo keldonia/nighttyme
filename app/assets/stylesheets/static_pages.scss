@@ -741,13 +741,6 @@ a.userbutton {
   padding-bottom: 140px;
 }
 
-.other-business-info {
-  float: right;
-  width: 25%;
-  position: relative;
-  background: #f2f2f2;
-}
-
 .business-detail .reviews-index {
   float: left;
   width: 64%;
@@ -755,5 +748,89 @@ a.userbutton {
 }
 
 .other-business-info {
-  
+  float: right;
+  width: 25%;
+  position: relative;
+  background: #f2f2f2;
+
+  ul {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hours-overall-title {
+    margin-bottom: 15px;
+  }
+
+  .hours {
+    font-size: .9em;
+    width: 95%;
+
+    h4 {
+      font-size: 1.33em;
+    }
+
+    .hours-title {
+      padding-bottom: 3px;
+    }
+
+    .day {
+      position: relative;
+      float: left;
+      font-weight: 700;
+    }
+
+    .hour {
+      position: relative;
+      float: right;
+    }
+
+    .Hour {
+      display: block;
+      clear: both;
+      left: -10px;
+    }
+
+  }
+  .hours:last-child {
+    padding-bottom: 20px;
+  }
+
+  .additional-business-info {
+
+    h4 {
+      font-size: 1.33em;
+      margin-bottom: 15px;
+    }
+
+    .infoItem {
+      padding-bottom: 4px;
+      width: 95%;
+      clear: both;
+
+      .type {
+        position: relative;
+        float:left;
+      }
+
+      .quality {
+        position: relative;
+        float: right;
+      }
+    }
+  }
+
+  .additional-business-info:last-child {
+    height: 2px;
+    padding-bottom: 40px;
+  }
+
+  .descriptions {
+
+    h4 {
+      font-size: 1.33em;
+      margin-top: 45px;
+      margin-bottom: 15px;
+    }
+  }
 }
