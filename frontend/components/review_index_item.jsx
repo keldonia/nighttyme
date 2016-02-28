@@ -31,7 +31,6 @@ var ReviewIndexItem = React.createClass({
 
   render: function() {
     var review = this.props.review;
-    debugger
 
     return (
       <li onClick={this.showDetail} className="review-index-item">

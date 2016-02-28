@@ -95,7 +95,7 @@ user interface.
   - [ ] `BusinessForm`
   - [ ] Business CRUD
   - [x] adding reviews requires a business
-  - [ ] viewing reviews by business
+  - [x] viewing reviews by business
 - Use CSS to style new views
 
 Phase 3 adds organization to the Reviews. Reviews belong to a Business, which has its own `Index` view.
@@ -140,6 +140,7 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 
 ### Bonus Features (TBD)
 - [ ] Review of the day
+- [ ] Delete/edit reviews
 - [ ] New businesses section
 - [ ] Friend other users
 - [ ] Forum Section?

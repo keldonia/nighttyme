@@ -7,30 +7,51 @@ var BusinessIndexItem = React.createClass({
   showDetail: function() {
     this.history.push('/businesses/' + this.props.business.id)
   },
+  priceIndicator: function () {
+    if (this.props.business) {
+      var pricingInfo = this.props.business.price
+      var pricingIndicator = "";
+
+      for (var i = 0; i < pricingInfo; i++) {
+        pricingIndicator += "$";
+      }
+      pricingIndicator += " · "
+
+      return pricingIndicator;
+    }
+  },
 
   render: function() {
     var business = this.props.business;
+    var neighborhoods = business.neighborhoods.replace(/\[|\]|"/g, "");
+    var price = this.priceIndicator();
 
     return (
       <li className="business-index-item">
         <article className="business">
-          <div className="left">
+          <div className="business-quick-info">
             <h4 onClick={this.showDetail} className="business-index-name">{business.name}</h4>
-            <div className="rating" data-rating="2">
-              <i className="star-1">★</i>
-              <i className="star-2">★</i>
-              <i className="star-3">★</i>
-              <i className="star-4">★</i>
-              <i className="star-5">★</i>
+            <div className="ratings-wrapper">
+              <div className="rating" data-rating="2">
+                <i className="star-1">★</i>
+                <i className="star-2">★</i>
+                <i className="star-3">★</i>
+                <i className="star-4">★</i>
+                <i className="star-5">★</i>
+              </div>
+              <h5 className="aggregate-reviews">infinity billion reviews</h5>
             </div>
-            <h5 className="aggregate-reviews">infinity billion reviews</h5>
-            <h5 className="price">{business.price}</h5>
-            <section className="tags">Something</section>
+            <div className="price-tags">
+              <h5 className="price">{price}</h5>
+              <h5 className="tags">Something</h5>
+            </div>
           </div>
           <div className="right">
-            <h5 className="location">{business.location}</h5>
-            <h5 className="neighborhood">{business.neighborhoods}</h5>
-            <h5 className="telephone">{business.telephone_number}</h5>
+            <div className="location-group">
+              <h5 className="neighborhood">{neighborhoods}</h5>
+              <h5 className="location">{business.location}</h5>
+              <h5 className="telephone">{business.telephone_number}</h5>
+            </div>
           </div>
         </article>
 

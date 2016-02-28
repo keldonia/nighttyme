@@ -124,8 +124,11 @@ a.userbutton {
 }
 
 .reviews {
-  width: 60%;
   margin-left: 20px;
+}
+
+.reviews-index {
+  width: 64%;
 }
 
 .review-form-wrapper {
@@ -463,7 +466,7 @@ a.userbutton {
   }
 }
 
-.reviews-index, .left .businesses-index {
+.reviews-index {
   font-family: 'Lato', sans-serif;
 
   .reviews-collection {
@@ -622,4 +625,135 @@ a.userbutton {
   .rating i {
     text-shadow: none;
   }
+}
+
+.business-detail {
+  font-family: 'Lato', sans-serif;
+  color: #726659;
+
+  .topbar {
+    width: 90%;
+    position: relative;
+    margin: auto;
+    clear: both;
+
+    .topbar-spacer {
+      margin-left: 20px;
+      padding-top: 40px;
+    }
+
+    .business-name {
+      font-size: 2em;
+    }
+  }
+}
+
+.business-quick-info {
+
+  .ratings-wrapper {
+    position: relative;
+    clear: both;
+    top: -25px;
+    display: block;
+    float: none;
+
+    .rating, .aggregate-reviews {
+      float:left;
+      position: relative;
+    }
+
+    .aggregate-reviews {
+      padding-left: 20px;
+    }
+  }
+
+  .price-tags {
+    top: -25px;
+    position: relative;
+    clear: both;
+    display: block;
+
+    .price, .tags {
+      float: left;
+      position: relative;
+      margin: 0;
+    }
+
+    .tags {
+      padding-left: 5px;
+      font-weight: 500;
+    }
+  }
+}
+.location-group {
+  float: left;
+  position: relative;
+  clear: both;
+  display: block;
+
+  .neighborhood, .telephone {
+    font-weight: 500;
+  }
+
+  .neighborhood, .telephone, .location {
+    margin: 10px;
+  }
+
+  .telephone {
+    margin-bottom: 30px;
+  }
+}
+
+.business-detail {
+
+  .location-group {
+    top: -10px;
+    margin-right: 20%;
+  }
+}
+.business-index-item {
+  width: 64%;
+
+  .right {
+    float: right;
+    position: relative;
+  }
+
+  .neighborhood, .telephone, .location {
+    text-align: right;
+  }
+
+  .location-group {
+    top: -100px;
+  }
+
+}
+
+.business-index-item:not(:last-child) {
+  border: 0;
+  border-color: #4d4d4d;
+  border-bottom: 1px;
+  border-style: groove;
+  padding-bottom: 20px;
+}
+
+.business-index-item:last-child {
+  padding-bottom: 140px;
+}
+
+.other-business-info {
+  float: right;
+  width: 25%;
+  position: relative;
+  background: #f2f2f2;
+}
+
+.business-detail .reviews-index {
+  float: left;
+  width: 64%;
+  background: #f2f2f2;
+}
+
+.other-business-info {
+  
 }
