@@ -14,9 +14,9 @@ var BusinessApiDispatches = {
       businesses: businesses
     });
   },
-  recieveSingleBusinesses: function(business) {
+  recieveSingleBusiness: function(business) {
     AppDispatcher.dispatch({
-      actionType: ApiConstants.SINGLE_BUINESS,
+      actionType: ApiConstants.SINGLE_BUSINESS,
       business: business
     });
   },

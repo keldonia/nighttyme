@@ -91,7 +91,7 @@ user interface.
 - build out API, Flux loop, and components for:
   - [x] `BusinessesIndex`
   - [x] `BusinessIndexItem`
-  - [ ] `BusinessDetail`
+  - [x] `BusinessDetail`
   - [ ] `BusinessForm`
   - [ ] Business CRUD
   - [x] adding reviews requires a business

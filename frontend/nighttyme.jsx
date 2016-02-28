@@ -30,7 +30,9 @@ var routes = (
     <Route path="businesses" component={Businesses}>
     </Route>
     <Route path="businesses/:id" component={BusinessDetail}>
-      <Route path="reviews" component={Reviews} />
+      <Route path="reviews" component={ReviewsIndex}>
+        <Route path=":id" component={ReviewDetail}/>
+      </Route>
     </Route>
     <Route path="reviews" component={ReviewsIndex}>
       <Route path=":id" component={ReviewDetail}/>

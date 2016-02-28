@@ -24,7 +24,7 @@ var ReviewsIndex = React.createClass({
 
     return (
       <section className="reviews-index">
-        <Reviews reviews={this.state.reviews} reviewId={this.props.params.id}/>
+        <Reviews reviews={this.state.reviews} reviewId={this.props.params.id} businessId={1}/>
       </section>
     );
 

@@ -44,7 +44,6 @@ var ReviewForm = React.createClass({
       }
     }, this)
     var passedReview = {review: review}
-    debugger
     ReviewActions.createSingleReview(passedReview);
     this.blankattrs();
   },
@@ -113,8 +112,8 @@ var ReviewForm = React.createClass({
 
   businessFocusId: function () {
     var businessFocusId;
-    if (window.location.pathname.includes('businesses')) {
-      businessFocusId = this.props.id;
+    if (this.props.businessId) {
+      businessFocusId = this.props.businessId;
     } else {
       businessFocusId = 1;
     }

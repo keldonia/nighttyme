@@ -4,7 +4,6 @@ class Api::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.author_id = current_user.id
-    debugger
     @review.archieved = true
     if @review.save
       render :show

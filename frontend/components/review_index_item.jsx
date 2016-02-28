@@ -5,11 +5,33 @@ var ReviewIndexItem = React.createClass({
   mixins: [History],
 
   showDetail: function() {
-    this.history.push('/reviews/' + this.props.review.id)
+
+    if (window.location.hash.includes('business')) {
+      if (window.location.hash.includes('reviews')) {
+        var pushLocation = /#(\/businesses\/\d*\/reviews\/)*/.exec(window.location.hash)[0].slice(1)
+        this.history.push(pushLocation + this.props.review.id);
+      } else {
+        var pushLocation = /#([^\?])*/.exec(window.location.hash)[0].slice(1) + "/reviews/"
+        this.history.push(pushLocation + this.props.review.id);
+      }
+    } else {
+      this.history.push('/reviews/' + this.props.review.id);
+    }
+  },
+  businessFocusId: function () {
+    var businessFocusId;
+    debugger
+    if (window.location.hash.includes('business')) {
+      businessFocusId = this.props.businessId;
+    } else {
+      businessFocusId = 1;
+    }
+    return businessFocusId;
   },
 
   render: function() {
     var review = this.props.review;
+    debugger
 
     return (
       <li onClick={this.showDetail} className="review-index-item">

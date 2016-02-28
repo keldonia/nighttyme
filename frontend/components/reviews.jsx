@@ -39,15 +39,27 @@ var Reviews = React.createClass({
 
   reviewForm: function () {
     var reviewForm;
+    var businessId = this.businessId();
     if (window.user) {
-      reviewForm = <ReviewForm />;
+      reviewForm = <ReviewForm businessId={businessId}/>;
     }
     return reviewForm;
   },
 
+  reviewCleanUp: function () {
+    var reviewsClean = this.props.reviews;
+
+    if (Array.isArray(reviewsClean) === false) {
+      reviewsClean = Object.keys(reviewsClean).map( function (id) {
+        return reviewsClean[id];
+      });
+    }
+    return reviewsClean;
+  },
+
   orderReviews: function() {
-    debugger
-    var reviews = this.props.reviews;
+    var reviews = this.reviewCleanUp();
+
     return reviews.map( function(currentReview) {
       if (currentReview.id !== parseInt(this.props.reviewId)) {
         return <ReviewIndexItem key={currentReview.id} review={currentReview} />;
@@ -55,7 +67,17 @@ var Reviews = React.createClass({
         return <ReviewDetail key={currentReview.id} review={currentReview} />;
       }
     }, this);
-  }
+  },
+
+  businessId: function () {
+    var businessFocusId;
+    if (window.location.hash.includes('business')) {
+      businessFocusId = this.props.businessId;
+    } else {
+      businessFocusId = 1;
+    }
+    return businessFocusId;
+  },
 });
 
 
