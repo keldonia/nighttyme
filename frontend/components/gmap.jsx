@@ -58,6 +58,7 @@ var GMap = React.createClass({
   addBusiness: function (business) {
     if (this.markers[business.id]) {
     } else {
+      var that = this;
       var pos = new google.maps.LatLng(business.latitude, business.longitude);
       marker = new google.maps.Marker({
         position: pos,
@@ -65,17 +66,37 @@ var GMap = React.createClass({
       });
       marker.setMap(this.map);
       marker.setIcon("http://maps.google.com/mapfiles/ms/icons/bar.png");
-
+      marker.hoverListener = marker.addListener('mouseover', this.handleMarkerHover.bind(this, business, marker));
       var markerHolder = {id: business.id, marker: marker};
       this.markers[business.id] = markerHolder;
     }
+  },
+  handleMarkerHover: function (business, marker) {
+    var contentString =
+    '<div id="content">' +
+    '<div id="siteNotice"' +
+    '</div>' +
+    '<h4 id="firstHeading" class="firstHeading">' +
+    business.name +
+    '</h4>' +
+    '</div';
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var that = this;
+
+    infowindow.open(this.map, marker);
+    marker.addListener('mouseout', function () {
+      infowindow.close(that.map, marker);
+    });
   },
   removeMarker: function (markerHolder) {
     var marker = markerHolder.marker;
     var bounds = this.map.getBounds();
     if (bounds) {
       if (bounds.contains(marker.getPosition()) === false) {
-        // google.maps.event.removeListener
+        google.maps.event.clearListeners(marker);
         markerHolder.marker.setMap(null);
         delete this.markers[markerHolder.id];
       }

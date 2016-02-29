@@ -34,6 +34,8 @@ class Api::BusinessesController < ApplicationController
         @businesses = @businesses.where(price: price_range)
       end
 
+      @businesses.includes({reviews: [:average_rating, :num_reviews]})
+      
       if params[:rating]
         @businesses = @businesses.where(average_rating: rating_range)
       end
@@ -48,7 +50,6 @@ class Api::BusinessesController < ApplicationController
         @businesses = @businesses.where(tags: params[:tags])
       end
 
-      @businesses.includes({reviews: [:average_rating, :num_reviews]})
 
       render :index
     end

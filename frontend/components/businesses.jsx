@@ -5,6 +5,7 @@ var BusinessIndexItem = require('./business_index_item');
 var BusinessActions = require('../actions/business_api_action_creators');
 var ApiUtil = require('../util/api_util');
 var GMap = require('./gmap');
+var Search = require('./search');
 var React = require('react');
 
 var Businesses = React.createClass({
