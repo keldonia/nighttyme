@@ -18,6 +18,7 @@ var Reviews = React.createClass({
 
     return (
       <section className="reviews group">
+        <div className="spacer group"></div>
         {reviewForm}
         <h2 className="reviews-collection">Fresh Reviews</h2>
         <section className="reviews-collection-index">

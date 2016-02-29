@@ -15,7 +15,7 @@ var BusinessIndexItem = React.createClass({
       for (var i = 0; i < pricingInfo; i++) {
         pricingIndicator += "$";
       }
-      pricingIndicator += " · "
+      pricingIndicator += "  · "
 
       return pricingIndicator;
     }
@@ -36,6 +36,8 @@ var BusinessIndexItem = React.createClass({
     var neighborhoods = business.neighborhoods.replace(/\[|\]|"/g, "");
     var price = this.priceIndicator();
     var tags = this.tags();
+    var rating = business.average_rating
+    var num_reviews = business.num_reviews + " Reviews"
 
     return (
       <li className="business-index-item">
@@ -43,14 +45,14 @@ var BusinessIndexItem = React.createClass({
           <div className="business-quick-info">
             <h4 onClick={this.showDetail} className="business-index-name">{business.name}</h4>
             <div className="ratings-wrapper">
-              <div className="rating" data-rating="2">
+              <div className="rating" data-rating={rating}>
                 <i className="star-1">★</i>
                 <i className="star-2">★</i>
                 <i className="star-3">★</i>
                 <i className="star-4">★</i>
                 <i className="star-5">★</i>
               </div>
-              <h5 className="aggregate-reviews">infinity billion reviews</h5>
+              <h5 className="aggregate-reviews">{num_reviews}</h5>
             </div>
             <div className="price-tags">
               <h5 className="price">{price}</h5>

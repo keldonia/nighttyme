@@ -21,10 +21,12 @@ var BusinessDetail = require('./components/business_detail');
 var BusinessStore = require('./stores/business');
 var ReviewsStore = require('./stores/reviews');
 var ErrorStore = require('./stores/errors');
+var FilterParamsStore = require('./stores/filter');
 
 window.ApiUtil = ApiUtil;
 window.BusinessStore = BusinessStore;
 window.ReviewsStore = ReviewsStore;
+window.FilterParamsStore = FilterParamsStore;
 
 var routes = (
   <Route path="/" component={App}>

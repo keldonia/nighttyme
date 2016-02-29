@@ -2,6 +2,7 @@ var ApiConstants = require('../constants/api_constants');
 var ApiActions = require('../actions/api_actions');
 var ReviewApiDispatchs = require('../actions/reviews_api_dispatchs');
 var BusinessApiDispatchs = require('../actions/business_api_dispatchs');
+var FilterParamsStore = require('../stores/filter');
 
 var ApiUtil = {
   fetchAllBusinesses: function() {
@@ -17,9 +18,13 @@ var ApiUtil = {
       }
     });
   },
+  fetchBusinesses: function (searchCriteria) {
+    var filter = FilterParamsStore.params();
+    $.get('api/businesses', filter);
+  },
   fetchAbrigedBusinesses: function() {
     $.ajax ({
-      methid: "GET",
+      method: "GET",
       url: "api/businesses?abridged=true",
       dataType: 'json',
       success: function (responseText) {

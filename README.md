@@ -114,7 +114,6 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 - [ ] fetching tags for review
 - [ ] adding tags to review
 - [ ] creating tags while adding to reviews
-- [ ] searching reviews by tag
 - [ ] Style new elements
 
 

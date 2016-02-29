@@ -4,6 +4,7 @@ var ErrorStore = require('../stores/errors');
 var BusinessIndexItem = require('./business_index_item');
 var BusinessActions = require('../actions/business_api_action_creators');
 var ApiUtil = require('../util/api_util');
+var GMap = require('./gmap');
 var React = require('react');
 
 var Businesses = React.createClass({
@@ -25,7 +26,8 @@ var Businesses = React.createClass({
     var businesses = this.orderBusinesses();
 
     return (
-      <section>
+      <section className='businesses-component'>
+        <GMap />
         <div className="business-index">
           <ul>
             {businesses}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 <head>
   <title>Nighttyme</title>
@@ -6,6 +6,9 @@
   <%= javascript_include_tag 'application' %>
   <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
+  <script
+     src="https://maps.googleapis.com/maps/api/js?key=<%= Figaro.env.google_maps_api_key %>">
+   </script>
 </head>
 <header>
   <% if logged_in? %>

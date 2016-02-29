@@ -32,4 +32,31 @@ class Business < ActiveRecord::Base
   has_many :tags
 
   accepts_nested_attributes_for :hour, :bussinessattribute
+
+  def self.in_bounds(bounds)
+    max_lat = bounds['northEast']['lat'].to_f
+    min_lat = bounds['southWest']['lat'].to_f
+    min_lng = bounds['southWest']['lng'].to_f
+    max_lng = bounds['northEast']['lng'].to_f
+
+    Bench.where("lat BETWEEN #{min_lat} AND #{max_lat}")
+      .where("lng BETWEEN #{min_lng} AND #{max_lng}")
+  end
+
+  def ordered_reviews
+    reviews.order(created_at: :desc)
+  end
+
+  def average_rating
+    reviews.average(:stars)
+  end
+
+  def num_reviews
+    reviews.count(:reviews)
+  end
+
+  def review_writer
+    reviews.includes(:user)
+  end
+
 end

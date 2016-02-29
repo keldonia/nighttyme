@@ -10,7 +10,7 @@ class Api::BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.where(id: params[:id]).includes(:reviews, :hour, :bussinessattribute, :tags).first
+    @business = Business.where(id: params[:id]).includes({reviews: [:user]}, :hour, :bussinessattribute, :tags,).first
     render :show
   end
 
@@ -19,7 +19,37 @@ class Api::BusinessesController < ApplicationController
       @businesses = Business.all.select(:id, :name)
       render :abridged
     else
-      @businesses = Business.all.includes(:tags) #to change with search
+      @businesses = Business.all #to change with search
+
+      if bounds
+        @businesses = Business.in_bounds(bounds).includes(:tags)
+      end
+
+
+      if params[:attributes]
+        @businesses = @businesses.where(attributes: params[:attributes])
+      end
+
+      if params[:price]
+        @businesses = @businesses.where(price: price_range)
+      end
+
+      if params[:rating]
+        @businesses = @businesses.where(average_rating: rating_range)
+      end
+
+      # if params[:num_reviews]
+      #   @businesses = @businesses.includes(:num_reviews)
+      # end
+
+      @businesses = @businesses.includes(:tags)
+
+      if params[:tags]
+        @businesses = @businesses.where(tags: params[:tags])
+      end
+
+      @businesses.includes({reviews: [:average_rating, :num_reviews]})
+
       render :index
     end
   end
@@ -40,6 +70,18 @@ class Api::BusinessesController < ApplicationController
   end
 
   private
+
+  def bounds
+    params[:bounds]
+  end
+
+  def price_range
+    (params[:price][0]..params[:price][1])
+  end
+
+  def rating_range
+    (params[:rating][0]..params[:rating][1])
+  end
 
   def business_params
     params.require(business).permit(

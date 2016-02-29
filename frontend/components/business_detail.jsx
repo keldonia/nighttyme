@@ -93,7 +93,7 @@ var BusinessDetail = React.createClass({
     for (var i = 0; i < pricingInfo; i++) {
       pricingIndicator += "$";
     }
-    pricingIndicator += " · "
+    pricingIndicator += "  · "
 
     return pricingIndicator;
   },
@@ -106,7 +106,8 @@ var BusinessDetail = React.createClass({
     var tags = this.tags();
     var neighborhoods = this.neighborhood();
     var price = this.priceIndicator();
-    // debugger
+    var rating = business.average_rating
+    var num_reviews = business.num_reviews + " Reviews"
 
     return (
       <article className="business-detail">
@@ -115,14 +116,14 @@ var BusinessDetail = React.createClass({
             <div className="business-quick-info">
               <h2 className="business-name">{business.name}</h2>
               <div className="ratings-wrapper">
-                <div className="rating" data-rating="2">
+                <div className="rating" data-rating={rating}>
                   <i className="star-1">★</i>
                   <i className="star-2">★</i>
                   <i className="star-3">★</i>
                   <i className="star-4">★</i>
                   <i className="star-5">★</i>
                 </div>
-                <h4 className="aggregate-reviews">infinity billion reviews</h4>
+                <h4 className="aggregate-reviews">{num_reviews}</h4>
               </div>
               <div className="price-tags">
                 <h4 className="price">{price}</h4>

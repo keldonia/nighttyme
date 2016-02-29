@@ -28,6 +28,7 @@
   :pool_table
 ]
 
+
 json.id                 business.id
 json.name               business.name
 json.location           business.location
@@ -36,6 +37,8 @@ json.latitude           business.latitude
 json.longitude          business.longitude
 json.price              business.price
 json.telephone_number   business.telephone_number
+json.average_rating     (business.average_rating * 2).round / 2
+json.num_reviews        business.num_reviews
 
 json.tags do
   business.tags.each do |tag|
@@ -49,8 +52,8 @@ if params[:business_id] || params[:id]
   json.website            business.website
 
   json.reviews do
-    business.reviews.each do |review|
-      json.set! review.id, review
+    business.ordered_reviews.each_with_index do |review, idx|
+      json.set! idx, review
     end
   end
 
