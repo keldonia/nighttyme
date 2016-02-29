@@ -37,8 +37,8 @@ json.latitude           business.latitude
 json.longitude          business.longitude
 json.price              business.price
 json.telephone_number   business.telephone_number
-json.average_rating     (business.average_rating * 2).round / 2
-json.num_reviews        business.num_reviews
+json.average_rating     (business.avg_stars.to_f * 2).round / 2
+json.num_reviews        business.num_stars
 
 json.tags do
   business.tags.each do |tag|
@@ -56,6 +56,11 @@ if params[:business_id] || params[:id]
       json.set! idx, review
     end
   end
+
+  # json.set! idx, review do |review|
+  #   json.review review
+  #   json.review_author review.user.username
+  # end
 
   json.hour_attributes do
     @days.each do |day|

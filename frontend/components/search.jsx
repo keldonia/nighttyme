@@ -27,6 +27,7 @@ var Search = React.createClass({
 
   _filtersChanged: function () {
     this.setState({ filterParams: _getFilterParams() });
+    BusinessActions.fetchBusinesses();
   },
 
   componentDidMount: function () {

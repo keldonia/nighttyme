@@ -10,7 +10,11 @@ class Api::BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.where(id: params[:id]).includes({reviews: [:user]}, :hour, :bussinessattribute, :tags,).first
+    @business = Business.where(id: params[:id])
+      .includes(:hour, :bussinessattribute, :tags)
+      .joins(:reviews)
+      .joins({ reviews: :user} )
+      .first
     render :show
   end
 
@@ -22,7 +26,7 @@ class Api::BusinessesController < ApplicationController
       @businesses = Business.all #to change with search
 
       if bounds
-        @businesses = Business.in_bounds(bounds).includes(:tags)
+        @businesses = Business.in_bounds(bounds)
       end
 
 
@@ -34,10 +38,15 @@ class Api::BusinessesController < ApplicationController
         @businesses = @businesses.where(price: price_range)
       end
 
-      @businesses.includes({reviews: [:average_rating, :num_reviews]})
-      
+      @businesses = @businesses
+        .joins(:reviews)
+        .group('businesses.id')
+        .select('businesses.*, AVG(reviews.stars) AS avg_stars, COUNT(reviews.stars) AS num_stars')
+
       if params[:rating]
-        @businesses = @businesses.where(average_rating: rating_range)
+        @businesses = @businesses.joins(:reviews)
+        .group(:id)
+        .having("avg(stars) BETWEEN ? AND ?", params[:rating][0], params[:rating][1])
       end
 
       # if params[:num_reviews]

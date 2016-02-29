@@ -39,8 +39,8 @@ class Business < ActiveRecord::Base
     min_lng = bounds['southWest']['lng'].to_f
     max_lng = bounds['northEast']['lng'].to_f
 
-    Bench.where("lat BETWEEN #{min_lat} AND #{max_lat}")
-      .where("lng BETWEEN #{min_lng} AND #{max_lng}")
+    Business.where("businesses.latitude BETWEEN #{min_lat} AND #{max_lat}")
+      .where("businesses.longitude BETWEEN #{min_lng} AND #{max_lng}")
   end
 
   def ordered_reviews

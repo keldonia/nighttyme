@@ -14,7 +14,6 @@ var Businesses = React.createClass({
   },
   componentDidMount: function() {
     this.businessListener = BusinessStore.addListener(this._onChange);
-    BusinessActions.fetchAllBusinesses();
   },
   componentWillUnmount: function () {
     this.businessListener.remove();
@@ -29,6 +28,7 @@ var Businesses = React.createClass({
     return (
       <section className='businesses-component'>
         <GMap />
+        <Search />
         <div className="business-index">
           <ul>
             {businesses}

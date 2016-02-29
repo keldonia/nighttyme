@@ -14,7 +14,12 @@ var ReviewDetail = React.createClass({
   },
   componentDidMount: function () {
     this.reviewsListener = ReviewsStore.addListener(this._onChange);
-    ReviewActions.fetchSingleReview(parseInt(this.props.review.id));
+  },
+  componentWillReceiveProps: function () {
+    var review = this.props.review;
+    if (review) {
+      this.setState({ review: review })
+    }
   },
   componentWillUnmount: function () {
     this.reviewsListener.remove();

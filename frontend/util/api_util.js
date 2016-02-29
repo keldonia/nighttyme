@@ -20,7 +20,9 @@ var ApiUtil = {
   },
   fetchBusinesses: function (searchCriteria) {
     var filter = FilterParamsStore.params();
-    $.get('api/businesses', filter);
+    $.get('api/businesses', filter, function(businesses) {
+      BusinessApiDispatchs.recieveAllBusinesses(businesses);
+    });
   },
   fetchAbrigedBusinesses: function() {
     $.ajax ({

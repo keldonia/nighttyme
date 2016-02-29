@@ -113,8 +113,8 @@ var GMap = React.createClass({
         northEastx.lng = bounds.getNorthEast().lng();
         southWestx.lat = bounds.getSouthWest().lat();
         southWestx.lng = bounds.getSouthWest().lng();
-        var bounding_box = { bounds: { northEast: northEastx, southWestx: southWestx }};
-        FilterActions.updateBounds(bounds);
+        var bounding_box = { bounds: { northEast: northEastx, southWest: southWestx }};
+        FilterActions.updateBounds({ northEast: northEastx, southWest: southWestx });
       }
     });
   },

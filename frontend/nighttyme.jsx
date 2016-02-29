@@ -22,11 +22,13 @@ var BusinessStore = require('./stores/business');
 var ReviewsStore = require('./stores/reviews');
 var ErrorStore = require('./stores/errors');
 var FilterParamsStore = require('./stores/filter');
+var BusinessActions = require('./actions/business_api_action_creators');
 
 window.ApiUtil = ApiUtil;
 window.BusinessStore = BusinessStore;
 window.ReviewsStore = ReviewsStore;
 window.FilterParamsStore = FilterParamsStore;
+window.BusienssActions = BusinessActions;
 
 var routes = (
   <Route path="/" component={App}>
