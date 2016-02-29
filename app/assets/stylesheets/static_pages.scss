@@ -129,6 +129,7 @@ a.userbutton {
 
 .reviews-index {
   width: 64%;
+  min-width: 450px;
 }
 
 .review-form-wrapper {
@@ -468,6 +469,7 @@ a.userbutton {
 
 .reviews-index {
   font-family: 'Lato', sans-serif;
+  display: inline-block;
 
   .reviews-collection {
     margin-left: 20px;
@@ -497,7 +499,6 @@ a.userbutton {
 
   .review-index-item {
     color: #4d4d4d;
-
 
     .review-index-body {
       padding: 0 3% 2% 0;
@@ -644,6 +645,7 @@ a.userbutton {
 
     .business-name {
       font-size: 2em;
+      color: #8c001a;
     }
   }
 }
@@ -680,8 +682,13 @@ a.userbutton {
     }
 
     .tags {
-      padding-left: 5px;
       font-weight: 500;
+
+      a {
+        padding-left: 10px;
+        text-decoration: none;
+        color: #8c001a;
+      }
     }
   }
 }
@@ -708,7 +715,7 @@ a.userbutton {
 
   .location-group {
     top: -10px;
-    margin-right: 20%;
+    margin-right: 40%;
   }
 }
 .business-index-item {
@@ -721,6 +728,8 @@ a.userbutton {
 
   .neighborhood, .telephone, .location {
     text-align: right;
+    top: 10px;
+    position: relative;
   }
 
   .location-group {
@@ -729,16 +738,50 @@ a.userbutton {
 
 }
 
-.business-index-item:not(:last-child) {
+.business-index {
+  float: left;
+  width: 55%;
+  min-width: 450px;
+  display: inline-block;
+
+  ul {
+    width: 100%;
+    margin-right: 0;
+    display: inline-block;
+  }
+
+  .business-index-item {
+    margin-right: 0;
+    display: inline;
+
+    .neighborhood {
+      margin-top: 0;
+    }
+
+  }
+
+  .business-index-name {
+    color: #8c001a;
+  }
+
+  .business-index-name:hover {
+    cursor: pointer;
+  }
+
+  .business-index-item:not(:first-child) h4 {
+    margin-bottom: 5px;
+    top: 10px;
+    position: relative;
+  }
+
+}
+
+.business {
   border: 0;
   border-color: #4d4d4d;
   border-bottom: 1px;
   border-style: groove;
-  padding-bottom: 20px;
-}
-
-.business-index-item:last-child {
-  padding-bottom: 140px;
+  padding-bottom: 10px;
 }
 
 .business-detail .reviews-index {
@@ -816,6 +859,7 @@ a.userbutton {
       .quality {
         position: relative;
         float: right;
+        font-weight: 700;
       }
     }
   }

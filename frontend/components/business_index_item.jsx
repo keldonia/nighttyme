@@ -20,11 +20,22 @@ var BusinessIndexItem = React.createClass({
       return pricingIndicator;
     }
   },
+  tags: function () {
+    if (this.props.business) {
+      var tags = this.props.business.tags
+      return Object.keys(tags).map( function (tag, idx) {
+        var name = tags[tag].name.replace(/(\b[a-z](?!\s))/g,
+          function(x) {return x.toUpperCase();});
+        return <a href="#" key={idx}>{name}</a>;
+      });
+    }
+  },
 
   render: function() {
     var business = this.props.business;
     var neighborhoods = business.neighborhoods.replace(/\[|\]|"/g, "");
     var price = this.priceIndicator();
+    var tags = this.tags();
 
     return (
       <li className="business-index-item">
@@ -43,7 +54,7 @@ var BusinessIndexItem = React.createClass({
             </div>
             <div className="price-tags">
               <h5 className="price">{price}</h5>
-              <h5 className="tags">Something</h5>
+              <h5 className="tags">{tags}</h5>
             </div>
           </div>
           <div className="right">

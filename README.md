@@ -92,11 +92,9 @@ user interface.
   - [x] `BusinessesIndex`
   - [x] `BusinessIndexItem`
   - [x] `BusinessDetail`
-  - [ ] `BusinessForm`
-  - [ ] Business CRUD
   - [x] adding reviews requires a business
   - [x] viewing reviews by business
-- Use CSS to style new views
+- [x] Use CSS to style new views
 
 Phase 3 adds organization to the Reviews. Reviews belong to a Business, which has its own `Index` view.
 
@@ -104,13 +102,11 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 
 **Objective:** Businesses can be tagged with multiple tags, and tags are searchable.
 
-- [ ] create `Tag` model and join table
+- [x] create `Tag` model
 - build out API, Flux loop, and components for:
-  - [ ] fetching tags for business
-  - [ ] adding tags to business
-  - [ ] creating tags while adding to businesses
+  - [x] fetching tags for business
   - [ ] searching businesses by tag
-- [ ] Style new elements
+- [x] Style new elements
 
 **Objective:** Reviews can liked.
 - [ ] create `ReviewTag` model and join table

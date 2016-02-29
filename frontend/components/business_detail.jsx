@@ -19,7 +19,16 @@ var BusinessDetail = React.createClass({
   _onChange: function () {
     this.setState({ business: BusinessStore.singleBusiness() });
   },
-
+  tags: function () {
+    var tags = this.state.business.tags
+    if (tags) {
+      return Object.keys(tags).map( function (tag, idx) {
+        var name = tags[tag].name.replace(/(\b[a-z](?!\s))/g,
+          function(x) {return x.toUpperCase();});
+        return <a href="#" key={idx}>{name}</a>;
+      });
+    }
+  },
   hours: function () {
     var days = this.state.business.hour_attributes
     if (days) {
@@ -94,8 +103,10 @@ var BusinessDetail = React.createClass({
     var hours = this.hours();
     var additionalBusinessInfo = this.additionalInfo();
     var reviews = this.reviewItems();
+    var tags = this.tags();
     var neighborhoods = this.neighborhood();
     var price = this.priceIndicator();
+    // debugger
 
     return (
       <article className="business-detail">
@@ -115,7 +126,7 @@ var BusinessDetail = React.createClass({
               </div>
               <div className="price-tags">
                 <h4 className="price">{price}</h4>
-                <h4 className="tags">Something</h4>
+                <div className="tags">{tags}</div>
               </div>
             </div>
             <section className="location-group">

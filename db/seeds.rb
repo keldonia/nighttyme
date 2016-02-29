@@ -229,13 +229,25 @@ Business.create(
 )
 
 reviewsgen = 60.times.map { |i| {
-  author_id: rand(1..21).to_i,
-  business_id: rand(1..6).to_i,
-  title: Faker::Hipster.sentence(4, false, 6).to_s,
-  stars: rand(0..5),
-  body: Faker::Hipster.paragraphs(rand(1..4).to_i).join(" "),
-  archieved: 1
-}
+    author_id: rand(1..20).to_i,
+    business_id: rand(1..5).to_i,
+    title: Faker::Hipster.sentence(4, false, 6).to_s,
+    stars: rand(0..5),
+    body: Faker::Hipster.paragraphs(rand(1..4).to_i).join(" "),
+    archieved: 1
+  }
 }
 
 Review.create!(reviewsgen)
+
+tag_names = ['pub', 'english pub', 'night club', 'jazz club', 'lounge',
+  'biergarden', 'dancehall', 'club'
+]
+
+tagsgen = 8.times.map { |i| {
+    business_id: (i % 5 + 1).to_i,
+    name: tag_names[i]
+  }
+}
+
+Tag.create!(tagsgen)

@@ -9,4 +9,5 @@ blockquote, figure, pre {
 
 li {
 	list-style: none;
+	margin: 0;
 }

@@ -25,10 +25,13 @@ var Businesses = React.createClass({
     var businesses = this.orderBusinesses();
 
     return (
-      <section className="business-index">
-        <ul>
-          {businesses}
-        </ul>
+      <section>
+        <div className="business-index">
+          <ul>
+            {businesses}
+          </ul>
+        </div>
+        <div className="group"></div>
       </section>
     );
   },

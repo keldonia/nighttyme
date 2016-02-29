@@ -30,7 +30,6 @@
 
 json.id                 business.id
 json.name               business.name
-json.description        business.description
 json.location           business.location
 json.neighborhoods      business.neighborhoods
 json.latitude           business.latitude
@@ -38,7 +37,14 @@ json.longitude          business.longitude
 json.price              business.price
 json.telephone_number   business.telephone_number
 
+json.tags do
+  business.tags.each do |tag|
+    json.set! tag.id, tag
+  end
+end
+
 if params[:business_id] || params[:id]
+  json.description        business.description
   json.email              business.email
   json.website            business.website
 

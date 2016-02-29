@@ -37,14 +37,11 @@ var ReviewForm = React.createClass({
     var review = {};
     var keys = Object.keys(this.state).slice(1);
     keys.forEach(function (key) {
-      if (key === 'stars') {
-        review[key] = parseInt(this.state[key]);
-      } else {
-        review[key] = this.state[key];
-      }
+      review[key] = this.state[key];
     }, this)
     var passedReview = {review: review}
     ReviewActions.createSingleReview(passedReview);
+    BusinessActions.fetchSingleBusiness(this.state.business_id);
     this.blankattrs();
   },
 

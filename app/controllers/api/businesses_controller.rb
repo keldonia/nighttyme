@@ -10,7 +10,7 @@ class Api::BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.where(id: params[:id]).includes(:reviews, :hour, :bussinessattribute).first
+    @business = Business.where(id: params[:id]).includes(:reviews, :hour, :bussinessattribute, :tags).first
     render :show
   end
 
@@ -19,7 +19,7 @@ class Api::BusinessesController < ApplicationController
       @businesses = Business.all.select(:id, :name)
       render :abridged
     else
-      @businesses = Business.all #to change with search
+      @businesses = Business.all.includes(:tags) #to change with search
       render :index
     end
   end

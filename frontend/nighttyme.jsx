@@ -17,6 +17,7 @@ var ReviewDetail = require('./components/review_detail');
 var Businesses = require('./components/businesses');
 var BusinessDetail = require('./components/business_detail');
 
+
 var BusinessStore = require('./stores/business');
 var ReviewsStore = require('./stores/reviews');
 var ErrorStore = require('./stores/errors');
