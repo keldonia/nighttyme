@@ -31,6 +31,12 @@ var FilterActions = {
       actionType: FilterConstants.UPDATE_RATING,
       price: price
     });
+  },
+  resetFilters: function () {
+    AppDispatcher.dispatch({
+      actionType: FilterConstants.RESET_SEARCH,
+      reset: 'reset'
+    });
   }
 };
 

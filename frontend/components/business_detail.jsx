@@ -3,9 +3,13 @@ var ReviewsStore = require('../stores/reviews');
 var ReviewActions = require('../actions/reviews_api_action_creators');
 var BusinessActions = require('../actions/business_api_action_creators');
 var BusinessStore = require('../stores/business');
+var FilterActions = require('../actions/filter_actions');
 var Reviews = require('./reviews');
+var History = require('react-router').History;
 
 var BusinessDetail = React.createClass({
+  mixins: [History],
+
   getInitialState: function () {
     return ({ business: BusinessStore.singleBusiness() });
   },
@@ -21,7 +25,9 @@ var BusinessDetail = React.createClass({
   },
   searchOnTag: function(e) {
     e.preventDefault();
-    console.log(e);
+    var tag = e.target.id;
+    FilterActions.updateTags(tag);
+    this.history.push('/businesses');
   },
   tags: function () {
     var tags = this.state.business.tags
@@ -30,7 +36,7 @@ var BusinessDetail = React.createClass({
       return Object.keys(tags).map( function (tag, idx) {
         var name = tags[tag].name.replace(/(\b[a-z](?!\s))/g,
           function(x) {return x.toUpperCase();});
-        return <div className="tag" onClick={that.searchOnTag} key={idx}>{name}</div>;
+        return <div className="tag" id={tags[tag].name} onClick={that.searchOnTag} key={idx}>{name}</div>;
       });
     }
   },

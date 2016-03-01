@@ -30,6 +30,10 @@ var Search = React.createClass({
     BusinessActions.fetchBusinesses();
   },
 
+  resetFilters: function () {
+    FilterActions.resetFilters();
+  },
+
   componentDidMount: function () {
     this.businessListener = BusinessStore.addListener(this._businessesChanged);
     this.filterListener = FilterParamsStore.addListener(this._filtersChanged);
@@ -43,7 +47,12 @@ var Search = React.createClass({
 
   render: function() {
     return (
-      <div className="searcher">
+      <div className="search">
+        <section className="search-input-collection">
+          <div className="reset-search-wrapper">
+            <button className="reset-search" onClick={this.resetFilters}>Reset Search</button>
+          </div>
+        </section>
       </div>
     );
   }

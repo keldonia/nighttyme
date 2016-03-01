@@ -10,9 +10,9 @@ var BusinessIndexItem = React.createClass({
   },
   searchOnTag: function(e) {
     e.preventDefault();
-    console.log(e);
+    var tag = e.target.id;
+    FilterActions.updateTags(tag);
   },
-
   priceIndicator: function () {
     if (this.props.business) {
       var pricingInfo = this.props.business.price
@@ -33,7 +33,7 @@ var BusinessIndexItem = React.createClass({
       return Object.keys(tags).map( function (tag, idx) {
         var name = tags[tag].name.replace(/(\b[a-z](?!\s))/g,
           function(x) {return x.toUpperCase();});
-        return <div className="tag" onClick={that.searchOnTag} key={idx}>{name}</div>;
+        return <div className="tag" id={tags[tag].name} onClick={that.searchOnTag} key={idx}>{name}</div>;
       });
     }
   },

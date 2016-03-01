@@ -37,11 +37,19 @@ class Api::BusinessesController < ApplicationController
 
 
       if params[:attributes]
+
         @businesses = @businesses.where(attributes: params[:attributes])
       end
 
       if params[:price]
         @businesses = @businesses.where(price: price_range)
+      end
+
+
+      if params[:tags]
+        @businesses = @businesses.joins(:tags).where('tags.name = ?', params[:tags])
+      else
+        @businesses = @businesses.joins(:tags)
       end
 
       @businesses = @businesses
@@ -59,11 +67,7 @@ class Api::BusinessesController < ApplicationController
       #   @businesses = @businesses.includes(:num_reviews)
       # end
 
-      @businesses = @businesses.includes(:tags)
-
-      if params[:tags]
-        @businesses = @businesses.where(tags: params[:tags])
-      end
+      # @tags = @businesses.joins(:tags).select()
 
 
       render :index

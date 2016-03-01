@@ -27,8 +27,10 @@ var Businesses = React.createClass({
 
     return (
       <section className='businesses-component'>
-        <GMap />
-        <Search />
+        <div className="map-search">
+          <GMap />
+          <Search />
+        </div>
         <div className="business-index">
           <ul>
             {businesses}
