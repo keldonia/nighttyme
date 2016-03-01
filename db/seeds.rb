@@ -16,8 +16,10 @@ usersgen = 20.times.map { |i|
 
 User.create!(usersgen)
 
+user_ids = User.all.map { |user| user.id  }
+
 Business.create!(
-  owner_id: 1,
+  owner_id: user_ids.sample,
   name: "The Black Horse London Pub",
   description: "I was out with my dog in SF and wanted to find a dog-friendly place to have a beer...",
   location: "San Francisco",
@@ -59,7 +61,7 @@ Business.create!(
 )
 
 Business.create(
-  owner_id: 2,
+  owner_id: user_ids.sample,
   name: "The Social Study",
   description: "Dimly lit spot that is hidden from main view and I love the charm that this mini bar with seating exudes.",
   location: "San Francisco",
@@ -103,7 +105,7 @@ Business.create(
 )
 
 Business.create(
-  owner_id: 3,
+  owner_id: user_ids.sample,
   name: "Smuggler's Cove",
   description: "Heard about this place from my new and absolutely fabulous stylist. Her husband had done designed the whole inside of Smuggler's Cove...",
   location: "San Francisco",
@@ -145,7 +147,7 @@ Business.create(
 )
 
 Business.create(
-  owner_id: 4,
+  owner_id: user_ids.sample,
   name: "Benjamin Cooper",
   description: "These folks know what they are doing. They take great pride in their work and know their business. I had an excellent Manhattan while I sat at the bar....",
   location: "San Francisco",
@@ -187,7 +189,7 @@ Business.create(
 )
 
 Business.create(
-  owner_id: 5,
+  owner_id: user_ids.sample,
   name: "Third Rail",
   description: "Met some friends here to catch up over drinks, and we were pleasantly surprised to discover the Rail Shot",
   location: "San Francisco",
@@ -228,9 +230,12 @@ Business.create(
   }
 )
 
+business_ids = Business.all.map { |business| business.id  }
+
+
 reviewsgen = 60.times.map { |i| {
-    author_id: rand(1..20).to_i,
-    business_id: rand(1..5).to_i,
+    author_id: user_ids.sample,
+    business_id: business_ids.sample,
     title: Faker::Hipster.sentence(4, false, 6).to_s,
     stars: rand(0..5),
     body: Faker::Hipster.paragraphs(rand(1..4).to_i).join(" "),
@@ -245,7 +250,7 @@ tag_names = ['pub', 'english pub', 'night club', 'jazz club', 'lounge',
 ]
 
 tagsgen = 15.times.map { |i| {
-    business_id: (i % 5 + 1).to_i,
+    business_id: business_ids.sample,
     name: tag_names[i % 8]
   }
 }
