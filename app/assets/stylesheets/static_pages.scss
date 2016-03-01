@@ -150,6 +150,13 @@ a.userbutton {
     padding: 0px 15px;
     width: 94%;
     color: #4d4d4d;
+
+    .rating {
+      position: relative;
+      margin: auto;
+      width: 35%;
+
+    }
   }
 
   .stars-holder:hover {

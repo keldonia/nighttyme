@@ -47,10 +47,30 @@ var Search = React.createClass({
   searchMinStars: function (e) {
     e.preventDefault();
     var val = e.target.value;
-    console.log(val);
+    FilterActions.updateRating([val,5]);
+  },
+  searchMaxPrice: function (e) {
+    e.preventDefault();
+    var val = e.target.value;
+    FilterActions.updatePrice([1,val]);
+  },
+  priceIndicator: function () {
+    if (this.state.filterParams) {
+      var pricingInfo = this.state.filterParams.price[1]
+      var pricingIndicator = "";
+
+      for (var i = 0; i < pricingInfo; i++) {
+        pricingIndicator += "$";
+      }
+
+      return pricingIndicator;
+    }
   },
 
   render: function() {
+    var maxPrice = this.priceIndicator();
+    var minRating = this.state.filterParams.rating[0];
+
     return (
       <div className="search">
         <section className="search-input-collection">
@@ -58,19 +78,42 @@ var Search = React.createClass({
             <button className="reset-search" onClick={this.resetFilters}>Reset Search</button>
           </div>
           <div className="search-range-wrapper">
-            <h4>Minimum Stars</h4>
-            <p>Hate It!</p>
-            <p className="right">Love It!</p>
-            <input
-              type="range"
-              id='stars'
-              max='5'
-              min='0'
-              step="0.5"
-              className="stars"
-              placeholder="2.5"
-              onChange={this.searchMinStars}
-            />
+            <div className="rating-wrapper">
+              <h4>Minimum Rating</h4>
+                <div className="rating" data-rating={minRating}>
+                  <i className="star-1">★</i>
+                  <i className="star-2">★</i>
+                  <i className="star-3">★</i>
+                  <i className="star-4">★</i>
+                  <i className="star-5">★</i>
+                </div>
+              <input
+                type="range"
+                id='stars'
+                max='5'
+                min='1'
+                step="0.5"
+                className="stars"
+                defaultValue="1"
+                onChange={this.searchMinStars}
+              />
+            </div>
+          </div>
+          <div className="search-range-wrapper">
+            <div className="rating-wrapper">
+              <h4>Maximum Price</h4>
+              <h5 className="price">{maxPrice}</h5>
+              <input
+                type="range"
+                id='stars'
+                max='4'
+                min='1'
+                step="1"
+                className="price"
+                defaultValue="4"
+                onChange={this.searchMaxPrice}
+              />
+            </div>
           </div>
         </section>
       </div>

@@ -49,7 +49,7 @@ var ReviewForm = React.createClass({
     this.setState({
       businesses: BusinessStore.allAbridged(),
       "title": "",
-      "stars": "2.5",
+      "stars": "3",
       "body":  "",
       "business_id": this.businessFocusId(),
     });
@@ -79,16 +79,21 @@ var ReviewForm = React.createClass({
           />
           <label htmlFor='stars'></label>
           <div className="stars-holder">
-            <p>Hate It!</p>
-            <p className="right">Love It!</p>
+            <div className="rating" data-rating={this.state.stars}>
+              <i className="star-1">★</i>
+              <i className="star-2">★</i>
+              <i className="star-3">★</i>
+              <i className="star-4">★</i>
+              <i className="star-5">★</i>
+            </div>
             <input
               type="range"
               id='stars'
               max='5'
-              min='0'
+              min='1'
               step="0.5"
               className="stars"
-              placeholder="2.5"
+              placeholder="3"
               valueLink={this.linkState("stars")}
             />
           </div>

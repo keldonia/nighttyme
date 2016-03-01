@@ -29,7 +29,7 @@ var FilterActions = {
   updateRating: function (rating) {
     AppDispatcher.dispatch({
       actionType: FilterConstants.UPDATE_RATING,
-      price: price
+      rating: rating
     });
   },
   resetFilters: function () {

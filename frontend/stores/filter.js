@@ -3,7 +3,7 @@ var Store = require('flux/utils').Store;
 var FilterConstants = require('../constants/filter_constants');
 
 var _params = {
-  bounds: [], tags: [], attributes: [], price: [1,4], rating: [0,5]
+  bounds: [], tags: [], attributes: [], price: [1,4], rating: [1,5]
 };
 
 var FilterParamsStore = new Store(AppDispatcher);
@@ -14,7 +14,7 @@ FilterParamsStore.params = function () {
 
 FilterParamsStore.resetParams = function () {
   _params = {
-    bounds: [], tags: [], attributes: [], price: [1,4], rating: [0,5]
+    bounds: [], tags: [], attributes: [], price: [1,4], rating: [1,5]
   };
 }
 
