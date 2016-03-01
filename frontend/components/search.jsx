@@ -44,6 +44,11 @@ var Search = React.createClass({
     this.businessListener.remove();
     this.filterListener.remove();
   },
+  searchMinStars: function (e) {
+    e.preventDefault();
+    var val = e.target.value;
+    console.log(val);
+  },
 
   render: function() {
     return (
@@ -51,6 +56,21 @@ var Search = React.createClass({
         <section className="search-input-collection">
           <div className="reset-search-wrapper">
             <button className="reset-search" onClick={this.resetFilters}>Reset Search</button>
+          </div>
+          <div className="search-range-wrapper">
+            <h4>Minimum Stars</h4>
+            <p>Hate It!</p>
+            <p className="right">Love It!</p>
+            <input
+              type="range"
+              id='stars'
+              max='5'
+              min='0'
+              step="0.5"
+              className="stars"
+              placeholder="2.5"
+              onChange={this.searchMinStars}
+            />
           </div>
         </section>
       </div>
