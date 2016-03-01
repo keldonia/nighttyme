@@ -24,6 +24,21 @@ BusinessStore.singleBusiness = function () {
   return _business;
 };
 
+BusinessStore.findReview = function (id) {
+  var review;
+  var reviews = _business.reviews;
+  if (reviews) {
+    Object.keys(reviews).forEach( function (currentReviewId) {
+      var currentReview = reviews[currentReviewId];
+      if (currentReview.id === id) {
+        review = currentReview;
+      }
+    });
+  }
+
+  return review;
+};
+
 BusinessStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case ApiConstants.ALL_BUSINESSES:

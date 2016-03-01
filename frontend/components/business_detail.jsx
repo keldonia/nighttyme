@@ -19,13 +19,18 @@ var BusinessDetail = React.createClass({
   _onChange: function () {
     this.setState({ business: BusinessStore.singleBusiness() });
   },
+  searchOnTag: function(e) {
+    e.preventDefault();
+    console.log(e);
+  },
   tags: function () {
     var tags = this.state.business.tags
+    var that = this;
     if (tags) {
       return Object.keys(tags).map( function (tag, idx) {
         var name = tags[tag].name.replace(/(\b[a-z](?!\s))/g,
           function(x) {return x.toUpperCase();});
-        return <a href="#" key={idx}>{name}</a>;
+        return <div className="tag" onClick={that.searchOnTag} key={idx}>{name}</div>;
       });
     }
   },

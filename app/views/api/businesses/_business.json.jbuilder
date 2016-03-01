@@ -52,15 +52,13 @@ if params[:business_id] || params[:id]
   json.website            business.website
 
   json.reviews do
-    business.ordered_reviews.each_with_index do |review, idx|
-      json.set! idx, review
+    reviews.each_with_index do |review, idx|
+      json.set! idx do
+        json.partial! 'api/reviews/review', review: review
+      end
     end
   end
 
-  # json.set! idx, review do |review|
-  #   json.review review
-  #   json.review_author review.user.username
-  # end
 
   json.hour_attributes do
     @days.each do |day|

@@ -105,8 +105,15 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 - [x] create `Tag` model
 - build out API, Flux loop, and components for:
   - [x] fetching tags for business
-  - [ ] searching businesses by tag
 - [x] Style new elements
+
+**Objective:** Implement Search
+- [x] search by location
+- [x] search by tag
+- [x] search by price
+- [x] search by average rating
+- [ ] search by attribute
+
 
 **Objective:** Reviews can liked.
 - [ ] create `ReviewTag` model and join table

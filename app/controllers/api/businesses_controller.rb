@@ -12,9 +12,15 @@ class Api::BusinessesController < ApplicationController
   def show
     @business = Business.where(id: params[:id])
       .includes(:hour, :bussinessattribute, :tags)
-      .joins(:reviews)
-      .joins({ reviews: :user} )
+      .joins(reviews: [:user] )
+      .group('businesses.id')
+      .select('businesses.*, AVG(reviews.stars) AS avg_stars, COUNT(reviews.stars) AS num_stars')
       .first
+
+    @reviews = Review.where(business_id: params[:id])
+    .order(created_at: :desc)
+    .includes(:user)
+    .includes(:business)
     render :show
   end
 
@@ -46,7 +52,7 @@ class Api::BusinessesController < ApplicationController
       if params[:rating]
         @businesses = @businesses.joins(:reviews)
         .group(:id)
-        .having("avg(stars) BETWEEN ? AND ?", params[:rating][0], params[:rating][1])
+        .having("avg(stars) BETWEEN ? AND ?", params[:rating][0].to_i, params[:rating][1].to_i)
       end
 
       # if params[:num_reviews]

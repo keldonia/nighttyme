@@ -12,7 +12,7 @@
 class Tag < ActiveRecord::Base
   validates :business_id, presence: true
   validates :name, presence: true
-  validates_uniqueness_of :business_id, scope: :name
+  validates_uniqueness_of :name, scope: :business_id
 
   belongs_to :business
 end

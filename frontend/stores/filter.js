@@ -40,6 +40,10 @@ FilterParamsStore.__onDispatch = function (payload) {
       _params.rating = payload.rating;
       FilterParamsStore.__emitChange();
       break;
+    case FilterConstants.RESET_SEARCH:
+      FilterParamsStore.resetParams();
+      FilterParamsStore.__emitChange();
+      break;
     default:
   }
 };

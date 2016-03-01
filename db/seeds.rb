@@ -244,9 +244,9 @@ tag_names = ['pub', 'english pub', 'night club', 'jazz club', 'lounge',
   'biergarden', 'dancehall', 'club'
 ]
 
-tagsgen = 8.times.map { |i| {
+tagsgen = 15.times.map { |i| {
     business_id: (i % 5 + 1).to_i,
-    name: tag_names[i]
+    name: tag_names[i % 8]
   }
 }
 

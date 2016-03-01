@@ -60,6 +60,7 @@ var Reviews = React.createClass({
 
   orderReviews: function() {
     var reviews = this.reviewCleanUp();
+    var that = this;
 
     return reviews.map( function(currentReview) {
       if (currentReview.id !== parseInt(this.props.reviewId)) {

@@ -7,7 +7,11 @@ var ReviewDetail = React.createClass({
     return this.getStateFromStore();
   },
   getStateFromStore: function () {
-    return { review: ReviewsStore.find(parseInt(this.props.review.id))}
+    if (window.location.hash.includes('businesses')) {
+      return { review: BusinessStore.findReview(parseInt(this.props.review.id))}
+    } else {
+      return { review: ReviewsStore.find(parseInt(this.props.review.id))}
+    }
   },
   _onChange: function () {
     this.setState(this.getStateFromStore);
@@ -18,7 +22,7 @@ var ReviewDetail = React.createClass({
   componentWillReceiveProps: function () {
     var review = this.props.review;
     if (review) {
-      this.setState({ review: review })
+      this.setState({ review: this.getStateFromStore() });
     }
   },
   componentWillUnmount: function () {
