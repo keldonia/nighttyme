@@ -13,7 +13,7 @@ var ReviewForm = React.createClass({
     return ({
       businesses: BusinessStore.allAbridged(),
       "title": "",
-      "stars": "2.5",
+      "stars": "3",
       "body":  "",
       "business_id": this.businessFocusId(),
     });

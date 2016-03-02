@@ -95,7 +95,12 @@ var GMap = React.createClass({
     var marker = markerHolder.marker;
     var bounds = this.map.getBounds();
     if (bounds) {
-      if (bounds.contains(marker.getPosition()) === false) {
+      var business_ids = Object.keys(this.state.businesses).map( function (business) {
+        return business.id
+      });
+      if (bounds.contains(marker.getPosition()) === false ||
+        business_ids.includes(marker.id) === false) {
+
         google.maps.event.clearListeners(marker);
         markerHolder.marker.setMap(null);
         delete this.markers[markerHolder.id];

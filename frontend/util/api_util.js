@@ -97,7 +97,7 @@ var ApiUtil = {
       url: 'session',
       dataType: 'json',
       success: function () {
-        window.location.href = "/";
+        window.location.href = "/session/new";
       }
     });
   }

@@ -102,7 +102,7 @@ var Search = React.createClass({
           <div className="search-range-wrapper">
             <div className="rating-wrapper">
               <h4>Maximum Price</h4>
-              <h5 className="price">{maxPrice}</h5>
+              <h5 className="priceIndicator">{maxPrice}</h5>
               <input
                 type="range"
                 id='stars'
