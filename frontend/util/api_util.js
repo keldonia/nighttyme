@@ -29,8 +29,8 @@ var ApiUtil = {
       method: "GET",
       url: "api/businesses?abridged=true",
       dataType: 'json',
-      success: function (responseText) {
-        BusinessApiDispatchs.recieveAbridgedBusinesses(responseText);
+      success: function (business) {
+        BusinessApiDispatchs.recieveAbridgedBusinesses(business);
       },
       error: function (errorThrown) {
         ApiActions.recieveAllBusinessErrors(errorThrown);
@@ -45,6 +45,7 @@ var ApiUtil = {
       dataType: 'json',
       success: function (responseText) {
         BusinessApiDispatchs.recieveSingleBusiness(responseText);
+        BusinessApiDispatchs.recieveAllBusinesses([responseText])
       },
       error: function (errorThrown) {
         ApiActions.recieveAllBusinessErrors(errorThrown);

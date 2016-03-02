@@ -20,7 +20,7 @@ BusinessStore.allAbridged = function () {
   });
 };
 
-BusinessStore.singleBusiness = function () {
+BusinessStore.singleBusiness = function (id) {
   return _business;
 };
 

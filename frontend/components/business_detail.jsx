@@ -4,6 +4,7 @@ var ReviewActions = require('../actions/reviews_api_action_creators');
 var BusinessActions = require('../actions/business_api_action_creators');
 var BusinessStore = require('../stores/business');
 var FilterActions = require('../actions/filter_actions');
+var GMap = require('./gmap');
 var Reviews = require('./reviews');
 var History = require('react-router').History;
 
@@ -142,9 +143,12 @@ var BusinessDetail = React.createClass({
               </div>
             </div>
             <section className="location-group">
-              <h4 className="location">{business.location}</h4>
-              <h4 className="neighborhood">{neighborhoods}</h4>
-              <h4 className="telephone">{business.telephone_number}</h4>
+              <GMap />
+              <section className="location-text">
+                <h4 className="location">{business.location}</h4>
+                <h4 className="neighborhood">{neighborhoods}</h4>
+                <h4 className="telephone">{business.telephone_number}</h4>
+              </section>
             </section>
           </section>
         </div>
@@ -152,6 +156,7 @@ var BusinessDetail = React.createClass({
           <Reviews reviews={business.reviews} reviewId={this.props.params.id[1]} businessId={this.props.params.id[0]}/>
         </section>
         <section className="other-business-info">
+
           <section className="hours">
             <h4 className="hours-overall-title">Hours</h4>
             <ul>

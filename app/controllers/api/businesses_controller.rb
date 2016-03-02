@@ -60,7 +60,7 @@ class Api::BusinessesController < ApplicationController
       if params[:rating]
         @businesses = @businesses.joins(:reviews)
         .group(:id)
-        .having("avg(stars) BETWEEN ? AND ?", params[:rating][0].to_i, params[:rating][1].to_i)
+        .having("avg(stars) BETWEEN ? AND ?", params[:rating][0].to_f, params[:rating][1].to_f)
       end
 
       # if params[:num_reviews]

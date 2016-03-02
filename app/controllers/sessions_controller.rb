@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout!
+    render :new
   end
 
   private

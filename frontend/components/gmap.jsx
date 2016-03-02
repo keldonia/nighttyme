@@ -2,6 +2,7 @@ var React = require('react');
 var BusinessStore = require('../stores/business');
 var BusinessActions = require('../actions/business_api_action_creators');
 var FilterActions = require('../actions/filter_actions');
+var History = require('react-router').History;
 
 var CENTER = { lat: 37.7758, lng: -122.435 };
 
@@ -16,10 +17,13 @@ var MAPSTYLE = [{
 }];
 
 var GMap = React.createClass({
+  mixins: [History],
 
   getInitialState: function () {
     this.markers = {};
-    return({businesses: BusinessStore.all(), highlight: ""});
+    return({businesses: BusinessStore.all(),
+      business: BusinessStore.singleBusiness(),
+      highlight: ""});
   },
 
   componentDidMount: function () {
@@ -35,17 +39,6 @@ var GMap = React.createClass({
   },
   componentWillUnmount: function () {
     this.businessListener.remove();
-  },
-  centerBusinessCoords: function () {
-    var business = this.props.businesses
-    if (business) {
-      if (business[0] && business[0].lng) {
-        var business = this.props.business[0];
-        return { lat: business.latitude, lng: business.longitude };
-      } else {
-        return CENTER;
-      }
-    }
   },
   _businessesChanged: function () {
     var that = this;
@@ -70,6 +63,10 @@ var GMap = React.createClass({
       marker.hoverListener = marker.addListener('mouseover', this.handleMarkerHover.bind(this, business, marker));
       var markerHolder = {id: business.id, marker: marker};
       this.markers[business.id] = markerHolder;
+      if (window.location.hash.match(/#\/businesses\/\d*/)) {
+        this.map.setCenter(pos);
+        this.map.setZoom(15);
+      }
     }
   },
   handleMarkerHover: function (business, marker) {
