@@ -51,13 +51,14 @@ var GMap = React.createClass({
     var that = this;
     this.setState({ businesses: BusinessStore.all() });
     this.state.businesses.forEach(function(business) {that.addBusiness(business)}, this);
+
     if (that.markers) {
-      Object.keys(that.markers).forEach(function(key) {that.removeMarker(that.markers[key])}, that);
+      Object.keys(that.markers).forEach(function(key) {
+        that.removeMarker(that.markers[key])}, that);
     }
   },
   addBusiness: function (business) {
-    if (this.markers[business.id]) {
-    } else {
+    if (!this.markers[business.id]) {
       var that = this;
       var pos = new google.maps.LatLng(business.latitude, business.longitude);
       marker = new google.maps.Marker({
@@ -95,12 +96,10 @@ var GMap = React.createClass({
     var marker = markerHolder.marker;
     var bounds = this.map.getBounds();
     if (bounds) {
-      var business_ids = Object.keys(this.state.businesses).map( function (business) {
+      var business_ids = this.state.businesses.map( function (business) {
         return business.id
       });
-      if (bounds.contains(marker.getPosition()) === false ||
-        business_ids.includes(marker.id) === false) {
-
+      if (business_ids.includes(markerHolder.id) === false) {
         google.maps.event.clearListeners(marker);
         markerHolder.marker.setMap(null);
         delete this.markers[markerHolder.id];
