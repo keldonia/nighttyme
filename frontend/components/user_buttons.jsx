@@ -13,7 +13,7 @@ var UserButtons = React.createClass({
     if (window.user) {
       var userStuff = (
         <ul className="userbuttons-collection">
-          <a className="userbutton" href="#" onClick={this.signOut}>Sign Out</a>
+          <a className="userbutton" onClick={this.signOut}>Sign Out</a>
         </ul>
       )
     } else {

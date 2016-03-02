@@ -15,6 +15,13 @@ var ApiActions = {
       errors: errors
     });
   },
+  recieveAllTags: function (tags) {
+    AppDispatcher.dispatch({
+      actionType: ApiConstants.ALL_TAGS,
+      tags: tags
+    });
+  }
+
 };
 
 module.exports = ApiActions;

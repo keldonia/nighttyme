@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       resources :reviews, only: [:create, :index]
     end
     resources :reviews, only: [:destroy, :create, :update, :show, :index]
+    resources :tags, only: :index
   end
 
   root 'static_pages#root'

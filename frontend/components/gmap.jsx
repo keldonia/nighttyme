@@ -43,6 +43,7 @@ var GMap = React.createClass({
   _businessesChanged: function () {
     var that = this;
     this.setState({ businesses: BusinessStore.all() });
+
     this.state.businesses.forEach(function(business) {that.addBusiness(business)}, this);
 
     if (that.markers) {
@@ -63,7 +64,8 @@ var GMap = React.createClass({
       marker.hoverListener = marker.addListener('mouseover', this.handleMarkerHover.bind(this, business, marker));
       var markerHolder = {id: business.id, marker: marker};
       this.markers[business.id] = markerHolder;
-      if (window.location.hash.match(/#\/businesses\/\d*/)) {
+      if (window.location.hash.match(/#\/businesses\/(\d{1,9})/) &&
+      parseInt(window.location.hash.match(/#\/businesses\/(\d{1,9})/)[1]) === business.id) {
         this.map.setCenter(pos);
         this.map.setZoom(15);
       }
@@ -105,7 +107,7 @@ var GMap = React.createClass({
   },
   listenForMove: function () {
     var that = this;
-    google.maps.event.addListener(this.map, 'idle', function() {
+    google.maps.event.addListener(that.map, 'idle', function() {
       var bounds = that.map.getBounds();
       if (bounds) {
         var northEastx = { lat: undefined, lng: undefined };

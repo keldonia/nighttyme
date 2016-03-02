@@ -45,7 +45,7 @@ var ApiUtil = {
       dataType: 'json',
       success: function (responseText) {
         BusinessApiDispatchs.recieveSingleBusiness(responseText);
-        BusinessApiDispatchs.recieveAllBusinesses([responseText])
+        BusinessApiDispatchs.recieveAllBusinesses([responseText]);
       },
       error: function (errorThrown) {
         ApiActions.recieveAllBusinessErrors(errorThrown);
@@ -92,13 +92,26 @@ var ApiUtil = {
       }
     });
   },
+  fetchAllTags: function() {
+    $.ajax ({
+      method: "GET",
+      url: 'api/tags',
+      dataType: 'json',
+      success: function (responseText) {
+        ApiActions.recieveAllTags(responseText);
+      },
+      error: function (errorThrown) {
+        ApiActions.recieveAllReviewErrors(errorThrown);
+      }
+    });
+  },
   signOut: function () {
     $.ajax ({
       method: "DELETE",
       url: 'session',
       dataType: 'json',
       success: function () {
-        window.location.reload(true);
+        window.location = "/session/new";
       }
     });
   }

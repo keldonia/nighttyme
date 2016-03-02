@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout!
-    render :new
+    render :json => {'success' => 'true'}
   end
 
   private

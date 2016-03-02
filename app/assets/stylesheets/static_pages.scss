@@ -65,6 +65,9 @@ body {
   transition: box-shadow 1s;
 }
 
+
+
+
 .search-bar:hover {
   box-shadow: -2px 2px 2px 1px rgba(102,102,102, 0.6)
 }
@@ -120,6 +123,10 @@ body {
 
 a.userbutton {
   font-size: 0.9em;
+}
+
+userbutton:hover {
+  cursor: pointer;
 }
 
 .app-body {

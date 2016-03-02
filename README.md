@@ -138,7 +138,7 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 
 - [ ] Get feedback on my UI from others
 - [ ] Refactor HTML classes & CSS rules
-- [ ] Add modals, transitions, and other styling flourishes.
+- [ ] Add modals, transitions, pictures, and other styling flourishes.
 
 ### Bonus Features (TBD)
 - [ ] Review of the day
