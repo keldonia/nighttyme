@@ -6,6 +6,9 @@ var ApiCreateActions = {
   },
   fetchAllTags: function () {
     ApiUtil.fetchAllTags ();
+  },
+  fetchSearchSuggestions: function (searchCriteria) {
+    ApiUtil.searchBusinesses(searchCriteria);
   }
 };
 

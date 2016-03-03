@@ -7,8 +7,8 @@ var _tags = {};
 var TagStore = new Store(AppDispatcher);
 
 TagStore.all = function() {
-  return Object.keys(_tags).map (function (key) {
-    return _tags[key];
+  return Object.keys(_tags).map (function (key, idx) {
+    return {'id': idx, name: _tags[key]};
   });
 };
 

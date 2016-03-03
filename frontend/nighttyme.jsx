@@ -24,6 +24,7 @@ var ErrorStore = require('./stores/errors');
 var FilterParamsStore = require('./stores/filter');
 var BusinessActions = require('./actions/business_api_action_creators');
 var TagStore = require('./stores/tags');
+var SearchSuggestionsStore = require('./stores/searchsuggestions');
 
 window.ApiUtil = ApiUtil;
 window.BusinessStore = BusinessStore;
@@ -31,6 +32,7 @@ window.ReviewsStore = ReviewsStore;
 window.FilterParamsStore = FilterParamsStore;
 window.BusienssActions = BusinessActions;
 window.TagStore = TagStore;
+window.SearchSuggestionsStore = SearchSuggestionsStore;
 
 var routes = (
   <Route path="/" component={App}>

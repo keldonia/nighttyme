@@ -27,7 +27,7 @@ var Search = React.createClass({
 
   _filtersChanged: function () {
     this.setState({ filterParams: _getFilterParams() });
-    BusinessActions.fetchBusinesses();
+    BusinessActions.fetchBusinesses(this.state.filterParams);
   },
 
   resetFilters: function () {
@@ -75,7 +75,7 @@ var Search = React.createClass({
       <div className="search">
         <section className="search-input-collection">
           <div className="reset-search-wrapper">
-            <button className="reset-search" onClick={this.resetFilters}>Reset Search</button>
+            <button className="reset-search" onClick={this.resetFilters}>Reset Filter</button>
           </div>
           <div className="search-range-wrapper">
             <div className="rating-wrapper">

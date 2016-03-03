@@ -3,6 +3,7 @@ var ApiActions = require('../actions/api_actions');
 var ReviewApiDispatchs = require('../actions/reviews_api_dispatchs');
 var BusinessApiDispatchs = require('../actions/business_api_dispatchs');
 var FilterParamsStore = require('../stores/filter');
+var SearchApiDispatches = require('../actions/search_api_dispatches');
 
 var ApiUtil = {
   fetchAllBusinesses: function() {
@@ -22,6 +23,11 @@ var ApiUtil = {
     var filter = FilterParamsStore.params();
     $.get('api/businesses', filter, function(businesses) {
       BusinessApiDispatchs.recieveAllBusinesses(businesses);
+    });
+  },
+  searchBusinesses: function (searchCriteria) {
+    $.get('api/searchsuggestions', searchCriteria, function(business) {
+      SearchApiDispatches.recieveBusinesses(business);
     });
   },
   fetchAbrigedBusinesses: function() {

@@ -1,12 +1,95 @@
 var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
-// var FuzzySearch = require('react-fuzzy-search');
-var BusinessStore = require('../stores/business');
+var SearchSuggestionsStore = require('../stores/searchsuggestions');
 var BusinessActions = require('../actions/business_api_action_creators');
+var ApiActions = require('../actions/api_create_actions');
 var FilterParamsStore = require('../stores/filter');
 var FilterActions = require('../actions/filter_actions');
-var ApiActions = require('../actions/api_create_actions');
-var TagStore = require('../stores/tags');
+
+var SearchBar = React.createClass({
+  mixins: [LinkedStateMixin],
+
+  getInitialState: function() {
+    return ({ items: this.getItems(),
+      search: "" });
+  },
+
+  getItems: function() {
+    return SearchSuggestionsStore.all()
+  },
+
+  _suggestionsChanged: function() {
+    var items = this.getItems();
+    this.setState({ items: this.getItems() });
+  },
+
+  componentDidMount: function () {
+    this.searchListener = SearchSuggestionsStore.addListener(this._suggestionsChanged);
+    ApiActions.fetchSearchSuggestions();
+  },
+
+  componentWillUnmount: function () {
+    this.businessListener.remove();
+  },
+
+  search: function (e) {
+    e.preventDefault();
+    var search = { q: this.state.search };
+    ApiActions.fetchSearchSuggestions(search);
+  },
+  find: function(e) {
+    var search = { q: this.state.search };
+    FilterActions.updateString(this.state.search)
+    BusinessActions.fetchBusinesses(search);
+  },
+
+  clickHandler: function (e) {
+    e.preventDefault();
+    console.log(e.target);
+  },
+
+  searchItems: function () {
+    var items = this.state.items;
+    if (items) {
+      return items.map (function (item, idx) {
+        return <li
+          className="search-suggestion"
+          onClick={this.clickHandler}
+          key={idx}
+          id={this.id} >
+          {item.name}</li>;
+      });
+    }
+  },
+
+  render: function() {
+    var searchSuggestions = this.searchItems();
+
+    return (
+      <div className="search-bar-top">
+        <form className='search-bar' onChange ={this.search} >
+          <div className="search-box">
+            <label htmlFor='main-search'></label>
+            <input
+              type="text"
+              id='main-search'
+              placeholder="Search SF Night Life!"
+              valueLink={this.linkState("search")}
+              />
+            <button className="group" onClick={this.find}></button>
+          </div>
+          <ul className="search-suggestions" >
+            {searchSuggestions}
+          </ul>
+        </form>
+      </div>
+    );
+  },
+
+});
+
+module.exports = SearchBar;
+
 
 var ATTRIBUTES = [
   'reservations',
@@ -44,77 +127,3 @@ ALCOHOL = [
   'wine only',
   'beer only',
 ];
-
-var SearchBar = React.createClass({
-  mixins: [LinkedStateMixin],
-
-  getInitialState: function() {
-    return ({ items: this.getItems(), filterParams: FilterParamsStore.params() });
-  },
-
-  getBusinessNames: function() {
-      return BusinessStore.allAbridged().map( function (business) {
-        return business.name;
-      });
-  },
-
-  getItems:function () {
-    var businesses = this.getBusinessNames();
-    this.tags = TagStore.all();
-    var items = businesses.concat(this.tags);
-    var items = items.concat(ATTRIBUTES).concat(NOISE)
-      .concat(ALCOHOL).concat(AMBIENCE);
-    var objItems = items.map( function(item) {
-      return { name: item }
-    });
-    return objItems;
-  },
-
-  _businessesChanged: function() {
-    this.setState({ items: this.getItems() });
-  },
-
-  _filtersChanged: function() {
-    return FilterParamsStore.params();
-  },
-
-  componentDidMount: function () {
-    this.businessListener = BusinessStore.addListener(this._businessesChanged);
-    this.filterListener = FilterParamsStore.addListener(this._filtersChanged);
-    BusinessActions.fetchAbrigedBusinesses();
-    ApiActions.fetchAllTags();
-  },
-
-  componentWillUnmount: function () {
-    this.businessListener.remove();
-    this.filterListener.remove();
-  },
-
-  search: function (e) {
-    e.preventDefault();
-    console.log(e);
-  },
-
-  render: function() {
-    return (
-      <div className="search-bar-top">
-
-      </div>
-    );
-  }
-
-});
-
-module.exports = SearchBar;
-
-
-{/*<form className='search-bar' onSubmit={this.search}>
-  <label htmlFor='main-search'></label>
-  <input
-    type="text"
-    id='main-search'
-    placeholder="What are you looking for?"
-    valueLink={this.linkState("search")}
-  />
-<button className="group"></button>
-</form>*/}

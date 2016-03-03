@@ -35,6 +35,10 @@ class Api::BusinessesController < ApplicationController
         @businesses = Business.in_bounds(bounds)
       end
 
+      if params[:q]
+        @businesses = @businesses.where('businesses.name LIKE ?', "%#{params[:q]}%").limit(8)
+
+      end
 
       if params[:attributes]
 

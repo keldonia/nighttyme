@@ -32,6 +32,12 @@ var FilterActions = {
       rating: rating
     });
   },
+  updateString: function (str) {
+    AppDispatcher.dispatch({
+      actionType: FilterConstants.QUERY_STRING,
+      str: str
+    });
+  },
   resetFilters: function () {
     AppDispatcher.dispatch({
       actionType: FilterConstants.RESET_SEARCH,

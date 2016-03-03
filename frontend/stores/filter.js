@@ -3,7 +3,7 @@ var Store = require('flux/utils').Store;
 var FilterConstants = require('../constants/filter_constants');
 
 var _params = {
-  bounds: [], tags: [], attributes: [], price: [1,4], rating: [1,5]
+  q: "", bounds: [], tags: [], attributes: [], price: [1,4], rating: [1,5]
 };
 
 var FilterParamsStore = new Store(AppDispatcher);
@@ -14,9 +14,9 @@ FilterParamsStore.params = function () {
 
 FilterParamsStore.resetParams = function () {
   _params = {
-    bounds: [], tags: [], attributes: [], price: [1,4], rating: [1,5]
+    q:"", bounds: [], tags: [], attributes: [], price: [1,4], rating: [1,5]
   };
-}
+};
 
 FilterParamsStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
@@ -38,6 +38,10 @@ FilterParamsStore.__onDispatch = function (payload) {
       break;
     case FilterConstants.UPDATE_RATING:
       _params.rating = payload.rating;
+      FilterParamsStore.__emitChange();
+      break;
+    case FilterConstants.QUERY_STRING:
+      _params.q = payload.str;
       FilterParamsStore.__emitChange();
       break;
     case FilterConstants.RESET_SEARCH:

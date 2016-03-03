@@ -10,8 +10,8 @@ var BusinessActions = {
   fetchSingleBusiness: function (id) {
     ApiUtil.fetchSingleBusiness(id);
   },
-  fetchBusinesses: function () {
-    ApiUtil.fetchBusinesses();
+  fetchBusinesses: function (obj) {
+    ApiUtil.fetchBusinesses(obj);
   }
 
 };
