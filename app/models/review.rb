@@ -26,4 +26,6 @@ class Review < ActiveRecord::Base
     class_name: 'User'
   belongs_to :business
 
+  has_many :reviewtags
+
 end

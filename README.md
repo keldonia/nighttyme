@@ -16,8 +16,8 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [x] Log in / Log out
 - [x] Create, and read businesses
 - [x] Create, read, edit, and delete reviews
-- [ ] A feed of recent activity based upon location
-- [ ] Tag reviews with useful, cool, funny, compliment
+- [x] A feed of recent activity based upon location
+- [ ] Tag reviews as useful
 - [ ] Allow users to search reviews, based on several criteria and geographic range, moving map
 
 ## Design Docs
@@ -116,9 +116,9 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 
 
 **Objective:** Reviews can liked.
-- [ ] create `ReviewTag` model and join table
+- [x] create `ReviewTag` model and join table
 - build out API, Flux loop, and components for:
-- [ ] fetching tags for review
+- [x] fetching tags for review
 - [ ] adding tags to review
 - [ ] creating tags while adding to reviews
 - [ ] Style new elements

@@ -5,9 +5,10 @@ var BusinessActions = require('../actions/business_api_action_creators');
 var ApiActions = require('../actions/api_create_actions');
 var FilterParamsStore = require('../stores/filter');
 var FilterActions = require('../actions/filter_actions');
+var History = require('react-router').History;
 
 var SearchBar = React.createClass({
-  mixins: [LinkedStateMixin],
+  mixins: [LinkedStateMixin, History],
 
   getInitialState: function() {
     return ({ items: this.getItems(),
@@ -43,9 +44,14 @@ var SearchBar = React.createClass({
     BusinessActions.fetchBusinesses(search);
   },
 
-  clickHandler: function (e) {
+  clickHandler: function (itemId, itemType , e) {
     e.preventDefault();
-    console.log(e.target);
+    if (itemType = 'business') {
+      this.history.push('/businesses/' + itemId)
+    } else {
+      console.log(itemId);
+      console.log(itemType);
+    }
   },
 
   searchItems: function () {
@@ -54,16 +60,19 @@ var SearchBar = React.createClass({
       return items.map (function (item, idx) {
         return <li
           className="search-suggestion"
-          onClick={this.clickHandler}
+          onClick={this.clickHandler.bind(this, item.id, item.type)}
           key={idx}
-          id={this.id} >
+          id={this.id}
+          data-type={this.type}>
           {item.name}</li>;
-      });
+      }, this);
     }
   },
 
   render: function() {
-    var searchSuggestions = this.searchItems();
+    if (this.state.search) {
+      var searchSuggestions = this.searchItems();
+    }
 
     return (
       <div className="search-bar-top">
@@ -75,6 +84,7 @@ var SearchBar = React.createClass({
               id='main-search'
               placeholder="Search SF Night Life!"
               valueLink={this.linkState("search")}
+              autoComplete='off'
               />
             <button className="group" onClick={this.find}></button>
           </div>

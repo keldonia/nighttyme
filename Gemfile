@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'annotate'
 gem 'figaro'
+gem 'yelp'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record

@@ -188,6 +188,11 @@ Business.create(
   }
 )
 
+OPEN_TIMES = ['5:00 pm', '4:00 pm', '3:00pm', '6:00 pm', '7:00 pm',
+              '8:00 pm', '9:00 pm']
+
+CLOSE_TIMES = ['2:00 am', '1:00 am', '12:00 am', '11:00 pm', '10:00 pm']
+
 Business.create(
   owner_id: user_ids.sample,
   name: "Third Rail",
@@ -237,7 +242,7 @@ reviewsgen = 60.times.map { |i| {
     author_id: user_ids.sample,
     business_id: business_ids.sample,
     title: Faker::Hipster.sentence(4, false, 6).to_s,
-    stars: rand(0..5),
+    stars: rand(1..5),
     body: Faker::Hipster.paragraphs(rand(1..4).to_i).join(" "),
     archieved: 1
   }

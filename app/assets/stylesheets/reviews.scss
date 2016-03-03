@@ -1,3 +1,73 @@
 // Place all the styles related to the reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reviews {
+  margin-left: 20px;
+}
+
+.reviews-index {
+  width: 64%;
+  min-width: 450px;
+}
+
+.reviews-index {
+  font-family: 'Lato', sans-serif;
+  display: inline-block;
+
+  .reviews-collection {
+    margin-left: 20px;
+    letter-spacing: 3px;
+    font-size: 1.5em;
+    width: 100%;
+    border: 0;
+    border-bottom: 3px;
+    color: #4d4d4d;
+    border-color: #4d4d4d;
+    border-style: groove;
+  }
+
+
+  .review-detail {
+    border: 0;
+    border-bottom: 1px;
+    border-style: groove;
+    color: #4d4d4d;
+
+    .review-body {
+      padding: 0 3% 2% 0;
+      clear: both;
+      font-size: 1em;
+    }
+  }
+
+  .review-index-item {
+    color: #4d4d4d;
+
+    .review-index-body {
+      padding: 0 3% 2% 0;
+      clear: both;
+      font-size: .8em;
+    }
+  }
+
+  .review-index-item:hover {
+    cursor: pointer;
+  }
+
+  .review-index-item:not(:last-child) {
+    border: 0;
+    border-bottom: 1px;
+    border-style: groove;
+  }
+
+  .review-index-business {
+    float: right;
+    position: relative;
+  }
+
+  .review-index-author {
+    float: left;
+    position: relative;
+  }
+}
