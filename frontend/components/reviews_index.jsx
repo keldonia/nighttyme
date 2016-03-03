@@ -23,8 +23,11 @@ var ReviewsIndex = React.createClass({
   render: function () {
 
     return (
-      <section className="reviews-index">
-        <Reviews reviews={this.state.reviews} reviewId={this.props.params.id} businessId={1}/>
+      <section className="reviews-index-holder">
+        <h1 className="review-index-header">Your Guide to Night Life in SF</h1>
+        <section className="reviews-index">
+          <Reviews reviews={this.state.reviews} reviewId={this.props.params.id} businessId={1}/>
+        </section>
       </section>
     );
 

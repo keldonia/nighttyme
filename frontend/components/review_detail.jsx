@@ -1,6 +1,7 @@
 var React = require('react');
 var ReviewsStore = require('../stores/reviews');
 var ReviewActions = require('../actions/reviews_api_action_creators');
+var Rating = require('./rating');
 
 var ReviewDetail = React.createClass({
   getInitialState: function () {
@@ -14,7 +15,7 @@ var ReviewDetail = React.createClass({
     }
   },
   _onChange: function () {
-    this.setState(this.getStateFromStore);
+    this.setState(this.getStateFromStore());
   },
   componentDidMount: function () {
     this.reviewsListener = ReviewsStore.addListener(this._onChange);
@@ -22,7 +23,7 @@ var ReviewDetail = React.createClass({
   componentWillReceiveProps: function () {
     var review = this.props.review;
     if (review) {
-      this.setState({ review: this.getStateFromStore() });
+      this.setState( this.getStateFromStore() );
     }
   },
   componentWillUnmount: function () {
@@ -38,13 +39,7 @@ var ReviewDetail = React.createClass({
     return (
       <article className="review-detail">
         <h3 className="review-title"> {review.title} </h3>
-          <div className="rating" data-rating={review.stars}>
-            <i className="star-1">★</i>
-            <i className="star-2">★</i>
-            <i className="star-3">★</i>
-            <i className="star-4">★</i>
-            <i className="star-5">★</i>
-          </div>
+        <Rating stars={review.stars} />
         <h4 className="review-index-author"> {review.author} wrote about:</h4>
         <h4 className="review-index-business"> {review.business} </h4>
         <article className="review-body">{review.body}</article>

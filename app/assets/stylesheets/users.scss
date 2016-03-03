@@ -2,9 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@font-face {
+  font-family: 'Bazar';
+  src: font-url('Bazar.eot?#iefix') format('embedded-opentype'),
+  font-url('Bazar.woff') format('woff'),
+  font-url('Bazar.ttf')  format('truetype'),
+  font-url('Bazar.svg#Bazar') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .mini-logo {
   color: rgba(230,230,230,0.6);
   margin-left: 40px;
+  font-family: 'Bazar';
 }
 
 .mini-logo h1 {

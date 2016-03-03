@@ -4,19 +4,13 @@ var ApiUtil = require('../util/api_util');
 var BusinessActions = require('../actions/business_api_action_creators');
 var ReviewActions = require('../actions/reviews_api_action_creators');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
-
+var Rating = require('./rating');
 
 var ReviewForm = React.createClass({
   mixins: [LinkedStateMixin],
 
   getInitialState: function() {
-    return ({
-      businesses: BusinessStore.allAbridged(),
-      "title": "",
-      "stars": "3",
-      "body":  "",
-      "business_id": this.businessFocusId(),
-    });
+    return this.blankattrs();
   },
 
   componentDidMount: function() {
@@ -42,11 +36,11 @@ var ReviewForm = React.createClass({
     var passedReview = {review: review}
     ReviewActions.createSingleReview(passedReview);
     BusinessActions.fetchSingleBusiness(this.state.business_id);
-    this.blankattrs();
+    this.setState(this.blankattrs());
   },
 
   blankattrs: function () {
-    this.setState({
+    return ({
       businesses: BusinessStore.allAbridged(),
       "title": "",
       "stars": "3",
@@ -79,13 +73,7 @@ var ReviewForm = React.createClass({
           />
           <label htmlFor='stars'></label>
           <div className="stars-holder">
-            <div className="rating" data-rating={this.state.stars}>
-              <i className="star-1">★</i>
-              <i className="star-2">★</i>
-              <i className="star-3">★</i>
-              <i className="star-4">★</i>
-              <i className="star-5">★</i>
-            </div>
+            <Rating stars={this.state.stars} />
             <input
               type="range"
               id='stars'

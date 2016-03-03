@@ -3,13 +3,12 @@ var ReviewsStore = require('../stores/reviews');
 var ReviewActions = require('../actions/reviews_api_action_creators');
 var BusinessActions = require('../actions/business_api_action_creators');
 var BusinessStore = require('../stores/business');
-var FilterActions = require('../actions/filter_actions');
 var GMap = require('./gmap');
 var Reviews = require('./reviews');
-var History = require('react-router').History;
+var Rating = require('./rating');
+var PriceTags = require('./price_tags');
 
 var BusinessDetail = React.createClass({
-  mixins: [History],
 
   getInitialState: function () {
     return ({ business: BusinessStore.singleBusiness() });
@@ -18,28 +17,14 @@ var BusinessDetail = React.createClass({
     this.businessListener = BusinessStore.addListener(this._onChange);
     BusinessActions.fetchSingleBusiness(parseInt(this.props.params.id));
   },
+  componentWillReceiveProps: function (newProps) {
+    BusinessActions.fetchSingleBusiness(parseInt(newProps.params.id));
+  },
   componentWillUnmount: function () {
     this.businessListener.remove();
   },
   _onChange: function () {
     this.setState({ business: BusinessStore.singleBusiness() });
-  },
-  searchOnTag: function(e) {
-    e.preventDefault();
-    var tag = e.target.id;
-    FilterActions.updateTags(tag);
-    this.history.push('/businesses');
-  },
-  tags: function () {
-    var tags = this.state.business.tags
-    var that = this;
-    if (tags) {
-      return Object.keys(tags).map( function (tag, idx) {
-        var name = tags[tag].name.replace(/(\b[a-z](?!\s))/g,
-          function(x) {return x.toUpperCase();});
-        return <div className="tag" id={tags[tag].name} onClick={that.searchOnTag} key={idx}>{name}</div>;
-      });
-    }
   },
   hours: function () {
     var days = this.state.business.hour_attributes
@@ -98,26 +83,15 @@ var BusinessDetail = React.createClass({
       return this.state.business.neighborhoods.replace(/\[|\]|"/g, "");
     }
   },
-  priceIndicator: function () {
-    var pricingInfo = this.state.business.price
-    var pricingIndicator = "";
 
-    for (var i = 0; i < pricingInfo; i++) {
-      pricingIndicator += "$";
-    }
-    pricingIndicator += "  · "
-
-    return pricingIndicator;
-  },
 
   render: function() {
     var business = this.state.business;
     var hours = this.hours();
     var additionalBusinessInfo = this.additionalInfo();
     var reviews = this.reviewItems();
-    var tags = this.tags();
     var neighborhoods = this.neighborhood();
-    var price = this.priceIndicator();
+
     var rating = business.average_rating
     var num_reviews = business.num_reviews + " Reviews"
 
@@ -128,19 +102,10 @@ var BusinessDetail = React.createClass({
             <div className="business-quick-info">
               <h2 className="business-name">{business.name}</h2>
               <div className="ratings-wrapper">
-                <div className="rating" data-rating={rating}>
-                  <i className="star-1">★</i>
-                  <i className="star-2">★</i>
-                  <i className="star-3">★</i>
-                  <i className="star-4">★</i>
-                  <i className="star-5">★</i>
-                </div>
+                <Rating stars={rating} />
                 <h4 className="aggregate-reviews">{num_reviews}</h4>
               </div>
-              <div className="price-tags">
-                <h4 className="price">{price}</h4>
-                <div className="tags">{tags}</div>
-              </div>
+              <PriceTags price={this.state.business.price} tags={this.state.business.tags} />
             </div>
             <section className="location-group">
               <GMap />
