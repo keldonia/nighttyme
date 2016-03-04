@@ -126,9 +126,12 @@ var BusinessDetail = React.createClass({
                 <h4 className="telephone">{business.telephone_number}</h4>
               </section>
             </section>
-            <img  src={business.image_url}
-                  alt="business image"
-                  className="business-image" />
+            <div className="business-image">
+              <img  src={business.image_url}
+                    alt="business image"
+              />
+              <p>{business.name}</p>
+           </div>
           </section>
         </div>
         <section className="reviews-index">

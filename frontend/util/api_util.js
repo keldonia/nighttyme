@@ -44,6 +44,11 @@ var ApiUtil = {
 
     });
   },
+  fetchTopFiveBusinesses: function() {
+    $.get('api/businesses', {Top5: true}, function(businesses) {
+      BusinessApiDispatchs.recieveAllBusinesses(businesses);
+    });
+  },
   fetchSingleBusiness: function(id) {
     $.ajax ({
       method: "GET",

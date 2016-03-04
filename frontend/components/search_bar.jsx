@@ -41,7 +41,7 @@ var SearchBar = React.createClass({
   find: function(e) {
     var search = { q: this.state.search };
     FilterActions.updateString(this.state.search)
-    BusinessActions.fetchBusinesses(search);
+    BusinessActions.fetchBusinesses(e.target.value);
   },
 
   clickHandler: function (itemId, itemType , e) {
@@ -76,7 +76,7 @@ var SearchBar = React.createClass({
 
     return (
       <div className="search-bar-top">
-        <form className='search-bar' onChange ={this.search} >
+        <form className='search-bar' onChange={this.search} >
           <div className="search-box">
             <label htmlFor='main-search'></label>
             <input

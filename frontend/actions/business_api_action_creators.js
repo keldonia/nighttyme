@@ -12,6 +12,9 @@ var BusinessActions = {
   },
   fetchBusinesses: function (obj) {
     ApiUtil.fetchBusinesses(obj);
+  },
+  fetchTopFiveBusinesses: function (){
+    ApiUtil.fetchTopFiveBusinesses();
   }
 
 };

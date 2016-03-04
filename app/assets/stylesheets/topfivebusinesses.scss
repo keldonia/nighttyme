@@ -1,0 +1,63 @@
+.top-five-business-sidebar {
+  float: right;
+  width: 25%;
+  min-width: 225px;
+  padding-left: 4%;
+  margin-right: 20px;
+  color: #4d4d4d;
+
+  .top-five-businesses-header {
+    padding-left: 40px;
+    font-size: 1.5em;
+    margin-top: 66px;
+  }
+
+  .top-five-item {
+    padding: 5px 0;
+  }
+
+  .top-five-name {
+    font-size: 1.33em;
+    margin: 0.75em 0;
+    color: #8c001a;
+
+  }
+
+  .top-five-name:hover {
+    cursor: pointer;
+  }
+
+  .top-five-aggregate-reviews {
+    top: -15px;
+    position: relative;
+    font-size: 0.875em;
+  }
+
+  .price-tags {
+    top: -25px;
+    position: relative;
+    clear: both;
+    display: block;
+
+    .price, .tags {
+      float: left;
+      position: relative;
+      margin: 0;
+    }
+
+    .tags {
+      font-weight: 500;
+
+      .tag {
+        padding-left: 10px;
+        text-decoration: none;
+        color: #8c001a;
+        display: inline;
+      }
+
+      .tag:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -28,6 +28,14 @@ class Api::BusinessesController < ApplicationController
     if params[:abridged]
       @businesses = Business.all.select(:id, :name)
       render :abridged
+    elsif params[:Top5]
+      @businesses = Business
+      .joins(:reviews)
+      .group('businesses.id')
+      .select('businesses.*, AVG(reviews.stars) AS avg_stars, COUNT(reviews.stars) AS num_stars')
+      .order('avg_stars DESC')
+      .limit(5)
+      render :index
     else
       @businesses = Business.all.limit(50) #to change with search
 
