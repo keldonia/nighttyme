@@ -123,13 +123,14 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 - [ ] Style new elements
 
 
-### Phase 7: Top 5 businesses, business pictures & review of the day (0.5 days)
+### Phase 7: Top 5 businesses, review prompt, business pictures & review of the day (0.5 days)
 
 **objective:** Enable complex styling of Businesses.
 
 - [x] Top businesses section
 - [x] Review of the day
 - [x] Add pictures to businesses
+- [x] Add review prompt
 - [x] Style new elements
 
 ### Phase 8: Styling Cleanup and Seeding (1 day)

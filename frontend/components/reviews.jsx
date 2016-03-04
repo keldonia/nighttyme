@@ -7,6 +7,7 @@ var React = require('react');
 var ReviewIndexItem = require('./review_index_item');
 var ReviewDetail = require('./review_detail');
 var ReviewForm = require('./review_form');
+var ReviewPrompt = require('./review_prompt');
 
 var Reviews = React.createClass({
 
@@ -43,6 +44,8 @@ var Reviews = React.createClass({
     var businessId = this.businessId();
     if (window.user) {
       reviewForm = <ReviewForm businessId={businessId}/>;
+    } else {
+      reviewForm = <ReviewPrompt />
     }
     return reviewForm;
   },
