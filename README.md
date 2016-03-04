@@ -118,8 +118,7 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 - [x] create `ReviewTag` model and join table
 - build out API, Flux loop, and components for:
 - [x] fetching tags for review
-- [ ] adding tags to review
-- [ ] creating tags while adding to reviews
+- [ ] Marking reviews as useful or notuseful
 - [ ] Style new elements
 
 
@@ -145,10 +144,10 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 
 ### Bonus Features (TBD)
 - [ ] Delete/edit reviews
+- [ ] Infinite scroll
 - [ ] Friend other users
 - [ ] Forum Section?
 - [ ] Message friends
-- [ ] Track average review rating over time
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md

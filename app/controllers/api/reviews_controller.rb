@@ -14,7 +14,9 @@ class Api::ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find_by_id(params[:id]).includes(:reviewtags)
+    @review = Review
+    .find_by_id(params[:id])
+    .includes(:reviewtags)
     render :show
   end
 
@@ -29,13 +31,26 @@ class Api::ReviewsController < ApplicationController
 
   def index
     if params[:Top]
-      @reviews = Review.order(stars: :desc, created_at: :desc).limit(1)
+      @reviews = Review
+        .order(stars: :desc, created_at: :desc)
+        .limit(1)
+        .includes(:reviewtags)
     elsif params[:business_id]
-      @reviews = Review.where(business_id: params[:business_id])
-        .order(created_at: :desc).includes(:user).includes(:business).limit(50)
+      @reviews = Review
+        .where(business_id: params[:business_id])
+        .order(created_at: :desc)
+        .includes(:user)
+        .includes(:business)
+        .limit(50)
+        .includes(:reviewtags)
     else
-      @reviews = Review.all.order(created_at: :desc)
-      .includes(:user).includes(:business).limit(50) #temp
+      @reviews = Review
+        .all
+        .order(created_at: :desc)
+        .includes(:user)
+        .includes(:business)
+        .includes(:reviewtags)
+        .limit(50) #temp
     end
     render :index
   end

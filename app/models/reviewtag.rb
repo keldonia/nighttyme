@@ -15,10 +15,10 @@ class Reviewtag < ActiveRecord::Base
   belongs_to :review
 
   def num_useful(id)
-    Tag.where(id: id).count(:useful)
+    Tag.where(review_id: id).count(:useful)
   end
 
   def num_notuseful(id)
-    Tag.where(id: id).count(:notuseful)
+    Tag.where(review_id: id).count(:notuseful)
   end
 end
