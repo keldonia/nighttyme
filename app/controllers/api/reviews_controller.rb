@@ -28,7 +28,9 @@ class Api::ReviewsController < ApplicationController
   end
 
   def index
-    if params[:business_id]
+    if params[:Top]
+      @reviews = Review.order(stars: :desc, created_at: :desc).limit(1)
+    elsif params[:business_id]
       @reviews = Review.where(business_id: params[:business_id])
         .order(created_at: :desc).includes(:user).includes(:business).limit(50)
     else

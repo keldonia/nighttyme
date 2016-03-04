@@ -2,8 +2,11 @@ var React = require('react');
 var ReviewsStore = require('../stores/reviews');
 var ReviewActions = require('../actions/reviews_api_action_creators');
 var Rating = require('./rating');
+var History = require('react-router').History;
 
 var ReviewDetail = React.createClass({
+  mixins: [History],
+  
   getInitialState: function () {
     return this.getStateFromStore();
   },
@@ -29,6 +32,9 @@ var ReviewDetail = React.createClass({
   componentWillUnmount: function () {
     this.reviewsListener.remove();
   },
+  showDetail: function(business_id, e) {
+    this.history.push('/businesses/' + business_id)
+  },
   render: function() {
     if (this.state.review === undefined) {
       return <article className="ReviewDetail"></article>;
@@ -41,7 +47,7 @@ var ReviewDetail = React.createClass({
         <h3 className="review-title"> {review.title} </h3>
         <Rating stars={review.stars} />
         <h4 className="review-index-author"> {review.author} wrote about:</h4>
-        <h4 className="review-index-business"> {review.business} </h4>
+        <h4 onClick={this.showDetail.bind(this, review.business_id)} className="review-index-business"> {review.business} </h4>
         <article className="review-body">{review.body}</article>
       </article>
     );

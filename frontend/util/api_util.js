@@ -89,6 +89,11 @@ var ApiUtil = {
       }
     });
   },
+  fetchTopReview: function(id) {
+    $.get('api/reviews', {Top: true}, function(review) {
+      ReviewApiDispatchs.recieveTopReview(review);
+    });
+  },
   createSingleReview: function(review) {
     $.ajax ({
       method: "POST",

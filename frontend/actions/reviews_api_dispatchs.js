@@ -14,6 +14,12 @@ var ReviewApiDispatchs = {
       review: review
     });
   },
+  recieveTopReview: function(review) {
+    AppDispatcher.dispatch({
+      actionType: ApiConstants.TOP_REVIEW,
+      review: review
+    });
+  },
 };
 
 module.exports = ReviewApiDispatchs;

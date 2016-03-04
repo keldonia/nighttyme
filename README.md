@@ -123,28 +123,27 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 - [ ] Style new elements
 
 
-### Phase 7: Allow Complex Styling in Businesses (0.5 days)
+### Phase 7: Top 5 businesses, business pictures & review of the day (0.5 days)
 
 **objective:** Enable complex styling of Businesses.
 
-- [ ] Integrate `react-quill` (based on Quill.js).
-- [ ] Use Rails helpers to sanitize HTML before rendering.
-- [ ] Style the new Quill elements.
+- [x] Top businesses section
+- [x] Review of the day
+- [x] Add pictures to businesses
+- [x] Style new elements
 
 ### Phase 8: Styling Cleanup and Seeding (1 day)
 
 **objective:** Make the site feel more cohesive and awesome.
 
-- [ ] Get feedback on my UI from others
-- [ ] Refactor HTML classes & CSS rules
-- [ ] Add modals, transitions, pictures, and other styling flourishes.
+- [x] Get feedback on my UI from others
+- [x] Refactor HTML classes & CSS rules
+- [x] Add modals, transitions, pictures, and other styling flourishes.
 - [x] Seed Businesses
 - [ ] Seed Reviews
 
 ### Bonus Features (TBD)
-- [ ] Review of the day
 - [ ] Delete/edit reviews
-- [ ] New businesses section
 - [ ] Friend other users
 - [ ] Forum Section?
 - [ ] Message friends

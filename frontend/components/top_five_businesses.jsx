@@ -23,6 +23,7 @@ var TopFiveBusinesses = React.createClass({
             <Rating stars={rating} />
             <h5 className="top-five-aggregate-reviews">{num_reviews}</h5>
             <PriceTags price={business.price} tags={business.tags} />
+            <div className="group"></div>
           </li>
         );
       });

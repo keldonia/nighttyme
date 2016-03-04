@@ -40,7 +40,7 @@ var ReviewIndexItem = React.createClass({
           <Rating stars={review.stars} />
           <h5 className="review-index-author"> {review.author} wrote about:</h5>
           <h5 className="review-index-business"> {review.business} </h5>
-          <p className="review-index-body"> {review.body.substring(0,140)}</p>
+          <p className="review-index-body"> {review.body.substring(0,140).concat('...')}</p>
         </article>
       </li>
     );

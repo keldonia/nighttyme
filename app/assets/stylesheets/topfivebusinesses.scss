@@ -6,18 +6,35 @@
   margin-right: 20px;
   color: #4d4d4d;
 
+  ul {
+    top: -10px;
+    position: relative;
+  }
+
   .top-five-businesses-header {
-    padding-left: 40px;
+    margin-left: 40px;
     font-size: 1.5em;
-    margin-top: 66px;
+    margin-top: 25px;
+    border: 0;
+    border-bottom: 3px;
+    color: #4d4d4d;
+    border-color: #4d4d4d;
+    border-style: groove;
   }
 
   .top-five-item {
     padding: 5px 0;
   }
 
+  .top-five-item:not(:last-of-type) {
+    border: 0;
+    border-bottom: 1px;
+    border-color: #4d4d4d;
+    border-style: groove;
+  }
+
   .top-five-name {
-    font-size: 1.33em;
+    font-size: 1.25em;
     margin: 0.75em 0;
     color: #8c001a;
 

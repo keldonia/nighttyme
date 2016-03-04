@@ -10,6 +10,9 @@ var ReviewActions = {
   fetchSingleReview: function(id) {
     ApiUtil.fetchSingleReview(id);
   },
+  fetchTopReview: function() {
+    ApiUtil.fetchTopReview();
+  },
 };
 
 module.exports = ReviewActions;

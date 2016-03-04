@@ -1,0 +1,35 @@
+.top-review {
+  float: right;
+  width: 25%;
+  min-width: 225px;
+  padding-left: 4%;
+  margin-right: 20px;
+  color: #4d4d4d;
+
+  .margin-left {
+    margin-left: 40px;
+
+    .top-review-header {
+      font-size: 1.5em;
+      margin-top: 66px;
+      border: 0;
+      border-bottom: 3px;
+      color: #4d4d4d;
+      border-color: #4d4d4d;
+      border-style: groove;
+    }
+
+    .top-review-body {
+      font-size: 0.9em;
+    }
+
+    .top-review-business {
+      color: #8c001a;
+    }
+
+    .top-review-business {
+      cursor: pointer;
+    }
+  }
+
+}

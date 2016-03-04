@@ -3,6 +3,7 @@ var ApiConstants = require('../constants/api_constants');
 var AppDispatcher = require('../dispatcher');
 
 var _reviews = {};
+var _topReview ={}
 
 var ReviewsStore = new Store(AppDispatcher);
 
@@ -11,6 +12,10 @@ ReviewsStore.all = function () {
     return _reviews[key];
   });
   return reviews.reverse();
+};
+
+ReviewsStore.topReview = function () {
+  return _topReview;
 };
 
 ReviewsStore.find = function (id) {
@@ -27,6 +32,10 @@ ReviewsStore.__onDispatch = function (payload) {
       ReviewsStore.resetReview(payload.review);
       ReviewsStore.__emitChange();
       break;
+    case ApiConstants.TOP_REVIEW:
+      ReviewsStore.resetTopReview(payload.review);
+      ReviewsStore.__emitChange();
+      break;
 
     default:
   }
@@ -41,6 +50,10 @@ ReviewsStore.resetReviews = function (reviews) {
 
 ReviewsStore.resetReview = function (review) {
   _reviews[review.id] = review;
+};
+
+ReviewsStore.resetTopReview = function (review) {
+  _topReview = review;
 };
 
 module.exports = ReviewsStore;
