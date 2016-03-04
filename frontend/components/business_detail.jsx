@@ -26,6 +26,16 @@ var BusinessDetail = React.createClass({
   _onChange: function () {
     this.setState({ business: BusinessStore.singleBusiness() });
   },
+  locationFix: function() {
+    var location = this.state.business.location;
+    if (location) {
+      var matches = location.match(/\["(.*?)\".*?\"(.*?)"\]/).slice(1);
+      return matches;
+    } else {
+      return [undefined, undefined];
+    }
+
+  },
   hours: function () {
     var days = this.state.business.hour_attributes
     if (days) {
@@ -91,8 +101,8 @@ var BusinessDetail = React.createClass({
     var additionalBusinessInfo = this.additionalInfo();
     var reviews = this.reviewItems();
     var neighborhoods = this.neighborhood();
-
-    var rating = business.average_rating
+    var location = this.locationFix();
+    var rating = business.average_rating;
     var num_reviews = business.num_reviews + " Reviews"
 
     return (
@@ -110,11 +120,15 @@ var BusinessDetail = React.createClass({
             <section className="location-group">
               <GMap />
               <section className="location-text">
-                <h4 className="location">{business.location}</h4>
+                <h4 className="location">{location[0]}</h4>
+                <h4 className="location">{location[1]}</h4>
                 <h4 className="neighborhood">{neighborhoods}</h4>
                 <h4 className="telephone">{business.telephone_number}</h4>
               </section>
             </section>
+            <img  src={business.image_url}
+                  alt="business image"
+                  className="business-image" />
           </section>
         </div>
         <section className="reviews-index">

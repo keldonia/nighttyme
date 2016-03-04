@@ -29,14 +29,14 @@ class Api::BusinessesController < ApplicationController
       @businesses = Business.all.select(:id, :name)
       render :abridged
     else
-      @businesses = Business.all #to change with search
+      @businesses = Business.all.limit(50) #to change with search
 
       if bounds
         @businesses = Business.in_bounds(bounds)
       end
 
       if params[:q]
-        @businesses = @businesses.where('businesses.name LIKE ?', "%#{params[:q]}%").limit(8)
+        @businesses = @businesses.where('businesses.name ILIKE ?', "%#{params[:q]}%")
 
       end
 
@@ -49,11 +49,11 @@ class Api::BusinessesController < ApplicationController
         @businesses = @businesses.where(price: price_range)
       end
 
-
       if params[:tags]
         @businesses = @businesses.joins(:tags).where('tags.name = ?', params[:tags])
       else
-        @businesses = @businesses.joins(:tags)
+
+        @businesses = @businesses.includes(:tags)
       end
 
       @businesses = @businesses
@@ -67,12 +67,15 @@ class Api::BusinessesController < ApplicationController
         .having("avg(stars) BETWEEN ? AND ?", params[:rating][0].to_f, params[:rating][1].to_f)
       end
 
+
+      @businesses = @businesses.limit(40)
+
+      # businesses_ids = @businesses.pluck('businesses.id')
+      # @tags = Tag.where(business_id: businesses_ids)
+
       # if params[:num_reviews]
       #   @businesses = @businesses.includes(:num_reviews)
       # end
-
-      # @tags = @businesses.joins(:tags).select()
-
 
       render :index
     end

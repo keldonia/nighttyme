@@ -11,11 +11,18 @@ var BusinessIndexItem = React.createClass({
   showDetail: function() {
     this.history.push('/businesses/' + this.props.business.id)
   },
+  locationFix: function() {
+    var location = this.props.business.location;
+    var matches = location.match(/\["(.*?)\".*?\"(.*?)"\]/).slice(1);
+    return matches
+  },
+
 
   render: function() {
     var business = this.props.business;
     var neighborhoods = business.neighborhoods.replace(/\[|\]|"/g, "");
     var rating = business.average_rating
+    var location = this.locationFix();
     var num_reviews = business.num_reviews + " Reviews"
 
     return (
@@ -32,7 +39,8 @@ var BusinessIndexItem = React.createClass({
           <div className="right">
             <div className="location-group">
               <h5 className="neighborhood">{neighborhoods}</h5>
-              <h5 className="location">{business.location}</h5>
+              <h5 className="location">{location[0]}</h5>
+              <h5 className="location">{location[1]}</h5>
               <h5 className="telephone">{business.telephone_number}</h5>
             </div>
           </div>

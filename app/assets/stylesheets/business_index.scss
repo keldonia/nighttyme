@@ -79,7 +79,7 @@
   }
 
   .location-group {
-    top: -100px;
+    top: -115px;
   }
 
 }
@@ -120,6 +120,18 @@
     position: relative;
   }
 
+  .business-index-item:not(:first-child) {
+
+    .business-index-name {
+      top: 45px;
+    }
+  }
+
+  .business-index-item {
+    h4.price {
+      top: 0;
+    }
+  }
 }
 
 .business {

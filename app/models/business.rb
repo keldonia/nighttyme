@@ -3,7 +3,6 @@
 # Table name: businesses
 #
 #  id               :integer          not null, primary key
-#  owner_id         :integer          not null
 #  name             :string           not null
 #  description      :text
 #  location         :string           not null
@@ -11,15 +10,13 @@
 #  latitude         :float            not null
 #  longitude        :float            not null
 #  price            :integer
-#  email            :string
 #  telephone_number :string
-#  website          :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  image_url        :string
 #
 
 class Business < ActiveRecord::Base
-  validates :owner_id, presence: true
   validates :name, presence: true
   validates :location, presence: true
 
@@ -29,9 +26,9 @@ class Business < ActiveRecord::Base
   has_one :hour, inverse_of: :business
   has_one :bussinessattribute, inverse_of: :business
   has_many :reviews
-  has_many :tags
+  has_many :tags, inverse_of: :business
 
-  accepts_nested_attributes_for :hour, :bussinessattribute
+  accepts_nested_attributes_for :hour, :bussinessattribute, :tags
 
   def self.in_bounds(bounds)
     max_lat = bounds['northEast']['lat'].to_f

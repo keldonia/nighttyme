@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303060411) do
+ActiveRecord::Schema.define(version: 20160303221534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "businesses", force: :cascade do |t|
-    t.integer  "owner_id",         null: false
     t.string   "name",             null: false
     t.text     "description"
     t.string   "location",         null: false
@@ -25,18 +24,16 @@ ActiveRecord::Schema.define(version: 20160303060411) do
     t.float    "latitude",         null: false
     t.float    "longitude",        null: false
     t.integer  "price"
-    t.string   "email"
     t.string   "telephone_number"
-    t.string   "website"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "image_url"
   end
 
   add_index "businesses", ["latitude", "longitude"], name: "index_businesses_on_latitude_and_longitude", using: :btree
   add_index "businesses", ["location"], name: "index_businesses_on_location", using: :btree
   add_index "businesses", ["name"], name: "index_businesses_on_name", using: :btree
   add_index "businesses", ["neighborhoods"], name: "index_businesses_on_neighborhoods", using: :btree
-  add_index "businesses", ["owner_id"], name: "index_businesses_on_owner_id", using: :btree
   add_index "businesses", ["price"], name: "index_businesses_on_price", using: :btree
 
   create_table "bussinessattributes", force: :cascade do |t|

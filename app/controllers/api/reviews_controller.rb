@@ -30,9 +30,10 @@ class Api::ReviewsController < ApplicationController
   def index
     if params[:business_id]
       @reviews = Review.where(business_id: params[:business_id])
-        .order(created_at: :desc).includes(:user).includes(:business)
+        .order(created_at: :desc).includes(:user).includes(:business).limit(50)
     else
-      @reviews = Review.all.order(created_at: :desc).includes(:user).includes(:business) #temp
+      @reviews = Review.all.order(created_at: :desc)
+      .includes(:user).includes(:business).limit(50) #temp
     end
     render :index
   end

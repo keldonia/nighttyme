@@ -1,5 +1,36 @@
 require 'yelp'
 
+OPEN_TIMES = ['5:00 pm', '4:00 pm', '3:00pm', '6:00 pm', '7:00 pm',
+              '8:00 pm', '9:00 pm']
+
+CLOSE_TIMES = ['2:00 am', '1:00 am', '12:00 am', '11:00 pm', '10:00 pm']
+
+NOISE = ['quiet', 'average', 'loud']
+
+ALCOHOL = [
+  'full bar',
+  'beer & wine only',
+  'wine only',
+  'beer only',
+]
+
+AMBIENCE = [
+  'casual',
+  'hipster',
+  'sports',
+  'redneck',
+  'biker'
+]
+
+BEST_DAYS = [
+  'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'
+]
+
+def best_days
+  num_days = rand(1..3).round
+
+  days = BEST_DAYS.sample(num_days).join(", ")
+end
 
 neighborhoods = ["Alamo Square",
 " Anza Vista",
@@ -84,9 +115,9 @@ client = Yelp::Client.new({ consumer_key: "ZCuFUmyfgOasecjUGcNeIQ",
                             token: "Bg2TWuqO-1X9TplrEQt1FzyKzaTW1ioA",
                             token_secret: "G7R5JWARvFi8vxu15F4QKnjZGLI"
                           })
-	
+
 params = { limit: 20,
-         category_filter: 'bar',
+         category_filter: 'bars',
          restaurants_price_range: '1.4'
        }
 stores = []
@@ -103,32 +134,59 @@ neighborhoods.each do |neighborhood|
       !!business.location.display_address[0] &&
       !!business.location.display_address[1] &&
       !!business.location.display_address[2] &&
-      !!business.display_phone &&
-      !!business.rating &&
-      !!business.review_count
+      !!business.display_phone
       )
       new_store = true
       if stores.length > 0
         stores.each do |store|
-          new_store = false if store[:street] == business.location.display_address[0]
+          new_store = false if store[:location] == business.location.display_address[0]
         end
       end
     end
     if new_store
+      location = [business.location.display_address[0], business.location.display_address[2]]
       stores.push({
         name: business.name,
-        lat: business.location.coordinate.latitude,
-        lon: business.location.coordinate.longitude,
+        description: business.snippet_text,
+        location: location,
+        neighborhoods: business.location.display_address[1],
+        latitude: business.location.coordinate.latitude,
+        longitude: business.location.coordinate.longitude,
+        price: rand(1..4).to_i,
+        telephone_number: business.display_phone,
         image_url: business.image_url,
-        street: business.location.display_address[0],
-        neighborhood: business.location.display_address[1],
-        city: business.location.display_address[2],
-        phone: business.display_phone,
-        rating: business.rating,
-        review_count: business.review_count,
+        tags_attributes:  business.categories.map { |category| {name: category[0]}},
+        hour_attributes: {
+          monday: "#{OPEN_TIMES.sample} - #{CLOSE_TIMES.sample}",
+          tuesday: "#{OPEN_TIMES.sample} - #{CLOSE_TIMES.sample}",
+          wednesday: "#{OPEN_TIMES.sample} - #{CLOSE_TIMES.sample}",
+          thursday: "#{OPEN_TIMES.sample} - #{CLOSE_TIMES.sample}",
+          friday: "#{OPEN_TIMES.sample} - #{CLOSE_TIMES.sample}",
+          saturday: "#{OPEN_TIMES.sample} - #{CLOSE_TIMES.sample}",
+          sunday: "#{OPEN_TIMES.sample} - #{CLOSE_TIMES.sample}"
+        },
+        bussinessattribute_attributes: {
+          reservations: rand().round,
+          credit_cards: rand().round,
+          parking: 'street',
+          bike_parking: rand().round,
+          good_for_groups: rand().round,
+          ambience: AMBIENCE.sample,
+          noise_level: NOISE.sample,
+          dancing: rand().round,
+          live_music: rand().round,
+          alcohol: ALCOHOL.sample,
+          best_nights: best_days,
+          coat_check: rand().round,
+          happy_hour: rand().round,
+          smoking: rand().round,
+          outdoor_seating: rand().round,
+          tv: rand().round,
+          pool_table: rand().round
+        }
       })
     end
   end
 end
 
-File.open("stores.txt", 'w') { |file| file.write(stores) }
+File.open("bars2.txt", 'w') { |file| file.write(stores) }

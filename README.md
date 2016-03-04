@@ -112,7 +112,6 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 - [x] search by tag
 - [x] search by price
 - [x] search by average rating
-- [ ] search by attribute
 
 
 **Objective:** Reviews can liked.
@@ -139,6 +138,8 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 - [ ] Get feedback on my UI from others
 - [ ] Refactor HTML classes & CSS rules
 - [ ] Add modals, transitions, pictures, and other styling flourishes.
+- [x] Seed Businesses
+- [ ] Seed Reviews
 
 ### Bonus Features (TBD)
 - [ ] Review of the day

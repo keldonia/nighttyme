@@ -112,10 +112,11 @@ var ReviewForm = React.createClass({
 
   businessOptions: function (businessFocusId) {
     return this.state.businesses.map( function(business) {
+      var key = business.name + business.id
       if (business.id === businessFocusId) {
-        return (<option key={business.name} value={business.id} defaultValue>{business.name}</option>)
+        return (<option key={key} value={business.id} defaultValue>{business.name}</option>)
       } else {
-        return (<option key={business.name} value={business.id}>{business.name}</option>);
+        return (<option key={key} value={business.id}>{business.name}</option>);
       }
     });
   }

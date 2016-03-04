@@ -3,7 +3,6 @@
 # Table name: businesses
 #
 #  id               :integer          not null, primary key
-#  owner_id         :integer          not null
 #  name             :string           not null
 #  description      :text
 #  location         :string           not null
@@ -11,11 +10,10 @@
 #  latitude         :float            not null
 #  longitude        :float            not null
 #  price            :integer
-#  email            :string
 #  telephone_number :string
-#  website          :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  image_url        :string
 #
 
 require 'test_helper'
