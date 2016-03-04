@@ -27,8 +27,6 @@
     "react-addons-linked-state-mixin": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^1.0.2",
-    "react-search": "^1.0.9",
-    "react-search-input": "^0.6.0",
     "webpack": "^1.12.14"
   }
 }

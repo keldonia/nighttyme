@@ -4,7 +4,7 @@ var ErrorStore = require('../stores/errors');
 var Reviews = require('./reviews');
 var ReviewActions = require('../actions/reviews_api_action_creators');
 var BusinessActions = require('../actions/business_api_action_creators');
-var TopFiveBusinesses = require('./top_Five_businesses');
+var TopFiveBusinesses = require('./top_five_businesses');
 var TopReview = require('./top_review');
 var React = require('react');
 
