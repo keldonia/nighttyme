@@ -89,6 +89,10 @@
         text-align: center;
       }
 
+      p {
+        text-align: center;
+      }
+
       h5 {
         font-size: 1.33em;
         margin: 0.5em 0;
@@ -113,9 +117,9 @@
     input[type="range"] {
       -webkit-appearance: none;
       -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-      width: 46%;
       height: 10px;
-      margin: 0 26% 10px 26%;
+      width: 40%;
+      margin: 0 29% 10px 29%;
       position: relative;
       border: none;
       clear: both;

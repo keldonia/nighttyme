@@ -26,7 +26,7 @@ class Api::BusinessesController < ApplicationController
 
   def index
     if params[:abridged]
-      @businesses = Business.all.select(:id, :name)
+      @businesses = Business.all.select(:id, :name).limit(40)
       render :abridged
     elsif params[:Top5]
       @businesses = Business

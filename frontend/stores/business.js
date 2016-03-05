@@ -20,6 +20,10 @@ BusinessStore.allAbridged = function () {
   });
 };
 
+BusinessStore.allReviews = function () {
+  return _business.reviews;
+}
+
 BusinessStore.singleBusiness = function (id) {
   return _business;
 };

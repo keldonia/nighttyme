@@ -6,12 +6,13 @@ var History = require('react-router').History;
 var TopFiveBusinesses = React.createClass({
   mixins: [History],
 
-  showDetail: function() {
-    this.history.push('/businesses/' + this.props.business.id)
+  showDetail: function(id, e) {
+    this.history.push('/businesses/' + id)
   },
 
   topFiveItem: function () {
     var businesses = this.props.businesses;
+    var that = this;
     if (businesses) {
       return businesses.map( function (business) {
         var rating = business.average_rating;
@@ -19,7 +20,7 @@ var TopFiveBusinesses = React.createClass({
 
         return (
           <li key={business.id} className="top-five-item">
-            <h4 onClick={this.showDetail} className="top-five-name">{business.name}</h4>
+            <h4 onClick={that.showDetail.bind(that, business.id)} id={business.id} className="top-five-name">{business.name}</h4>
             <Rating stars={rating} />
             <h5 className="top-five-aggregate-reviews">{num_reviews}</h5>
             <PriceTags price={business.price} tags={business.tags} />

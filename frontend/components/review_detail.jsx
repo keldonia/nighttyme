@@ -6,7 +6,7 @@ var History = require('react-router').History;
 
 var ReviewDetail = React.createClass({
   mixins: [History],
-  
+
   getInitialState: function () {
     return this.getStateFromStore();
   },

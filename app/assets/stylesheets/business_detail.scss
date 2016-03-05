@@ -57,15 +57,6 @@
     box-shadow: 3px 3px 3px #777;
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
-    -webkit-transition: all 0.5s ease-in,  all 3s ease-out;
-    -moz-transition:  all 0.5s ease-in,  all 3s ease-out;
-    -ms-transition:  all 0.5s ease-in,  all 3s ease-out;
-    transition:  all 0.5s ease-in,  all 3s ease-out;
-  }
-
-  img:hover, img:focus {
-    -webkit-filter: grayscale(0%);
-    filter: grayscale(0%);
   }
 
   p {

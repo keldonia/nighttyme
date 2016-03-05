@@ -6,7 +6,6 @@ var ReviewIndexItem = React.createClass({
   mixins: [History],
 
   showDetail: function() {
-
     if (window.location.hash.includes('business')) {
       if (window.location.hash.includes('reviews')) {
         var pushLocation = /#(\/businesses\/\d*\/reviews\/)*/.exec(window.location.hash)[0].slice(1)
@@ -19,9 +18,12 @@ var ReviewIndexItem = React.createClass({
       this.history.push('/reviews/' + this.props.review.id);
     }
   },
+  showBusiness: function(businessIde) {
+    this.history.push('/businesses/' + this.props.review.business_id);
+    window.scrollTo(0, 0);
+  },
   businessFocusId: function () {
     var businessFocusId;
-    debugger
     if (window.location.hash.includes('business')) {
       businessFocusId = this.props.businessId;
     } else {
@@ -39,8 +41,8 @@ var ReviewIndexItem = React.createClass({
           <h4 className="review-index-title"> {review.title} </h4>
           <Rating stars={review.stars} />
           <h5 className="review-index-author"> {review.author} wrote about:</h5>
-          <h5 className="review-index-business"> {review.business} </h5>
-          <p className="review-index-body"> {review.body.substring(0,140).concat('...')}</p>
+          <h5 onClick={this.showBusiness.bind(this, this.props.businessId)} className="review-index-business"> {review.business} </h5>
+          <p className="review-index-body"> {review.body}</p>
         </article>
       </li>
     );

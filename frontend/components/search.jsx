@@ -3,6 +3,7 @@ var BusinessStore = require('../stores/business');
 var FilterParamsStore = require('../stores/filter');
 var BusinessActions = require('../actions/business_api_action_creators');
 var FilterActions = require('../actions/filter_actions');
+var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
 function _getAllBusinesses() {
   return BusinessStore.all();
@@ -13,6 +14,8 @@ function _getFilterParams() {
 }
 
 var Search = React.createClass({
+
+  mixins: [LinkedStateMixin],
 
   getInitialState: function() {
     return ({
@@ -37,10 +40,12 @@ var Search = React.createClass({
   componentDidMount: function () {
     this.businessListener = BusinessStore.addListener(this._businessesChanged);
     this.filterListener = FilterParamsStore.addListener(this._filtersChanged);
+    this.resetFilters();
     BusinessActions.fetchBusinesses();
   },
 
   componentWillUnmount: function () {
+    this.resetFilters();
     this.businessListener.remove();
     this.filterListener.remove();
   },
@@ -66,6 +71,10 @@ var Search = React.createClass({
       return pricingIndicator;
     }
   },
+  starSelect: function (id, e) {
+    e.preventDefault();
+    FilterActions.updateRating([e.target.id,5]);
+  },
 
   render: function() {
     var maxPrice = this.priceIndicator();
@@ -77,15 +86,19 @@ var Search = React.createClass({
           <div className="reset-search-wrapper">
             <button className="reset-search" onClick={this.resetFilters}>Reset Filter</button>
           </div>
+          <div className="rating-wrapper">
+            <h4>Currently Searching:</h4>
+            <p>{this.state.filterParams.tags}</p>
+          </div>
           <div className="search-range-wrapper">
             <div className="rating-wrapper">
               <h4>Minimum Rating</h4>
                 <div className="rating" data-rating={minRating}>
-                  <i className="star-1">★</i>
-                  <i className="star-2">★</i>
-                  <i className="star-3">★</i>
-                  <i className="star-4">★</i>
-                  <i className="star-5">★</i>
+                  <i onClick={this.starSelect.bind(this, this.id)} id="1" className="star-1">★</i>
+                  <i onClick={this.starSelect.bind(this, this.id)} id="2" className="star-2">★</i>
+                  <i onClick={this.starSelect.bind(this, this.id)} id="3" className="star-3">★</i>
+                  <i onClick={this.starSelect.bind(this, this.id)} id="4" className="star-4">★</i>
+                  <i onClick={this.starSelect.bind(this, this.id)} id="5" className="star-5">★</i>
                 </div>
               <input
                 type="range"
@@ -94,8 +107,8 @@ var Search = React.createClass({
                 min='1'
                 step="0.5"
                 className="stars"
-                defaultValue="1"
                 onChange={this.searchMinStars}
+                value={minRating}
               />
             </div>
           </div>

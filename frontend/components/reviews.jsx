@@ -45,7 +45,11 @@ var Reviews = React.createClass({
     if (window.user) {
       reviewForm = <ReviewForm businessId={businessId}/>;
     } else {
-      reviewForm = <ReviewPrompt />
+      if (!window.location.hash.includes('business')) {
+        reviewForm = <ReviewPrompt />
+      } else {
+        <div></div>
+      }
     }
     return reviewForm;
   },

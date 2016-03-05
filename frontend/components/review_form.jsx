@@ -48,6 +48,10 @@ var ReviewForm = React.createClass({
       "business_id": this.businessFocusId(),
     });
   },
+  starSelect: function (id, e) {
+    e.preventDefault();
+    this.setState({ stars: e.target.id });
+  },
 
   render: function() {
     var businessFocusId = this.businessFocusId();
@@ -73,7 +77,13 @@ var ReviewForm = React.createClass({
           />
           <label htmlFor='stars'></label>
           <div className="stars-holder">
-            <Rating stars={this.state.stars} />
+            <div className="rating" data-rating={this.state.stars}>
+              <i onClick={this.starSelect.bind(this, this.id)} id="1" className="star-1">★</i>
+              <i onClick={this.starSelect.bind(this, this.id)} id="2" className="star-2">★</i>
+              <i onClick={this.starSelect.bind(this, this.id)} id="3" className="star-3">★</i>
+              <i onClick={this.starSelect.bind(this, this.id)} id="4" className="star-4">★</i>
+              <i onClick={this.starSelect.bind(this, this.id)} id="5" className="star-5">★</i>
+            </div>
             <input
               type="range"
               id='stars'
@@ -81,7 +91,7 @@ var ReviewForm = React.createClass({
               min='1'
               step="0.5"
               className="stars"
-              placeholder="3"
+              placeholder={this.state.stars}
               valueLink={this.linkState("stars")}
             />
           </div>
