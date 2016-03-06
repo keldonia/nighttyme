@@ -15,7 +15,7 @@
     <% end %>
     <form class="sign-up group" action="<%= session_url %>" method="post">
       <%= auth_token %>
-
+      <div class="input-line">
       <label for="Username">Username:</label>
       <input  type="text"
               name="user[username]"
@@ -24,15 +24,15 @@
               required
               title="Username must not be blank"
               placeholder="Please enter a valid user name"><br>
-      <label for="Password">Password:</label>
       </div>
-      <div className='login-spacer'>
+      <div class="input-line">
+      <label for="Password">Password:</label>
       <input  type="password"
               name="user[password]"
               id="Password"
               value=""
-              title="Password must contain at least 6 characters, including UPPER/lowercase and numbers."
               required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+              title="Password must contain at least 6 characters, including UPPER/lowercase and numbers."
               placeholder="Please enter a valid password"><br>
       </div>
       <input type="submit" class="submit" value="Sign In">

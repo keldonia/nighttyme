@@ -15,6 +15,7 @@
     <% end %>
     <form class="sign-up group" action="<%= users_url %>" method="post">
       <%= auth_token %>
+      <div class="input-line">
       <label for="Username">Username:</label>
       <input  type="text"
               name="user[username]"
@@ -23,6 +24,8 @@
               required
               title="Username must not be blank"
               placeholder="Please enter a valid user name"><br>
+      </div>
+      <div class="input-line">
       <label for="Email">Email:</label>
       <input  type="email"
               name="user[email]"
@@ -31,6 +34,8 @@
               required
               title="Email must not be blank"
               placeholder="Please enter a valid email"><br>
+      </div>
+      <div class="input-line">
       <label for="City">City:</label>
       <input  type="text"
               name="user[location]"
@@ -39,6 +44,8 @@
               required
               title="City must not be blank"
               placeholder="Please enter a valid location"><br>
+      </div>
+      <div class="input-line">
       <label for="Password">Password:</label>
       <input  type="password"
               name="user[password]"
@@ -47,6 +54,7 @@
               required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
               title="Password must contain at least 6 characters, including UPPER/lowercase and numbers."
               placeholder="Please enter a valid password"><br>
+      </div>
       <input type="submit" class="submit" value="Sign Up">
     </form>
     <p class="sign-up">

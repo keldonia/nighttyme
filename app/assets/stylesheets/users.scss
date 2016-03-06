@@ -102,9 +102,14 @@
   width: 350px;
 }
 
+.login .input-line {
+  height: 1.875em;
+}
+
 .login input {
   position: relative;
   width: 250px;
+  height: 1.5em;
   margin-left: auto;
   float: right;
   border-radius: 5px;
@@ -147,6 +152,12 @@
   translateX: -50px;
   float: right;
   margin: auto;
+  height: 2em;
+  transition: all 0.3s ease-in-out;
+}
+
+.login .submit:hover {
+  background-color: #ffffff;
 }
 
 .login p {

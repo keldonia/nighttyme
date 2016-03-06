@@ -31,6 +31,10 @@ $border-gray: #666666;
     color: #e2dedb;
   }
 
+  .rating i:hover {
+    cursor: pointer;
+  }
+
   p {
     display: inline;
     padding: 0 2%;

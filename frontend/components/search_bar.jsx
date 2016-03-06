@@ -65,7 +65,6 @@ var SearchBar = React.createClass({
   searchItems: function () {
     var items = this.state.items;
     if (items && this.state.blurred === false) {
-      console.log(this.blurred);
       return items.map (function (item, idx) {
         return <li
           className="search-suggestion"
