@@ -11,8 +11,11 @@ var SearchBar = React.createClass({
   mixins: [LinkedStateMixin, History],
 
   getInitialState: function() {
-    return ({ items: this.getItems(),
-      search: "" });
+    return ({
+      items: this.getItems(),
+      search: "",
+      blurred: true
+    });
   },
 
   getItems: function() {
@@ -32,15 +35,20 @@ var SearchBar = React.createClass({
   componentWillUnmount: function () {
     this.businessListener.remove();
   },
-
+  clearSuggestions: function () {
+    this.setState({ blurred: true })
+  },
   search: function (e) {
     e.preventDefault();
+    this.setState({ blurred: false })
     var search = { q: this.state.search };
     ApiActions.fetchSearchSuggestions(search);
   },
   find: function(e) {
     var search = { q: this.state.search };
-    FilterActions.updateString(this.state.search)
+    FilterActions.updateString(this.state.search);
+    this.setState({ search: "" });
+    ApiActions.fetchSearchSuggestions();
     BusinessActions.fetchBusinesses(e.target.value);
   },
 
@@ -56,7 +64,8 @@ var SearchBar = React.createClass({
 
   searchItems: function () {
     var items = this.state.items;
-    if (items) {
+    if (items && this.state.blurred === false) {
+      console.log(this.blurred);
       return items.map (function (item, idx) {
         return <li
           className="search-suggestion"
@@ -76,7 +85,7 @@ var SearchBar = React.createClass({
 
     return (
       <div className="search-bar-top">
-        <form className='search-bar' onChange={this.search} >
+        <form onBlur={this.clearSuggestions} onFocus={this.search} className='search-bar' onChange={this.search} >
           <div className="search-box">
             <label htmlFor='main-search'></label>
             <input

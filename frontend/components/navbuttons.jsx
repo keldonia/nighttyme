@@ -2,26 +2,24 @@ var React = require('react');
 var NavConstants = require('../constants/nav_constants');
 var Link = require('react-router').Link;
 var FilterActions = require('../actions/filter_actions');
+var ApiActions = require('../actions/api_create_actions');
 
 var NavButtons = React.createClass({
-  businesses: function () {
+  searchRefresh: function (navLocation, e) {
     FilterActions.resetFilters();
-    window.location.href = '/businesses';
+    ApiActions.fetchSearchSuggestions();
+    window.location.hash = navLocation;
   },
 
   navButtons: function () {
+    var that = this
     return Object.keys(NavConstants).map( function(key, idx) {
-      if (NavConstants == NavConstants.BUSINESSES) {
-        <li className="navbutton" key={idx}>
-          <a onClick={FilterActions.resetFilters}>{NavConstants[key][0]}</a>
-        </li>
-      }
       return (
         <li className="navbutton" key={idx}>
-          <Link to={NavConstants[key][1]}>{NavConstants[key][0]}</Link>
+          <a onClick={this.searchRefresh.bind(that, NavConstants[key][1])}>{NavConstants[key][0]}</a>
         </li>
       );
-    });
+    }, this);
   },
 
   render: function() {
