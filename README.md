@@ -143,8 +143,8 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 - [ ] Seed Reviews
 
 ### Bonus Features (TBD)
-- [ ] Delete/edit reviews
 - [ ] Infinite scroll
+- [ ] Delete/edit reviews
 - [ ] Friend other users
 - [ ] Forum Section?
 - [ ] Message friends

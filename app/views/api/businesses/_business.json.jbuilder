@@ -36,7 +36,7 @@ json.latitude           business.latitude
 json.longitude          business.longitude
 json.price              business.price
 json.telephone_number   business.telephone_number
-json.average_rating     (business.avg_stars.to_f * 2).round / 2
+json.average_rating     (business.avg_stars.to_f * 2.0).round / 2.0
 json.num_reviews        business.num_stars
 json.image_url          business.image_url
 

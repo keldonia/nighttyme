@@ -48,6 +48,7 @@ var SearchBar = React.createClass({
     var search = { q: this.state.search };
     FilterActions.updateString(this.state.search);
     this.setState({ search: "" });
+    this.history.push('/businesses');
     ApiActions.fetchSearchSuggestions();
     BusinessActions.fetchBusinesses(e.target.value);
   },

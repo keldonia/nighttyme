@@ -33,7 +33,10 @@ var ReviewDetail = React.createClass({
     this.reviewsListener.remove();
   },
   showDetail: function(business_id, e) {
-    this.history.push('/businesses/' + business_id)
+    this.history.push('/businesses/' + business_id);
+  },
+  collapseReview: function () {
+    this.history.push('/reviews');
   },
   render: function() {
     if (this.state.review === undefined) {
@@ -43,7 +46,7 @@ var ReviewDetail = React.createClass({
     var review = this.state.review;
 
     return (
-      <article className="review-detail">
+      <article onBlur={this.collapseReview} className="review-detail">
         <h3 className="review-title"> {review.title} </h3>
         <Rating stars={review.stars} />
         <h4 className="review-index-author"> {review.author} wrote about:</h4>

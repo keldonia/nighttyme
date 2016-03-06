@@ -160,12 +160,37 @@
   background-color: #ffffff;
 }
 
+.demo-user-form {
+  display: inline;padding: 0;
+  width: 8em;
+  margin: 0;
+  background: transparent;
+}
+
+.demo-user-form input[type=submit] {
+  border: none;
+  text-decoration: underline;
+  outline: none;
+  color: blue;
+  cursor: pointer;
+  display: inline;
+  width: 8em;
+  float: left;
+  background: transparent;
+  top: -16px;
+  left: 25.5em;
+}
+
 .login p {
   font-size: 12px;
   text-align: center;
-  top: 8px;
+  margin-top: 33px;
+  margin-bottom: 0;
+  left: 1em;
   position: relative;
-  clear: both;
+  clear: left;
+  width: 23em;
+  display: block;
 }
 
 .group {

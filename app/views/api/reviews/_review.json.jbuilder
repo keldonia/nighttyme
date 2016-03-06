@@ -6,8 +6,8 @@ json.title        review.title
 json.stars        review.stars
 json.body         review.body
 json.archieved    review.archieved
-# json.useful       review.reviewtags.count(:useful)
-# json.notuseful    review.reviewtags.count(:notuseful)
+# json.useful       review.count(:useful)
+# json.notuseful    review.count(:notuseful)
 
 if params[:review_id] || params[:id]
   # json.authorDetails review.user

@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-usersgen = 20.times.map { |i|
+usersgen = 200.times.map { |i|
   {username: Faker::Name.name.to_s,
   email: Faker::Internet.email.to_s,
   location: Faker::Address.city.to_s,
@@ -15,6 +15,13 @@ usersgen = 20.times.map { |i|
 }
 
 User.create!(usersgen)
+
+User.create!(
+	{username: 'demo-user',
+  email: 'demo-user@demo.com',
+  location: 'San Francisco',
+  password: 'Av34Ki4$'}
+})
 
 user_ids = User.all.map { |user| user.id  }
 

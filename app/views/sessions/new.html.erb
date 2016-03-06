@@ -38,7 +38,13 @@
       <input type="submit" class="submit" value="Sign In">
     </form>
     <p class="sign-up">
-      Don't have an account? <a href="/users/new">Sign up here</a>
+      Don't have an account? <a href="/users/new">Sign up here</a>, or try the
+      <form action='<%=session_url%>' method="post" class='demo-user-form'>
+          <input type="hidden" name="authenticity_token" value= '<%=form_authenticity_token%>'>
+          <input type="hidden"  name="user[username]" value= 'demo-user'  >
+          <input type="hidden"  name="user[password]" value= 'Av34Ki4$'  >
+          <input type="submit" value="Demo Account" class='demo-user-button'>
+        </form>
     </p>
   </section>
 </figure>
