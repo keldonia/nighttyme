@@ -49,7 +49,6 @@ var Search = React.createClass({
     this.businessListener = BusinessStore.addListener(this._businessesChanged);
     this.filterListener = FilterParamsStore.addListener(this._filtersChanged);
     this.infiniteScrollToken = window.addEventListener("scroll", this.addNewBusinesses);
-    this.resetFilters();
     BusinessActions.fetchBusinesses();
   },
 

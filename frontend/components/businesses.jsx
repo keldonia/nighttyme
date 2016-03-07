@@ -34,7 +34,7 @@ var Businesses = React.createClass({
     var searchItems = this.state.searchTerms;
     var filterOutput = "";
     if (searchItems) {
-      if (searchItems.q !== "") {
+      if (searchItems.q.length > 0) {
         filterOutput += searchItems.q + "   ";
       }
       if (searchItems.tags.length > 0) {
