@@ -8,6 +8,12 @@ var FilterActions = {
         bounds: bounds
       });
   },
+  updateScroll: function (scrollCount) {
+    AppDispatcher.dispatch({
+      actionType: FilterConstants.COUNT,
+      count: scrollCount
+    });
+  },
   updateTags: function (tags) {
     AppDispatcher.dispatch ({
       actionType: FilterConstants.UPDATE_TAGS,

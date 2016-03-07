@@ -50,7 +50,7 @@ class Api::ReviewsController < ApplicationController
         .includes(:user)
         .includes(:business)
         .includes(:reviewtags)
-        .limit(50) #temp
+        .limit(50 * params[:count].to_i) #temp
     end
     render :index
   end

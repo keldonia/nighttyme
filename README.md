@@ -131,11 +131,12 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 - [x] Refactor HTML classes & CSS rules
 - [x] Add modals, transitions, pictures, and other styling flourishes.
 - [x] Seed Businesses
-- [ ] Seed Reviews
+- [x] Seed Reviews
 
 ### Bonus Features (TBD)
-- [ ] Infinite scroll
-- [ ] **Objective:** Reviews can liked.
+- [x] Infinite scroll
+- [x] Highlight time if open
+- [ ] Reviews can liked.
   - [x] create `ReviewTag` model and join table
   - build out API, Flux loop, and components for:
   - [x] fetching tags for review

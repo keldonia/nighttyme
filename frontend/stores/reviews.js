@@ -3,7 +3,8 @@ var ApiConstants = require('../constants/api_constants');
 var AppDispatcher = require('../dispatcher');
 
 var _reviews = {};
-var _topReview ={}
+var _topReview = {};
+var _reviewsCount = {};
 
 var ReviewsStore = new Store(AppDispatcher);
 
@@ -12,6 +13,10 @@ ReviewsStore.all = function () {
     return _reviews[key];
   });
   return reviews.reverse();
+};
+
+ReviewsStore.count = function () {
+  return _reviewsCount;
 };
 
 ReviewsStore.topReview = function () {
@@ -46,6 +51,7 @@ ReviewsStore.resetReviews = function (reviews) {
   reviews.forEach(function(review) {
     _reviews[review.id] = review;
   });
+  _reviewsCount = reviews[0].id;
 };
 
 ReviewsStore.resetReview = function (review) {

@@ -26,7 +26,7 @@ class Api::BusinessesController < ApplicationController
 
   def index
     if params[:abridged]
-      @businesses = Business.all.select(:id, :name).limit(40)
+      @businesses = Business.all.select(:id, :name)
       render :abridged
     elsif params[:Top5]
       @businesses = Business
@@ -67,7 +67,7 @@ class Api::BusinessesController < ApplicationController
       @businesses = @businesses
         .joins(:reviews)
         .group('businesses.id')
-        .select('businesses.*, AVG(reviews.stars) AS avg_stars, COUNT(reviews.stars) AS num_stars')
+        .select('businesses.*, COUNT(businesses.id) AS business_count, AVG(reviews.stars) AS avg_stars, COUNT(reviews.stars) AS num_stars')
 
       if params[:rating]
         @businesses = @businesses.joins(:reviews)
@@ -75,8 +75,8 @@ class Api::BusinessesController < ApplicationController
         .having("avg(stars) BETWEEN ? AND ?", params[:rating][0].to_f, params[:rating][1].to_f)
       end
 
+      @businesses = @businesses.limit(20 * params[:count].to_i)
 
-      @businesses = @businesses.limit(40)
 
       # businesses_ids = @businesses.pluck('businesses.id')
       # @tags = Tag.where(business_id: businesses_ids)

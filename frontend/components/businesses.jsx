@@ -11,7 +11,10 @@ var React = require('react');
 
 var Businesses = React.createClass({
   getInitialState: function () {
-    return({ businesses: BusinessStore.all(), searchTerms: SearchStore.params() });
+    return({
+      businesses: BusinessStore.all(),
+      searchTerms: SearchStore.params(),
+     });
   },
   componentDidMount: function() {
     this.businessListener = BusinessStore.addListener(this._onChange);
@@ -57,7 +60,9 @@ var Businesses = React.createClass({
 
     return (
       <section className='businesses-component'>
-        <p className="search-terms">{searchTerms}</p>
+        <div className="search-terms">
+          <p>{searchTerms}</p>
+        </div>
         <div className="map-search">
           <GMap />
           <Search />

@@ -63,11 +63,12 @@ var ApiUtil = {
       }
     });
   },
-  fetchAllReviews: function() {
+  fetchAllReviews: function(count) {
     $.ajax ({
       method: "GET",
       url: 'api/reviews',
       dataType: 'json',
+      data: { count: count},
       success: function (responseText) {
         ReviewApiDispatchs.recieveAllReviews(responseText);
       },

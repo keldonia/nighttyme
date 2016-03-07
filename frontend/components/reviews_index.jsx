@@ -5,6 +5,7 @@ var Reviews = require('./reviews');
 var ReviewActions = require('../actions/reviews_api_action_creators');
 var BusinessActions = require('../actions/business_api_action_creators');
 var TopFiveBusinesses = require('./top_five_businesses');
+var FilterParamsStore = require('../stores/filter');
 var TopReview = require('./top_review');
 var React = require('react');
 
@@ -13,27 +14,43 @@ var ReviewsIndex = React.createClass({
     return({
       reviews: ReviewsStore.all(),
       topReview: ReviewsStore.topReview(),
-      businesses: BusinessStore.all()
+      businesses: BusinessStore.all(),
+      filters: FilterParamsStore.params(),
+      scrollCount: 1
     });
   },
   componentDidMount: function() {
     this.reviewListener = ReviewsStore.addListener(this._onChange);
-    this.businessListener = BusinessStore.addListener(this._Top3Change);
+    this.businessListener = BusinessStore.addListener(this._Top5Change);
+    this.infiniteScrollToken = window.addEventListener("scroll", this.addNewReviews);
     ReviewActions.fetchTopReview();
     BusinessActions.fetchTopFiveBusinesses();
-    ReviewActions.fetchAllReviews();
+    ReviewActions.fetchAllReviews(this.state.scrollCount);
   },
   componentWillUnmount: function () {
     this.reviewListener.remove();
     this.businessListener.remove();
   },
+
+
+  addNewReviews: function() {
+   if ((window.innerHeight + window.scrollY - 10000 * this.state.scrollCount) >= 0 && ReviewsStore.all().length < ReviewsStore.count() ) {
+     this.state.scrollCount += 1;
+     ReviewActions.fetchAllReviews(this.state.scrollCount);
+   }
+ },
   _onChange: function () {
     this.setState({
       reviews: ReviewsStore.all(),
       topReview: ReviewsStore.topReview()
     });
   },
-  _Top3Change: function() {
+  _filterChange: function () {
+    this.setState({
+      filters: FilterParamsStore.params()
+    });
+  },
+  _Top5Change: function() {
     this.setState({ businesses: BusinessStore.all() })
   },
 

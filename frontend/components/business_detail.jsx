@@ -39,13 +39,34 @@ var BusinessDetail = React.createClass({
   hours: function () {
     var days = this.state.business.hour_attributes
     if (days) {
+      var date = new Date ();
       return Object.keys(days).map( function (day, idx) {
+        var currentDay;
+        if (date.getHours() <= 4) {
+          currentDay = (idx + 6) % 6;
+        } else {
+          currentDay = idx % 6;
+        }
         var capitalizedDay = day.replace(/(\b[a-z](?!\s))/g,
-          function(x) {return x.toUpperCase();});
-        return <li key={idx} className="Hour">
-          <div className="day">{capitalizedDay}:</div>
-          <div className="hour">{days[day]}</div>
-        </li>
+        function(x) {return x.toUpperCase();});
+        var times = days[day].match(/^(\d{1,2}):(\d{2}).(\w).*\s(\d{1,2}):(\d{2}).(\w)/);
+        var startHour = times[3] === "p" ? times[1] + 12 : times[1];
+        var endHour = times[6] === "p" ? times[4] + 12 : times[4];
+        if (currentDay === date.getDay() &&
+          startHour >= date.getHours() &&
+          endHour <= date.getHours()
+          ) {
+          capitalizedDay = "Open Now!  " + capitalizedDay;
+          return <li key={idx} className="Hour green">
+            <div className="day">{capitalizedDay}:</div>
+            <div className="hour">{days[day]}</div>
+          </li>
+        } else {
+          return <li key={idx} className="Hour">
+            <div className="day">{capitalizedDay}:</div>
+            <div className="hour">{days[day]}</div>
+          </li>
+        }
       });
     }
   },

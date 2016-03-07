@@ -3,6 +3,7 @@ var ApiConstants = require('../constants/api_constants');
 var AppDispatcher = require('../dispatcher');
 
 var _businesses = {};
+var _businessesCount = 100;
 var _businessesShort = {};
 var _business = {};
 
@@ -19,6 +20,10 @@ BusinessStore.allAbridged = function () {
     return _businessesShort[key];
   });
 };
+
+BusinessStore.count = function () {
+  return _businessesCount;
+}
 
 BusinessStore.allReviews = function () {
   return _business.reviews;
@@ -39,7 +44,6 @@ BusinessStore.findReview = function (id) {
       }
     });
   }
-  // debugger
 
   return review;
 };

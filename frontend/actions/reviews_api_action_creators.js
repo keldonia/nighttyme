@@ -1,8 +1,8 @@
 var ApiUtil = require('../util/api_util');
 
 var ReviewActions = {
-  fetchAllReviews: function () {
-    ApiUtil.fetchAllReviews();
+  fetchAllReviews: function (count) {
+    ApiUtil.fetchAllReviews(count);
   },
   createSingleReview: function (review) {
     ApiUtil.createSingleReview(review);

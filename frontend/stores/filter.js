@@ -4,6 +4,7 @@ var FilterConstants = require('../constants/filter_constants');
 
 var _params = {
   q: "",
+  count: 1,
   bounds: [],
   tags: [],
   attributes: [],
@@ -20,6 +21,7 @@ FilterParamsStore.params = function () {
 FilterParamsStore.resetParams = function () {
   _params = {
     q:"",
+    count: 1,
     bounds: [],
     tags: [],
     attributes: [],
@@ -56,6 +58,10 @@ FilterParamsStore.__onDispatch = function (payload) {
       break;
     case FilterConstants.RESET_SEARCH:
       FilterParamsStore.resetParams();
+      FilterParamsStore.__emitChange();
+      break;
+    case FilterConstants.COUNT:
+      _params.count = payload.count;
       FilterParamsStore.__emitChange();
       break;
     default:

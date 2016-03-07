@@ -37,9 +37,18 @@ var Search = React.createClass({
     FilterActions.resetFilters();
   },
 
+  addNewBusinesses: function() {
+    var scroll = parseInt(this.state.filterParams.count)
+    if ((window.innerHeight + window.scrollY - 3000 * scroll) >= 0 && BusinessStore.all().length < BusinessStore.count() ) {
+      scroll += 1;
+      FilterActions.updateScroll(scroll);
+    }
+  },
+
   componentDidMount: function () {
     this.businessListener = BusinessStore.addListener(this._businessesChanged);
     this.filterListener = FilterParamsStore.addListener(this._filtersChanged);
+    this.infiniteScrollToken = window.addEventListener("scroll", this.addNewBusinesses);
     this.resetFilters();
     BusinessActions.fetchBusinesses();
   },
