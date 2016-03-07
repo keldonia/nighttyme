@@ -128,6 +128,7 @@ var Search = React.createClass({
               />
             </div>
           </div>
+          <div className="group"> </div>
         </section>
       </div>
     );

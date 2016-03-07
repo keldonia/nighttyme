@@ -184,6 +184,9 @@
 .login p {
   font-size: 12px;
   text-align: center;
+}
+
+.login p.sign-in {
   margin-top: 33px;
   margin-bottom: 0;
   left: 1em;
@@ -191,6 +194,12 @@
   clear: left;
   width: 23em;
   display: block;
+}
+
+.login p.sign-up {
+  margin: 30px auto 10px auto;
+  display: block;
+  clear: both;
 }
 
 .group {

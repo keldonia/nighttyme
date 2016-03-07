@@ -113,15 +113,6 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 - [x] search by price
 - [x] search by average rating
 
-
-**Objective:** Reviews can liked.
-- [x] create `ReviewTag` model and join table
-- build out API, Flux loop, and components for:
-- [x] fetching tags for review
-- [ ] Marking reviews as useful or notuseful
-- [ ] Style new elements
-
-
 ### Phase 7: Top 5 businesses, review prompt, business pictures & review of the day (0.5 days)
 
 **objective:** Enable complex styling of Businesses.
@@ -144,6 +135,12 @@ Phase 3 adds organization to the Reviews. Reviews belong to a Business, which ha
 
 ### Bonus Features (TBD)
 - [ ] Infinite scroll
+- [ ] **Objective:** Reviews can liked.
+  - [x] create `ReviewTag` model and join table
+  - build out API, Flux loop, and components for:
+  - [x] fetching tags for review
+  - [ ] Marking reviews as useful or notuseful
+  - [ ] Style new elements
 - [ ] Delete/edit reviews
 - [ ] Friend other users
 - [ ] Forum Section?

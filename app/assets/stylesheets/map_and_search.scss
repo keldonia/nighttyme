@@ -13,9 +13,32 @@
   margin-top: 2.33em;
 }
 
+@media (max-width: 1150px) {
+
+  .map-search {
+    margin: 2.33em auto 1em auto;
+    clear: both;
+    float: none;
+    position: relative;
+  }
+  .map {
+    position: relative;
+    display: block;
+    margin: 1em auto 3em auto;
+  }
+
+  .search {
+    float: none;
+    position: relative;
+    display: block;
+    margin: 1em auto 3em auto;
+    padding: 0 2em 0 4em;
+  }
+}
+
 .search {
-  width: 100%;
   min-width: 400px;
+  width: 30vw;
   position: relative;
   float: right;
 
@@ -276,5 +299,8 @@
     textarea:hover::focus:-ms-placeholder {
       color: #cbc6c1;
     }
+  }
+  .group {
+    padding-bottom: 30px;
   }
 }

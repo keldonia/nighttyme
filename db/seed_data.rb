@@ -18,7 +18,6 @@ AMBIENCE = [
   'casual',
   'hipster',
   'sports',
-  'redneck',
   'biker'
 ]
 

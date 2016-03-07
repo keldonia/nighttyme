@@ -36,16 +36,6 @@
               placeholder="Please enter a valid email"><br>
       </div>
       <div class="input-line">
-      <label for="City">City:</label>
-      <input  type="text"
-              name="user[location]"
-              id="City"
-              value="<%= @user.location %>"
-              required
-              title="City must not be blank"
-              placeholder="Please enter a valid location"><br>
-      </div>
-      <div class="input-line">
       <label for="Password">Password:</label>
       <input  type="password"
               name="user[password]"
@@ -60,5 +50,6 @@
     <p class="sign-up">
       Already have an account? <a href="/session/new">Sign in here</a>
     </p>
+    <div class="group"></div>
   </section>
 </figure>
