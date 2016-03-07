@@ -34,16 +34,16 @@ var Businesses = React.createClass({
     var searchItems = this.state.searchTerms;
     var filterOutput = "";
     if (searchItems) {
-      if (searchItems.q.length > 0) {
+      if (searchItems.q && searchItems.q.length > 0) {
         filterOutput += searchItems.q + "   ";
       }
-      if (searchItems.tags.length > 0) {
+      if (searchItems.tags && searchItems.tags.length > 0) {
         filterOutput += "\nTags: " + searchItems.tags + "   ";
       }
-      if (searchItems.price[1] !== 4) {
+      if (searchItems.price && searchItems.price[1] !== 4) {
         filterOutput += "\nMaximum Price: " + searchItems.price[1] + "   ";
       }
-      if (searchItems.rating[0] !== 1) {
+      if (searchItems.rating && searchItems.rating[0] !== 1) {
         filterOutput += "\nMinimum Rating: " + searchItems.rating[0] + "   ";
       }
     }
