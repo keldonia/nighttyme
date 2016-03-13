@@ -138,7 +138,7 @@ neighborhoods.each do |neighborhood|
       new_store = true
       if stores.length > 0
         stores.each do |store|
-          new_store = false if store[:location] == business.location.display_address[0]
+          new_store = false if store[:location][0] == business.location.display_address[0]
         end
       end
     end

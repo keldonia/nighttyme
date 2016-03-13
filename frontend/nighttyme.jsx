@@ -30,7 +30,7 @@ window.ApiUtil = ApiUtil;
 window.BusinessStore = BusinessStore;
 window.ReviewsStore = ReviewsStore;
 window.FilterParamsStore = FilterParamsStore;
-window.BusienssActions = BusinessActions;
+window.BusinessActions = BusinessActions;
 window.TagStore = TagStore;
 window.SearchSuggestionsStore = SearchSuggestionsStore;
 

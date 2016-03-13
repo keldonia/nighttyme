@@ -30,6 +30,7 @@ var ReviewsIndex = React.createClass({
   componentWillUnmount: function () {
     this.reviewListener.remove();
     this.businessListener.remove();
+    window.removeEventListner("scroll")
   },
 
 

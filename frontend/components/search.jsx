@@ -39,7 +39,7 @@ var Search = React.createClass({
 
   addNewBusinesses: function() {
     var scroll = parseInt(this.state.filterParams.count)
-    if ((window.innerHeight + window.scrollY - 3000 * scroll) >= 0 && BusinessStore.all().length < BusinessStore.count() ) {
+    if ((window.innerHeight + window.scrollY - 2500 * scroll) >= 0 && BusinessStore.all().length < BusinessStore.count() ) {
       scroll += 1;
       FilterActions.updateScroll(scroll);
     }
@@ -56,6 +56,7 @@ var Search = React.createClass({
     this.resetFilters();
     this.businessListener.remove();
     this.filterListener.remove();
+    window.removeEventListner("scroll")
   },
   searchMinStars: function (e) {
     e.preventDefault();

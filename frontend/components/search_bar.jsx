@@ -33,7 +33,7 @@ var SearchBar = React.createClass({
   },
 
   componentWillUnmount: function () {
-    this.businessListener.remove();
+    this.searchListener.remove();
   },
   clearSuggestions: function () {
     this.setState({ blurred: true })
@@ -45,12 +45,12 @@ var SearchBar = React.createClass({
     ApiActions.fetchSearchSuggestions(search);
   },
   find: function(e) {
-    var search = { q: this.state.search };
-    FilterActions.updateString(this.state.search);
-    this.setState({ search: "" });
+    var search = this.state.search;
+    debugger
+    FilterActions.updateString(search);
     this.history.push('/businesses');
     ApiActions.fetchSearchSuggestions();
-    BusinessActions.fetchBusinesses(e.target.value);
+    BusinessActions.fetchBusinesses();
   },
 
   clickHandler: function (itemId, itemType , e) {
