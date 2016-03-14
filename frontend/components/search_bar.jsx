@@ -1,5 +1,4 @@
 var React = require('react');
-var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var SearchSuggestionsStore = require('../stores/searchsuggestions');
 var BusinessActions = require('../actions/business_api_action_creators');
 var ApiActions = require('../actions/api_create_actions');
@@ -8,7 +7,7 @@ var FilterActions = require('../actions/filter_actions');
 var History = require('react-router').History;
 
 var SearchBar = React.createClass({
-  mixins: [LinkedStateMixin, History],
+  mixins: [History],
 
   getInitialState: function() {
     return ({
@@ -46,8 +45,9 @@ var SearchBar = React.createClass({
   search: function (e) {
     e.preventDefault();
     this.setState({ blurred: false })
-    var search = { q: this.state.search };
+    var search = { q: e.currentTarget.value };
     ApiActions.fetchSearchSuggestions(search);
+    this.setState({ search: e.currentTarget.value });
   },
   find: function(e) {
     e.preventDefault();
@@ -60,7 +60,9 @@ var SearchBar = React.createClass({
   clickHandler: function (itemId, itemType , e) {
     e.preventDefault();
     if (itemType = 'business') {
-      this.history.push('/businesses/' + itemId)
+      this.history.push('/businesses/' + itemId);
+      this.clearSuggestions();
+      this.setState({ search: "" });
     } else {
       console.log(itemId);
       console.log(itemType);
@@ -89,14 +91,15 @@ var SearchBar = React.createClass({
 
     return (
       <div className="search-bar-top">
-        <form onFocus={this.search} className='search-bar' onChange={this.search} >
+        <form onFocus={this.search} className='search-bar'  >
           <div className="search-box">
             <label htmlFor='main-search'></label>
             <input
               type="text"
               id='main-search'
               placeholder="Search SF Night Life!"
-              valueLink={this.linkState("search")}
+              value={this.state.search}
+              onChange={this.search}
               autoComplete='off'
               />
             <button className="group" onClick={this.find}></button>
