@@ -89,7 +89,7 @@ var SearchBar = React.createClass({
 
     return (
       <div className="search-bar-top">
-        <form onBlur={this.clearSuggestions} onFocus={this.search} className='search-bar' onChange={this.search} >
+        <form onFocus={this.search} className='search-bar' onChange={this.search} >
           <div className="search-box">
             <label htmlFor='main-search'></label>
             <input
@@ -101,7 +101,7 @@ var SearchBar = React.createClass({
               />
             <button className="group" onClick={this.find}></button>
           </div>
-          <ul className="search-suggestions" >
+          <ul onBlur={this.clearSuggestions} className="search-suggestions" >
             {searchSuggestions}
           </ul>
         </form>
