@@ -4,10 +4,11 @@ var BusinessActions = require('../actions/business_api_action_creators');
 var ApiActions = require('../actions/api_create_actions');
 var FilterParamsStore = require('../stores/filter');
 var FilterActions = require('../actions/filter_actions');
+var OnClickOutside = require('react-onclickoutside');
 var History = require('react-router').History;
 
 var SearchBar = React.createClass({
-  mixins: [History],
+  mixins: [History, OnClickOutside],
 
   getInitialState: function() {
     return ({
@@ -42,6 +43,12 @@ var SearchBar = React.createClass({
   clearSuggestions: function () {
     this.setState({ blurred: true })
   },
+
+  handleClickOutside: function (e) {
+    e.preventDefault();
+    this.clearSuggestions();
+  },
+
   search: function (e) {
     e.preventDefault();
     this.setState({ blurred: false })
@@ -104,7 +111,7 @@ var SearchBar = React.createClass({
               />
             <button className="group" onClick={this.find}></button>
           </div>
-          <ul onBlur={this.clearSuggestions} className="search-suggestions" >
+          <ul className="search-suggestions" >
             {searchSuggestions}
           </ul>
         </form>
