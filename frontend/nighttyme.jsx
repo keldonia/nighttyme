@@ -17,7 +17,6 @@ var ReviewDetail = require('./components/review_detail');
 var Businesses = require('./components/businesses');
 var BusinessDetail = require('./components/business_detail');
 
-
 var BusinessStore = require('./stores/business');
 var ReviewsStore = require('./stores/reviews');
 var ErrorStore = require('./stores/errors');
@@ -25,14 +24,6 @@ var FilterParamsStore = require('./stores/filter');
 var BusinessActions = require('./actions/business_api_action_creators');
 var TagStore = require('./stores/tags');
 var SearchSuggestionsStore = require('./stores/searchsuggestions');
-
-window.ApiUtil = ApiUtil;
-window.BusinessStore = BusinessStore;
-window.ReviewsStore = ReviewsStore;
-window.FilterParamsStore = FilterParamsStore;
-window.BusinessActions = BusinessActions;
-window.TagStore = TagStore;
-window.SearchSuggestionsStore = SearchSuggestionsStore;
 
 var routes = (
   <Route path="/" component={App}>

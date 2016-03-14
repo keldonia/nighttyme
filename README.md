@@ -1,153 +1,93 @@
 # Nighttyme
 
-[Heroku link][heroku]
+Nighttyme is a website inspire by [Yelp](http://www.yelp.com/) created by Brian Lambert.  It features almost 500 unique bars and clubs from around San Francisco, that users can search for or review.  Search criteria is feed through its own RESTful api and include name, geographic bounding box, minimum number of stars, maximum price, and tags, such as Pubs, Wine Bars, and Lounges among the 84 unique tags.
 
-[heroku]: http://www.nighttyme.com
+[Live here][live]
 
-## Minimum Viable Product
+[live]: http://www.nighttyme.com/
 
-Nighttyme is a web application inspired by Yelp built using Ruby on Rails
-and React.js. Nighttyme allows users to review the nightlife in their area.
+## Features
 
-<!-- This is a Markdown checklist. Use it to keep track of your
-progress. Put an x between the brackets for a checkmark: [x] -->
+* Authentication (for posting reviews)
+  * Session is backend authenticated
+  * Handrolled
+  * Session information allows contextual page display
+* Leave Reviews
+  * Select a bar/club, provide title, stars (in half star increments), and a review body, and it will be attributed on the backend
+  * Automatically updates stars and number of reviews for the review establishment
+* Top Five Bars
+  * Returns the five bars with highest aggregate reviews
+  * Updates based upon changes to reviews
+* Review of the Day
+  * Returns a recent descriptive review
+* Search Businesses
+  * Search Bar && Filters
+  * Search Bar
+    * Queries the database and provides suggested links to the closest matching bar names
+    * Can also be used a part of a larger query with the filters on the businesses page or link to that page with search term saved if not.
+  * Filters
+    * Filters by geographic bounding box based on the map, using the google maps api
+    * Filters based on mimumium stars and maximum price
+    * Filters on tags which are drawn from the yelp tags
+* Seeded using real locations
+  * Uses the Yelp api to generate seed data for almost 500 bars and clubs using real information
+* Business Pages
+  * Includes more specific information including hours, credit cards information, ambience, and happy hour information among other criteria
+* Infinite Scroll
+  * Both the reviews index and business index/search pages enable infinite scroll through custom pagination of api requests
 
-- [x] Create an account
-- [x] Log in / Log out
-- [x] Create, and read businesses
-- [x] Create, read, edit, and delete reviews
-- [x] A feed of recent activity based upon location
-- [ ] Tag reviews as useful
-- [ ] Allow users to search reviews, based on several criteria and geographic range, moving map
+## Code Guide
 
-## Design Docs
-* [View Wireframes][views]
-* [React Components][components]
-* [Flux Stores][stores]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
+If you'd like to take a closer look at the code behind the Nighttyme App, the best folders to look in are:
 
-[views]: ./docs/views.md
-[components]: ./docs/components.md
-[stores]: ./docs/stores.md
-[api-endpoints]: ./docs/api-endpoints.md
-[schema]: ./docs/schema.md
+* [Nighttyme.jsx](./frontend/Nighttyme.jsx)
+* [React components](./frontend/components)
+  * [App](./frontend/components/app.jsx)
+* [Rails controllers](./app/controllers/api)
+* [Flux Stores](./frontend/stores)
+* [Api Util](./frontend/util/api_util.js)
+* [DB Schema](./db/schema.rb)
+* [Rails Routes](./config/routes.rb)
 
-## Implementation Timeline
+## Languages, Frameworks, Libraries, APIs, Etc.
 
-### Phase 1: Backend setup and User Authentication (0.5 days)
+* Ruby on Rails
+* Ruby
+* Postgres
+* SQL
+* React
+* Flux
+* jQuery
+* JavaScript
+* Gems
+  * yelp
+  * figaro
+  * puma
+  * bcrypt
+  * pg
 
-**Objective:** Functioning rails project with Authentication
+## Screenshots
 
-- [x] create new project
-- [x] create `User` model
-- [x] authentication
-- [x] user signup/signin pages
-- [x] blank landing page after signin
+Sign Up page:
+![Sign up page](./screenshots/signup_page.png)
 
-### Phase 2: Businesses Model, Reviews Model, API, and basic APIUtil (1.5 days)
+Home page (logged out):
+![home page logged out](./screenshots/home_logged_out.png)
 
-**Objectives:**  Reviews can be created, read, edited and destroyed through
-the API.
+Home page (logged in):
+![home page logged in](./screenshots/home_logged_in.png)
 
-- [x] create 'Buiness' model
-- [x] create `Review` model
-- [x] seed the database with a small amount of test data -
-- [x] CRUD API for Businesses (`BusinesssController`)
-- [x] CRUD API for Reviews (`ReviewsController`)
-- [x] jBuilder views for Businesses & Reviews
-- [x] setup Webpack & Flux scaffold
-- [x] setup `APIUtil` to interact with the API
-- [x] test out API interaction in the console.
+Businesses Index:
+![business index page](./screenshots/business_index.png)
 
-### Phase 3: Flux Architecture and Router (1.5 days)
+Search Bar Suggestions:
+![search bar suggestions](./screenshots/search_bar_suggestions.png)
 
-**Objective:** Reviews can be created, read, edited and destroyed with the
-user interface.
+Multiple Search Criteria:
+![search multipole Criteria](./screenshots/multiple_criteria.png)
 
-- [x] setup the flux loop with skeleton files
-- [x] setup React Router
-- [x] App (navbar) component created
-- implement each review component, building out the flux loop as needed.
-  - [x] `ReviewIndex`
-  - [x] `ReviewItem`
-  - [x] `ReviewDetail`
-  - [x] `ReviewForm`
+Business Page (logged out):
+![business page loggec out](./screenshots/business_page_logged_out.png)
 
-
-### Phase 4: Start Styling (0.5 days)
-
-**Objective:** Existing pages (including singup/signin) will look good.
-
-- [x] create a basic style guide
-- [x] position elements on the page
-- [x] add basic colors & styles
-
-### Phase 5: Business (1 day)
-
-**Objective:** Reviews belong to Business, and can be viewed by business.
-
-- [x] create `Business` model
-- build out API, Flux loop, and components for:
-  - [x] `BusinessesIndex`
-  - [x] `BusinessIndexItem`
-  - [x] `BusinessDetail`
-  - [x] adding reviews requires a business
-  - [x] viewing reviews by business
-- [x] Use CSS to style new views
-
-Phase 3 adds organization to the Reviews. Reviews belong to a Business, which has its own `Index` view.
-
-### Phase 6: Tags (1.5 days)
-
-**Objective:** Businesses can be tagged with multiple tags, and tags are searchable.
-
-- [x] create `Tag` model
-- build out API, Flux loop, and components for:
-  - [x] fetching tags for business
-- [x] Style new elements
-
-**Objective:** Implement Search
-- [x] search by location
-- [x] search by tag
-- [x] search by price
-- [x] search by average rating
-
-### Phase 7: Top 5 businesses, review prompt, business pictures & review of the day (0.5 days)
-
-**objective:** Enable complex styling of Businesses.
-
-- [x] Top businesses section
-- [x] Review of the day
-- [x] Add pictures to businesses
-- [x] Add review prompt
-- [x] Style new elements
-
-### Phase 8: Styling Cleanup and Seeding (1 day)
-
-**objective:** Make the site feel more cohesive and awesome.
-
-- [x] Get feedback on my UI from others
-- [x] Refactor HTML classes & CSS rules
-- [x] Add modals, transitions, pictures, and other styling flourishes.
-- [x] Seed Businesses
-- [x] Seed Reviews
-
-### Bonus Features (TBD)
-- [x] Infinite scroll
-- [x] Highlight time if open
-- [ ] Reviews can liked.
-  - [x] create `ReviewTag` model and join table
-  - build out API, Flux loop, and components for:
-  - [x] fetching tags for review
-  - [ ] Marking reviews as useful or notuseful
-  - [ ] Style new elements
-- [ ] Delete/edit reviews
-- [ ] Friend other users
-- [ ] Forum Section?
-- [ ] Message friends
-
-[phase-one]: ./docs/phases/phase1.md
-[phase-two]: ./docs/phases/phase2.md
-[phase-three]: ./docs/phases/phase3.md
-[phase-four]: ./docs/phases/phase4.md
+Business Page (logged in):
+![business page loggec in](./screenshots/business_page_logged_in.png)
