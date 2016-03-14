@@ -27,8 +27,13 @@ var SearchBar = React.createClass({
     this.setState({ items: this.getItems() });
   },
 
+  _filtersChanged: function () {
+    this.setState({ search: FilterParamsStore.params().q })
+  },
+
   componentDidMount: function () {
     this.searchListener = SearchSuggestionsStore.addListener(this._suggestionsChanged);
+    this.filterListener = FilterParamsStore.addListener(this._filtersChanged);
     ApiActions.fetchSearchSuggestions();
   },
 
@@ -45,12 +50,11 @@ var SearchBar = React.createClass({
     ApiActions.fetchSearchSuggestions(search);
   },
   find: function(e) {
+    e.preventDefault();
     var search = this.state.search;
-    debugger
     FilterActions.updateString(search);
-    this.history.push('/businesses');
-    ApiActions.fetchSearchSuggestions();
     BusinessActions.fetchBusinesses();
+    this.history.push('/businesses');
   },
 
   clickHandler: function (itemId, itemType , e) {

@@ -6,12 +6,19 @@ var _businesses = {};
 var _businessesCount = 100;
 var _businessesShort = {};
 var _business = {};
+var _topFiveBusinesses = {};
 
 var BusinessStore = new Store(AppDispatcher);
 
 BusinessStore.all = function () {
   return Object.keys(_businesses).map( function(key) {
     return _businesses[key];
+  });
+};
+
+BusinessStore.topFiveBusinesses = function () {
+  return Object.keys(_topFiveBusinesses).map( function(key) {
+    return _topFiveBusinesses[key];
   });
 };
 
@@ -54,6 +61,10 @@ BusinessStore.__onDispatch = function (payload) {
       BusinessStore.resetBusinesses(payload.businesses);
       BusinessStore.__emitChange();
       break;
+    case ApiConstants.TOP_FIVE_BUSINESSES:
+      BusinessStore.resetTopFiveBusinesses(payload.businesses);
+      BusinessStore.__emitChange();
+      break;
     case ApiConstants.ABRIDGED_BUSINESSES:
       BusinessStore.resetAbridgedBusinesses(payload.businesses);
       BusinessStore.__emitChange();
@@ -71,6 +82,12 @@ BusinessStore.resetBusinesses = function (businesses) {
   _businesses = {};
   businesses.forEach( function(business) {
     _businesses[business.id] = business;
+  });
+};
+BusinessStore.resetTopFiveBusinesses = function (businesses) {
+  _topFiveBusinesses = {};
+  businesses.forEach( function(business) {
+    _topFiveBusinesses[business.id] = business;
   });
 };
 BusinessStore.resetBusiness = function (business) {

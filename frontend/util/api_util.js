@@ -19,7 +19,7 @@ var ApiUtil = {
       }
     });
   },
-  fetchBusinesses: function (searchCriteria) {
+  fetchBusinesses: function () {
     var filter = FilterParamsStore.params();
     $.get('api/businesses', filter, function(businesses) {
       BusinessApiDispatchs.recieveAllBusinesses(businesses);
@@ -46,7 +46,7 @@ var ApiUtil = {
   },
   fetchTopFiveBusinesses: function() {
     $.get('api/businesses', {Top5: true}, function(businesses) {
-      BusinessApiDispatchs.recieveAllBusinesses(businesses);
+      BusinessApiDispatchs.recieveTopFiveBusinesses(businesses);
     });
   },
   fetchSingleBusiness: function(id) {

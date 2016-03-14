@@ -8,6 +8,12 @@ var BusinessApiDispatches = {
       businesses: businesses
     });
   },
+  recieveTopFiveBusinesses: function(businesses) {
+    AppDispatcher.dispatch({
+      actionType: ApiConstants.TOP_FIVE_BUSINESSES,
+      businesses: businesses
+    });
+  },
   recieveAbridgedBusinesses: function(businesses) {
     AppDispatcher.dispatch({
       actionType: ApiConstants.ABRIDGED_BUSINESSES,

@@ -14,7 +14,7 @@ var ReviewsIndex = React.createClass({
     return({
       reviews: ReviewsStore.all(),
       topReview: ReviewsStore.topReview(),
-      businesses: BusinessStore.all(),
+      businesses: BusinessStore.topFiveBusinesses(),
       filters: FilterParamsStore.params(),
       scrollCount: 1
     });
@@ -30,14 +30,13 @@ var ReviewsIndex = React.createClass({
   componentWillUnmount: function () {
     this.reviewListener.remove();
     this.businessListener.remove();
-    window.removeEventListner("scroll")
   },
 
 
   addNewReviews: function() {
-   if ((window.innerHeight + window.scrollY - 10000 * this.state.scrollCount) >= 0 && ReviewsStore.all().length < ReviewsStore.count() ) {
+   if ((window.innerHeight + window.scrollY - 9000 * this.state.scrollCount) >= 0 && ReviewsStore.all().length < ReviewsStore.count() ) {
      this.state.scrollCount += 1;
-     ReviewActions.fetchAllReviews(this.state.scrollCount);
+     ReviewActions.fetchAllReviews(this.state.scrollCount, this.addNewReviews, false);
    }
  },
   _onChange: function () {
@@ -52,7 +51,7 @@ var ReviewsIndex = React.createClass({
     });
   },
   _Top5Change: function() {
-    this.setState({ businesses: BusinessStore.all() })
+    this.setState({ businesses: BusinessStore.topFiveBusinesses() })
   },
 
   render: function () {
