@@ -40,7 +40,7 @@ var SearchBar = React.createClass({
 
   componentWillUnmount: function () {
     this.searchListener.remove();
-    $(document).unbind('click', this.clickDocument)
+    $(document).unbind('click', this.clickDocument);
   },
   clearSuggestions: function () {
     this.setState({ blurred: true })

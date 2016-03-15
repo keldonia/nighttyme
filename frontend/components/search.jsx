@@ -55,6 +55,7 @@ var Search = React.createClass({
   componentWillUnmount: function () {
     this.businessListener.remove();
     this.filterListener.remove();
+    window.removeEventListener('scroll', this.addNewBusinesses)
   },
   searchMinStars: function (e) {
     e.preventDefault();
