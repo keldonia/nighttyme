@@ -48,7 +48,13 @@
       <input type="submit" class="submit" value="Sign Up">
     </form>
     <p class="sign-up">
-      Already have an account? <a href="/session/new">Sign in here</a>
+      Already have an account? <a href="/session/new">Sign in here</a>, or try the
+      <form action='<%=session_url%>' method="post" class='demo-user-form'>
+          <input type="hidden" name="authenticity_token" value= '<%=form_authenticity_token%>'>
+          <input type="hidden"  name="user[username]" value= 'demo-user'  >
+          <input type="hidden"  name="user[password]" value= 'Av34Ki4$'  >
+          <input type="submit" value="Demo Account" class='demo-user-button'>
+        </form>
     </p>
     <div class="group"></div>
   </section>

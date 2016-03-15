@@ -182,24 +182,29 @@
 }
 
 .login p {
+  margin-bottom: 0;
   font-size: 12px;
   text-align: center;
-}
-
-.login p.sign-in {
-  margin-top: 33px;
-  margin-bottom: 0;
-  left: 1em;
   position: relative;
   clear: left;
   width: 23em;
   display: block;
+  left: 1em;
+}
+
+.login p.sign-in {
+  margin-top: 33px;
+  left: 1em;
 }
 
 .login p.sign-up {
-  margin: 30px auto 10px auto;
-  display: block;
-  clear: both;
+  margin-top: 25px;
+  left: 0.5em;
+}
+
+.sign-up .demo-user-form input[type=submit] {
+  left: 27em;
+  top: -8px;
 }
 
 .group {

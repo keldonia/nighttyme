@@ -1,14 +1,14 @@
 var React = require('react');
+var ReactDOM = require('react-dom')
 var SearchSuggestionsStore = require('../stores/searchsuggestions');
 var BusinessActions = require('../actions/business_api_action_creators');
 var ApiActions = require('../actions/api_create_actions');
 var FilterParamsStore = require('../stores/filter');
 var FilterActions = require('../actions/filter_actions');
-var OnClickOutside = require('react-onclickoutside');
 var History = require('react-router').History;
 
 var SearchBar = React.createClass({
-  mixins: [History, OnClickOutside],
+  mixins: [History],
 
   getInitialState: function() {
     return ({
@@ -34,19 +34,25 @@ var SearchBar = React.createClass({
   componentDidMount: function () {
     this.searchListener = SearchSuggestionsStore.addListener(this._suggestionsChanged);
     this.filterListener = FilterParamsStore.addListener(this._filtersChanged);
+    $(document).bind('click', this.clickDocument);
     ApiActions.fetchSearchSuggestions();
   },
 
   componentWillUnmount: function () {
     this.searchListener.remove();
+    $(document).unbind('click', this.clickDocument)
   },
   clearSuggestions: function () {
     this.setState({ blurred: true })
   },
 
-  handleClickOutside: function (e) {
-    e.preventDefault();
-    this.clearSuggestions();
+  clickDocument: function (e) {
+    var component = ReactDOM.findDOMNode(this.refs.component);
+    if (e.target == component || $(component).has(e.target).length) {
+      this.setState({ blurred: false });
+    } else {
+      this.setState({ blurred: true });
+    }
   },
 
   search: function (e) {
@@ -97,7 +103,7 @@ var SearchBar = React.createClass({
     }
 
     return (
-      <div className="search-bar-top">
+      <div ref="component" className="search-bar-top">
         <form onFocus={this.search} className='search-bar'  >
           <div className="search-box">
             <label htmlFor='main-search'></label>
