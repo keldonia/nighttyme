@@ -3,7 +3,6 @@ var BusinessStore = require('../stores/business');
 var BusinessActions = require('../actions/business_api_action_creators');
 var FilterActions = require('../actions/filter_actions');
 var History = require('react-router').History;
-var MapHover = require('./map_hover');
 
 var CENTER = { lat: 37.7758, lng: -122.435 };
 
