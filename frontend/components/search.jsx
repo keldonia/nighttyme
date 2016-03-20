@@ -14,7 +14,6 @@ function _getFilterParams() {
 }
 
 var Search = React.createClass({
-
   mixins: [LinkedStateMixin],
 
   getInitialState: function() {
@@ -23,20 +22,16 @@ var Search = React.createClass({
       filterParams: _getFilterParams()
     });
   },
-
   _businessesChanged: function () {
     this.setState({ businesses: _getAllBusinesses() });
   },
-
   _filtersChanged: function () {
     this.setState({ filterParams: _getFilterParams() });
     BusinessActions.fetchBusinesses(this.state.filterParams);
   },
-
   resetFilters: function () {
     FilterActions.resetFilters();
   },
-
   addNewBusinesses: function() {
     var scroll = parseInt(this.state.filterParams.count)
     if ((window.innerHeight + window.scrollY - 2200 * scroll) >= 0 && BusinessStore.all().length < BusinessStore.count() ) {
@@ -44,14 +39,12 @@ var Search = React.createClass({
       FilterActions.updateScroll(scroll);
     }
   },
-
   componentDidMount: function () {
     this.businessListener = BusinessStore.addListener(this._businessesChanged);
     this.filterListener = FilterParamsStore.addListener(this._filtersChanged);
     this.infiniteScrollToken = window.addEventListener("scroll", this.addNewBusinesses);
     BusinessActions.fetchBusinesses();
   },
-
   componentWillUnmount: function () {
     this.businessListener.remove();
     this.filterListener.remove();
@@ -83,7 +76,6 @@ var Search = React.createClass({
     e.preventDefault();
     FilterActions.updateRating([e.target.id,5]);
   },
-
   render: function() {
     var maxPrice = this.priceIndicator();
     var minRating = this.state.filterParams.rating[0];

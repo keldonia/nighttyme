@@ -51,7 +51,7 @@ var BusinessDetail = React.createClass({
     if (days) {
       var date = new Date ();
       return DAYS.map( function (day, idx) {
-        
+
         var capitalizedDay = day.replace(/(\b[a-z](?!\s))/g,
         function(x) {return x.toUpperCase();});
 
@@ -107,8 +107,6 @@ var BusinessDetail = React.createClass({
       return this.state.business.neighborhoods.replace(/\[|\]|"/g, "");
     }
   },
-
-
   render: function() {
     var business = this.state.business;
     var hours = this.hours();

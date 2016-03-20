@@ -5,7 +5,6 @@ var ReviewPrompt = React.createClass({
   newUser: function () {
     window.location.href = "/users/new";
   },
-
   render: function() {
     return (
       <section className="review-prompt">

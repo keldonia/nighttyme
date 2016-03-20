@@ -16,8 +16,6 @@ var BusinessIndexItem = React.createClass({
     var matches = location.match(/\["(.*?)\".*?\"(.*?)"\]/).slice(1);
     return matches
   },
-
-
   render: function() {
     var business = this.props.business;
     var neighborhoods = business.neighborhoods.replace(/\[|\]|"/g, "");

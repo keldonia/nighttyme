@@ -121,7 +121,6 @@ var GMap = React.createClass({
       }
     });
   },
-
   render: function () {
     return(
       <div className="map" ref="map" id="map">

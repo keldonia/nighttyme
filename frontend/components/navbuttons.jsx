@@ -10,7 +10,6 @@ var NavButtons = React.createClass({
     ApiActions.fetchSearchSuggestions();
     window.location.hash = navLocation;
   },
-
   navButtons: function () {
     var that = this
     return Object.keys(NavConstants).map( function(key, idx) {
@@ -21,7 +20,6 @@ var NavButtons = React.createClass({
       );
     }, this);
   },
-
   render: function() {
     var navbuttons = this.navButtons();
 

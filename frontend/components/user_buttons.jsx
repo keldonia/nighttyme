@@ -7,8 +7,6 @@ var UserButtons = React.createClass({
   signOut: function () {
     ApiCreateActions.signOut();
   },
-
-
   userButtons: function () {
     if (window.user) {
       var userStuff = (
@@ -27,8 +25,6 @@ var UserButtons = React.createClass({
 
     return userStuff;
   },
-
-
   render: function() {
     var userButtons = this.userButtons();
 

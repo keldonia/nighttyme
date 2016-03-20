@@ -12,20 +12,16 @@ var ReviewForm = React.createClass({
   getInitialState: function() {
     return this.blankattrs();
   },
-
   componentDidMount: function() {
     this.businessListener = BusinessStore.addListener(this._onChange);
     BusinessActions.fetchAbrigedBusinesses();
   },
-
   _onChange: function() {
     this.setState({ businesses: BusinessStore.allAbridged() });
   },
-
   componentWillUnmount: function() {
     this.businessListener.remove();
   },
-
   postReview: function (e) {
     e.preventDefault();
     var review = {};
@@ -38,7 +34,6 @@ var ReviewForm = React.createClass({
     BusinessActions.fetchSingleBusiness(this.state.business_id);
     this.setState(this.blankattrs());
   },
-
   blankattrs: function () {
     return ({
       businesses: BusinessStore.allAbridged(),
@@ -52,7 +47,6 @@ var ReviewForm = React.createClass({
     e.preventDefault();
     this.setState({ stars: e.target.id });
   },
-
   render: function() {
     var businessFocusId = this.businessFocusId();
     var businessOptions = this.businessOptions(businessFocusId);

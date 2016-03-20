@@ -32,8 +32,6 @@ var ReviewsIndex = React.createClass({
     this.businessListener.remove();
     window.removeEventListener("scroll", this.addNewReviews);
   },
-
-
   addNewReviews: function() {
    if ((window.innerHeight + window.scrollY - 9000 * this.state.scrollCount) >= 0 && ReviewsStore.all().length < ReviewsStore.count() ) {
      this.state.scrollCount += 1;
@@ -54,7 +52,6 @@ var ReviewsIndex = React.createClass({
   _Top5Change: function() {
     this.setState({ businesses: BusinessStore.topFiveBusinesses() })
   },
-
   render: function () {
 
     return (

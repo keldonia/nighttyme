@@ -31,7 +31,6 @@ var ReviewIndexItem = React.createClass({
     }
     return businessFocusId;
   },
-
   render: function() {
     var review = this.props.review;
 

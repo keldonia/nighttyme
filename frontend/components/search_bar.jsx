@@ -17,27 +17,22 @@ var SearchBar = React.createClass({
       blurred: true
     });
   },
-
   getItems: function() {
     return SearchSuggestionsStore.all()
   },
-
   _suggestionsChanged: function() {
     var items = this.getItems();
     this.setState({ items: this.getItems() });
   },
-
   _filtersChanged: function () {
     this.setState({ search: FilterParamsStore.params().q })
   },
-
   componentDidMount: function () {
     this.searchListener = SearchSuggestionsStore.addListener(this._suggestionsChanged);
     this.filterListener = FilterParamsStore.addListener(this._filtersChanged);
     $(document).bind('click', this.clickDocument);
     ApiActions.fetchSearchSuggestions();
   },
-
   componentWillUnmount: function () {
     this.searchListener.remove();
     $(document).unbind('click', this.clickDocument);
@@ -45,7 +40,6 @@ var SearchBar = React.createClass({
   clearSuggestions: function () {
     this.setState({ blurred: true })
   },
-
   clickDocument: function (e) {
     var component = ReactDOM.findDOMNode(this.refs.component);
     if (e.target == component || $(component).has(e.target).length) {
@@ -54,7 +48,6 @@ var SearchBar = React.createClass({
       this.setState({ blurred: true });
     }
   },
-
   search: function (e) {
     e.preventDefault();
     this.setState({ blurred: false })
@@ -69,7 +62,6 @@ var SearchBar = React.createClass({
     BusinessActions.fetchBusinesses();
     this.history.push('/businesses');
   },
-
   clickHandler: function (itemId, itemType , e) {
     e.preventDefault();
     if (itemType = 'business') {
@@ -81,7 +73,6 @@ var SearchBar = React.createClass({
       console.log(itemType);
     }
   },
-
   searchItems: function () {
     var items = this.state.items;
     if (items && this.state.blurred === false) {
@@ -96,7 +87,6 @@ var SearchBar = React.createClass({
       }, this);
     }
   },
-
   render: function() {
     if (this.state.search) {
       var searchSuggestions = this.searchItems();
@@ -123,7 +113,7 @@ var SearchBar = React.createClass({
         </form>
       </div>
     );
-  },
+  }
 
 });
 

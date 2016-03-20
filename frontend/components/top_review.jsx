@@ -14,7 +14,6 @@ var TopReview = React.createClass({
   showDetail: function(business_id, e) {
     this.history.push('/businesses/' + business_id)
   },
-
   render: function() {
     var topReview = this.props.review[0];
 

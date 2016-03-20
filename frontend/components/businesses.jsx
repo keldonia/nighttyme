@@ -53,7 +53,6 @@ var Businesses = React.createClass({
 
     return filterOutput;
   },
-
   render: function() {
     var businesses = this.orderBusinesses();
     var searchTerms = this.searchTerms();

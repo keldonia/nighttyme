@@ -9,7 +9,6 @@ var TopFiveBusinesses = React.createClass({
   showDetail: function(id, e) {
     this.history.push('/businesses/' + id)
   },
-
   topFiveItem: function () {
     var businesses = this.props.businesses;
     var that = this;
@@ -30,8 +29,6 @@ var TopFiveBusinesses = React.createClass({
       });
     }
   },
-
-
   render: function() {
     var TopFiveItems = this.topFiveItem();
 
